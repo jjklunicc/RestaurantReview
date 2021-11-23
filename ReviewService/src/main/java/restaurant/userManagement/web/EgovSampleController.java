@@ -75,31 +75,31 @@ public class EgovSampleController {
 	 * @return "egovSampleList"
 	 * @exception Exception
 	 */
-	@RequestMapping(value = "/egovSampleList.do")
+	@RequestMapping(value = "/login.do")
 	public String selectSampleList(@ModelAttribute("searchVO") SampleDefaultVO searchVO, ModelMap model) throws Exception {
+//
+//		/** EgovPropertyService.sample */
+//		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
+//		searchVO.setPageSize(propertiesService.getInt("pageSize"));
+//
+//		/** pageing setting */
+//		PaginationInfo paginationInfo = new PaginationInfo();
+//		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
+//		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
+//		paginationInfo.setPageSize(searchVO.getPageSize());
+//
+//		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+//		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
+//		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+//
+//		List<?> sampleList = sampleService.selectSampleList(searchVO);
+//		model.addAttribute("resultList", sampleList);
+//
+//		int totCnt = sampleService.selectSampleListTotCnt(searchVO);
+//		paginationInfo.setTotalRecordCount(totCnt);
+//		model.addAttribute("paginationInfo", paginationInfo);
 
-		/** EgovPropertyService.sample */
-		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
-		searchVO.setPageSize(propertiesService.getInt("pageSize"));
-
-		/** pageing setting */
-		PaginationInfo paginationInfo = new PaginationInfo();
-		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-		paginationInfo.setPageSize(searchVO.getPageSize());
-
-		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-
-		List<?> sampleList = sampleService.selectSampleList(searchVO);
-		model.addAttribute("resultList", sampleList);
-
-		int totCnt = sampleService.selectSampleListTotCnt(searchVO);
-		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
-
-		return "sample/egovSampleList";
+		return "user/login";
 	}
 
 	/**
