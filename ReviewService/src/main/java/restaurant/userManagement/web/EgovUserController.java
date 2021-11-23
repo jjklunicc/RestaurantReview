@@ -101,6 +101,11 @@ public class EgovUserController {
 
 		return "user/login";
 	}
+	
+	@RequestMapping(value = "/signUp.do")
+	public String selectSampleList() throws Exception {		
+		return "user/signUp";
+	}
 
 	/**
 	 * 글 등록 화면을 조회한다.

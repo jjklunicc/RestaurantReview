@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package restaurant.restaurantManagement.web;
+package restaurant.orderManagement.web;
 
 import java.util.List;
 
@@ -50,12 +50,16 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
  */
 
 @Controller
-public class EgovRestaurantController {
+public class EgovOrderController {
 	
-	@RequestMapping(value = "/orderList.do")
+	@RequestMapping(value = "/restaurantList.do")
 	public String selectSampleList() throws Exception {		
-		return "order/orderList";
+		return "restaurant/restaurantList";
 	}
 	
+	@RequestMapping(value = "/restaurant.do")
+	public String selectSample() throws Exception {		
+		return "restaurant/restaurant";
+	}
 
 }

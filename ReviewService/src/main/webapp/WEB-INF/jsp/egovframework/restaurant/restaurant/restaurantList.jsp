@@ -20,7 +20,12 @@
     </div>
   </header>
   <main class="container">    
-	식당 리스트 페이지입니다.	
+  	<div class="text-center header-main-text">식당 리스트 페이지입니다.	</div>	
+	<form method="post" action='restaurant.do'>     
+      <div style="margin-bottom: 0.5rem;">
+        <input class="btn btn-success" style="width: 100%;" type="submit" value="상세 식당페이지 가기"/>
+      </div>      
+    </form>
   </main>
   <footer class="footer text-center">
     <div class="container">

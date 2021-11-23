@@ -8,7 +8,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>로그인</title>
+	<title>식당 상세 페이지</title>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/bootstrap.css'/>"/>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/main.css'/>"/>
      <script type="text/javaScript" language="javascript" defer="defer"></script>
@@ -19,23 +19,12 @@
       <div>Restaurant Review</div>
     </div>
   </header>
-  <main class="container page-section">
-    <h1 class="text-center title">로그인</h1>
-    <form method="post" action='restaurantList.do'>
-      <div class="form-group">
-        <label for="id">아이디</label>
-        <input type="text" class="form-control" id="id" placeholder="아이디">
-      </div>
-      <div class="form-group">
-        <label for="name">비밀번호</label>
-        <input type="password" class="form-control" id="password" placeholder="비밀번호">
-      </div>
+  <main class="container">   
+  	<div class="text-center header-main-text">식당 상세 페이지입니다.</div> 	
+	<form method="post" action='orderList.do'>     
       <div style="margin-bottom: 0.5rem;">
-        <input class="btn btn-success" style="width: 100%;" id="login" type="submit" value="로그인"/>
+        <input class="btn btn-success" style="width: 100%;" type="submit" value="주문관리 페이지로"/>
       </div>      
-    </form>
-    <form action='signUp.do'>
-    	<div><input class="btn btn-primary" style="width: 100%;" id="singUp" type="submit" value="회원가입"/></div>
     </form>
   </main>
   <footer class="footer text-center">
