@@ -4,9 +4,9 @@
 <sqlMap namespace="Sample">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="searchVO" type="restaurant.userManagement.service.SampleDefaultVO"/>
+	<typeAlias  alias="searchVO" type="restaurant.userManagement.service.UserDefaultVO"/>
 
-	<resultMap id="sample" class="restaurant.userManagement.service.SampleVO">
+	<resultMap id="sample" class="restaurant.userManagement.service.UserVO">
 		<result property="id" column="id"/>
 		<result property="name" column="name"/>
 		<result property="description" column="description"/>
@@ -14,7 +14,7 @@
 		<result property="regUser" column="reg_user"/>
 	</resultMap>
 
-	<insert id="sampleDAO.insertSample">
+	<insert id="UserDAO.insertSample">
 		<![CDATA[
 			INSERT INTO SAMPLE 
 				( ID
@@ -30,7 +30,7 @@
 		]]>
 	</insert>
 	
-	<update id="sampleDAO.updateSample">
+	<update id="UserDAO.updateSample">
 		<![CDATA[
 			UPDATE SAMPLE
 			SET ID=#id#
@@ -41,14 +41,14 @@
 		]]>
 	</update>
 	
-	<delete id="sampleDAO.deleteSample">
+	<delete id="UserDAO.deleteSample">
 		<![CDATA[
 			DELETE FROM SAMPLE 
 			WHERE ID=#id#
 		]]>
 	</delete>
     
-    <select id="sampleDAO.selectSample" resultMap="sample">
+    <select id="UserDAO.selectSample" resultMap="sample">
         <![CDATA[
             SELECT
                 ID, NAME, DESCRIPTION, USE_YN, REG_USER
@@ -57,7 +57,7 @@
         ]]>
     </select>
 	
-	<select id="sampleDAO.selectSampleList" parameterClass="searchVO" resultClass="egovMap">
+	<select id="UserDAO.selectSampleList" parameterClass="searchVO" resultClass="egovMap">
 
 			SELECT
 				ID, NAME, DESCRIPTION, USE_YN, REG_USER
@@ -73,7 +73,7 @@
 			LIMIT #recordCountPerPage# OFFSET #firstIndex#		
 	</select>
 	
-	<select id="sampleDAO.selectSampleListTotCnt" parameterClass="searchVO" resultClass="int">
+	<select id="UserDAO.selectSampleListTotCnt" parameterClass="searchVO" resultClass="int">
 
 			SELECT COUNT(*) totcnt
 			FROM SAMPLE

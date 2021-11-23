@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="restaurant.userManagement.service.impl.SampleMapper">
 
-	<resultMap id="sample" type="restaurant.userManagement.service.SampleVO">
+	<resultMap id="sample" type="restaurant.userManagement.service.UserVO">
 		<result property="id" column="id"/>
 		<result property="name" column="name"/>
 		<result property="description" column="description"/>
@@ -10,7 +10,7 @@
 		<result property="regUser" column="reg_user"/>
 	</resultMap>
 
-	<insert id="insertSample" parameterType="SampleVO">
+	<insert id="insertSample" parameterType="UserVO">
 
 			INSERT INTO SAMPLE
 				( ID

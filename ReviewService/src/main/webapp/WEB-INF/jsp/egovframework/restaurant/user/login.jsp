@@ -11,6 +11,7 @@
 	<title>로그인</title>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/bootstrap.css'/>"/>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/main.css'/>"/>
+     <script type="text/javaScript" language="javascript" defer="defer"></script>
 </head>
 <body>
   <header class="header text-uppercase header-main-text" id="mainHeader">
@@ -20,7 +21,7 @@
   </header>
   <main class="container page-section">
     <h1 class="text-center title">로그인</h1>
-    <form id="login" class="">
+    <form method="post" action='restaurantList.do'>
       <div class="form-group">
         <label for="name">아이디</label>
         <input type="text" class="form-control" id="name" placeholder="아이디">
@@ -30,11 +31,10 @@
         <input type="password" class="form-control" id="password" placeholder="비밀번호">
       </div>
       <div style="margin-bottom: 0.5rem;">
-        <button class="btn btn-success" style="width: 100%;" id="login" type="submit">로그인</button>
-      </div>
-      <div><button class="btn btn-primary" style="width: 100%;" id="login" type="submit">회원가입</button></div>
-
+        <input class="btn btn-success" style="width: 100%;" id="login" type="submit" value="로그인"/>
+      </div>      
     </form>
+    <div><input class="btn btn-primary" style="width: 100%;" id="singUp" type="submit" value="회원가입"/></div>
   </main>
   <footer class="footer text-center">
     <div class="container">
