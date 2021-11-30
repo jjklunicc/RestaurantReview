@@ -50,16 +50,15 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
  */
 
 @Controller
-public class EgovOrderController {
-	
-	@RequestMapping(value = "/restaurantList.do")
+public class EgovOrderController {	
+	@RequestMapping(value = "/orderList.do")
 	public String selectSampleList() throws Exception {		
-		return "restaurant/restaurantList";
+		return "order/orderList";
 	}
 	
-	@RequestMapping(value = "/restaurant.do")
-	public String selectSample() throws Exception {		
-		return "restaurant/restaurant";
+	@RequestMapping(value = "/orderComplete.do")
+	public String selectOrderList() throws Exception {		
+		return "order/orderComplete";
 	}
 
 }
