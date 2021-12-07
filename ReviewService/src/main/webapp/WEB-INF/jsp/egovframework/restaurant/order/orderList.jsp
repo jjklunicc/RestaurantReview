@@ -358,8 +358,10 @@
         </div>
       </div>
       <!-- 11st 결제 -->
-      <button class="btn btn-lg btn-block btn-ygy1 ng-binding" ng-click="prepare_checkout()"
-        ng-bind="payment_button_text">결제하기</button>
+      <form method="post" action='orderComplete.do'>
+      	<button class="btn btn-lg btn-block btn-ygy1 ng-binding" ng-click="prepare_checkout()"
+       	 ng-bind="payment_button_text">결제하기</button>
+      </form>
     </div>
 
   </div>
