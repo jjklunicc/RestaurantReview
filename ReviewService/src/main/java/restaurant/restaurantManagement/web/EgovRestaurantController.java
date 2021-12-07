@@ -61,5 +61,10 @@ public class EgovRestaurantController {
 	public String selectSample() throws Exception {		
 		return "restaurant/restaurant";
 	}
+	
+	@RequestMapping(value = "/mypage.do")
+	public String selectmypage() throws Exception {		
+		return "user/mypage";
+	}
 
 }
