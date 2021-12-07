@@ -16,45 +16,45 @@
 
 	<insert id="UserDAO.insertSample">
 		<![CDATA[
-			INSERT INTO SAMPLE 
-				( ID
-				  , NAME
-				  , DESCRIPTION
-				  , USE_YN
-				  , REG_USER )
-			VALUES ( #id#
-				  , #name#
-				  , #description#
-				  , #useYn#
-				  , #regUser# )
-		]]>
+<!-- 			INSERT INTO SAMPLE  -->
+<!-- 				( ID -->
+<!-- 				  , NAME -->
+<!-- 				  , DESCRIPTION -->
+<!-- 				  , USE_YN -->
+<!-- 				  , REG_USER ) -->
+<!-- 			VALUES ( #id# -->
+<!-- 				  , #name# -->
+<!-- 				  , #description# -->
+<!-- 				  , #useYn# -->
+<!-- 				  , #regUser# ) -->
+<!-- 		]]> -->
 	</insert>
 	
 	<update id="UserDAO.updateSample">
 		<![CDATA[
-			UPDATE SAMPLE
-			SET ID=#id#
-				, NAME=#name#
-				, DESCRIPTION=#description#
-				, USE_YN=#useYn#
-			WHERE ID=#id#
-		]]>
+<!-- 			UPDATE SAMPLE -->
+<!-- 			SET ID=#id# -->
+<!-- 				, NAME=#name# -->
+<!-- 				, DESCRIPTION=#description# -->
+<!-- 				, USE_YN=#useYn# -->
+<!-- 			WHERE ID=#id# -->
+<!-- 		]]> -->
 	</update>
 	
 	<delete id="UserDAO.deleteSample">
 		<![CDATA[
-			DELETE FROM SAMPLE 
-			WHERE ID=#id#
-		]]>
+<!-- 			DELETE FROM SAMPLE  -->
+<!-- 			WHERE ID=#id# -->
+<!-- 		]]> -->
 	</delete>
     
     <select id="UserDAO.selectSample" resultMap="sample">
         <![CDATA[
-            SELECT
-                ID, NAME, DESCRIPTION, USE_YN, REG_USER
-            FROM SAMPLE 
-            WHERE ID=#id#
-        ]]>
+<!--             SELECT -->
+<!--                 ID, NAME, DESCRIPTION, USE_YN, REG_USER -->
+<!--             FROM SAMPLE  -->
+<!--             WHERE ID=#id# -->
+<!--         ]]> -->
     </select>
 	
 	<select id="UserDAO.selectSampleList" parameterClass="searchVO" resultClass="egovMap">

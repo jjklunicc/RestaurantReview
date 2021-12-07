@@ -11,7 +11,13 @@
 	<title>회원가입</title>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/bootstrap.css'/>"/>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/main.css'/>"/>
-     <script type="text/javaScript" language="javascript" defer="defer"></script>
+     <script type="text/javaScript" language="javascript" defer="defer">
+     /* 회원가입 function */
+	     function signUp() {      		     	
+	     	document.signUpForm.action = "<c:url value='/login.do'/>";
+	        	document.signUpForm.submit();           
+	     }
+     </script>
 </head>
 <body>
   <header class="header text-uppercase header-main-text" id="mainHeader">
@@ -41,36 +47,36 @@
         </label>
       </div>
     </div>
-    <form method="post" action="login.do">
+    <form:form commandName="userVO" method="post"  id="sign-up-form" name="signUpForm">
       <div class="form-group">
         <label for="id">아이디</label>
-        <input type="text" class="form-control" id="id" placeholder="아이디">
+        <input type="text" class="form-control" id="id" placeholder="아이디" name="id">
         <input class="btn" style="width: 100%; margin-top:0.5rem;" id="login" type="submit" value="중복확인"/>
       </div>            
       <div class="form-group">
-        <label for="name">비밀번호</label>
-        <input type="password" class="form-control" id="password" placeholder="비밀번호">
+        <label for="pw">비밀번호</label>
+        <input type="pw" class="form-control" id="pw" placeholder="비밀번호" name="pw">
       </div>
        <div class="form-group">
-        <label for="name">비밀번호 확인</label>
-        <input type="password" class="form-control" id="password" placeholder="비밀번호 확인">
+        <label for="pw2">비밀번호 확인</label>
+        <input type="pw2" class="form-control" id="pw2" placeholder="비밀번호 확인">
       </div>
       <div class="form-group">
         <label for="name">이름</label>
-        <input type="text" class="form-control" id="name" placeholder="이름">
+        <input type="text" class="form-control" id="name" placeholder="이름" name="name">
       </div>
       <div class="form-group">
-        <label for="name">연락처</label>
-        <input type="text" class="form-control" id="phonenumber" placeholder="연락처">
+        <label for="phonenumber">연락처</label>
+        <input type="text" class="form-control" id="phonenumber" placeholder="연락처" name="phonenumber">
       </div>
       <div class="form-group">
-        <label for="name">주소</label>
-        <input type="text" class="form-control" id="address" placeholder="주소">
+        <label for="addr">주소</label>
+        <input type="text" class="form-control" id="addr" placeholder="주소" name="addr">
       </div>
       <div style="margin-bottom: 0.5rem;">
-        <input class="btn btn-success" style="width: 100%;" id="login" type="submit" value="가입하기"/>
+        <input class="btn btn-success" style="width: 100%;" id="signUp" type="submit" value="가입하기" onClick="signUp()"/>
       </div>      
-    </form>
+    </form:form>
   </main>
   <footer class="footer text-center">
     <div class="container">
