@@ -2,8 +2,9 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="User">
-	<typeAlias  alias="UserVO" type="egovframework.example.member.service.UserVO"/>
-
+	<typeAlias  alias="UserVO" type="restaurant.userManagement.service.UserVO"/>	
+	<typeAlias  alias="loginVO" type="restaurant.userManagement.service.loginVO"/>
+	
 	<insert id="UserDAO.insertUser">
 		<![CDATA[
 		INSERT INTO User
@@ -23,7 +24,17 @@
 		  , NOW()
 		  , NOW() )
 		]]>
-	</insert>
+	</insert>	
+	
+	
+	<select id="UserDAO.selectUser" resultClass="UserVO">
+		<![CDATA[
+			SELECT ID
+			FROM User
+			WHERE ID=#id#
+			AND PW=#pw# 
+		]]>
+	</select>
 	
 <!-- 	<resultMap id="mamberLogin" class="egovframework.example.member.service.MemberVO"> -->
 <!-- 		<result property="id" column="id"/> -->

@@ -21,6 +21,7 @@ import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import restaurant.userManagement.service.EgovUserService;
 import restaurant.userManagement.service.UserVO;
+import restaurant.userManagement.service.loginVO;
 
 import javax.annotation.Resource;
 
@@ -50,27 +51,27 @@ public class EgovUserController {
 	@Resource(name = "beanValidator")
 	protected DefaultBeanValidator beanValidator;
 
-	@RequestMapping(value = "/login.do")
-	public String selectSampleList(@ModelAttribute("userVO") UserVO UserVO, ModelMap model) throws Exception {
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public String selectUser(@ModelAttribute("loginVO") loginVO loginVO, ModelMap model) throws Exception {		
+		UserVO userVO = userService.selectUser(loginVO); 
+		
+		System.out.println(userVO.getId());
+		
+		return "forward:/restaurantList.do";
+	}
+	
+
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	public String loginPage() throws Exception {		
 		return "user/login";
 	}
 	
-	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
-	public String selectSampleList() throws Exception {		
-		return "user/signUp";
-	}
 
-	
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST) 
-	public String addSample(UserVO UserVO, Model model, SessionStatus status) throws Exception {
-
-		
-		
+	public String signUp(UserVO UserVO, Model model, SessionStatus status) throws Exception {
 		userService.insertUser(UserVO);
 		status.setComplete();
 		
 		return "forward:/login.do";
 	}
-
-
 }

@@ -19,9 +19,10 @@ import java.util.List;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import restaurant.restaurantManagement.service.RestaurantVO;
 import restaurant.userManagement.service.EgovUserService;
 import restaurant.userManagement.service.UserVO;
-
+import restaurant.userManagement.service.loginVO;
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -40,8 +41,14 @@ public class EgovUserServiceImpl extends EgovAbstractServiceImpl implements Egov
 	@Override
 	public String insertUser(UserVO vo) throws Exception {
 
-		UserDAO.insertUser(vo);
-		
+		UserDAO.insertUser(vo);	
 		return vo.getId();
+	}
+	
+	@Override
+	public UserVO selectUser(loginVO vo) throws Exception {
+		UserVO userVO = UserDAO.selectUser(vo);
+		
+		return userVO;
 	}
 }
