@@ -19,7 +19,7 @@ import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import restaurant.userManagement.service.UserVO;
-
+import restaurant.userManagement.service.loginVO;
 /**
  * sample에 관한 데이터처리 매퍼 클래스
  *
@@ -38,7 +38,8 @@ import restaurant.userManagement.service.UserVO;
 @Mapper("userMapper")
 public interface UserMapper {
 
-	void insertSample(UserVO vo) throws Exception;
+	void insertUser(UserVO vo) throws Exception;
+	UserVO selectUser(loginVO vo) throws Exception;
 
 
 }

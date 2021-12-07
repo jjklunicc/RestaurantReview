@@ -15,11 +15,21 @@
  */
 package restaurant.userManagement.service;
 
-import java.util.List;
+public class loginVO {
 
-public interface EgovUserService {
-	String insertUser(UserVO vo) throws Exception;
+	private String id;
+	private String pw;
 
-	UserVO selectUser(loginVO vo) throws Exception;
-		
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
 }

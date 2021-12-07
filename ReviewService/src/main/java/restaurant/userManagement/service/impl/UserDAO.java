@@ -18,7 +18,9 @@ package restaurant.userManagement.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
+import restaurant.restaurantManagement.service.RestaurantVO;
 import restaurant.userManagement.service.UserVO;
+import restaurant.userManagement.service.loginVO;
 
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +29,15 @@ public class UserDAO extends EgovAbstractDAO {
 
 	public String insertUser(UserVO vo) throws Exception {
 		return (String) insert("UserDAO.insertUser", vo);
+	}
+
+	public UserVO selectUser(loginVO vo) throws Exception 
+	{
+		Object sql= select("UserDAO.selectUser", vo);
+		System.out.println(sql);
+		if(sql != null)
+			return (UserVO) select("UserDAO.selectUser", vo);
+		else return null;
 	}
 
 }
