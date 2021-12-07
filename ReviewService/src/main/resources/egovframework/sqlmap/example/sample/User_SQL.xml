@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+	<typeAlias  alias="UserVO" type="egovframework.example.member.service.UserVO"/>
+
+	<insert id="UserDAO.insertUser">
+		<![CDATA[
+		INSERT INTO User
+		(   ID
+		  , PW
+		  , NAME
+		  , ADDR
+		  , PHONENUMBER
+		  , CREATE_DT
+		  , UPDATE_DT )
+		VALUES (
+		    #id#
+		  , #pw#
+		  , #name#
+		  , #addr#
+		  , #phonenumber#
+		  , NOW()
+		  , NOW() )
+		]]>
+	</insert>
+	
+<!-- 	<resultMap id="mamberLogin" class="egovframework.example.member.service.MemberVO"> -->
+<!-- 		<result property="id" column="id"/> -->
+<!-- 		<result property="pw" column="pw"/> -->
+<!-- 		<result property="name" column="name"/> -->
+<!-- 	</resultMap> -->
+	
+<!-- 	<select id="memberDAO.login" resultMap="mamberLogin"> -->
+<!--         <![CDATA[ -->
+<!--             SELECT -->
+<!--                  ID -->
+<!--                , PW -->
+<!--                , NAME -->
+<!--             FROM MEMBER  -->
+<!--             WHERE 1=1 -->
+<!--             AND ID=#id# -->
+<!--             AND PW=#pw# -->
+<!--         ]]> -->
+<!--     </select> -->
+	
+	
+
+</sqlMap>
