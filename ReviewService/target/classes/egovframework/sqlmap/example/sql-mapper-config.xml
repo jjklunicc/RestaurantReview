@@ -3,8 +3,15 @@
 
 <configuration>
     <typeAliases>
-		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+<!--		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/> -->
 <!-- 		<typeAlias alias="UserVO" type="restaurant.userManagement.service.UserVO"/> -->
-<!-- 		<typeAlias alias="RestaurantVO" type="restaurant.restaurantManagement.service.RestaurantVO"/> -->
+ 		<typeAlias alias="RestaurantVO" type="restaurant.restaurantManagement.service.RestaurantVO"/>
+		<typeAlias type="restaurant.restaurantManagement.domain.Menu" alias="menuVo"/>
+		<typeAlias type="restaurant.restaurantManagement.service.RestaurantVO" alias="restaurantVo"/>
+		<typeAlias type="restaurant.restaurantManagement.domain.Shoppingbasket" alias="shoppingbasketVo"/>
+		<typeAlias type="restaurant.restaurantManagement.domain.CountryOfOrginInformation" alias="countryOfOrginInformationVo"/>
+		<typeAlias type="restaurant.restaurantManagement.domain.RestaurantCategory" alias="restaurantCategoryVo"/>
+		<typeAlias type="java.util.HashMap" alias="hashmap"/>
+		<typeAlias type="restaurant.restaurantManagement.domain.dto.MenuCountryOfOrginInformationDTO" alias="menuCountryOfOrginInformationDTO"/>
     </typeAliases>
 </configuration>

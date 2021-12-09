@@ -56,7 +56,6 @@ public class RestaurantManagementController {
 	@RequestMapping(value = "/imgtest.do")
 	public String GoImgTest(ModelMap model) throws Exception {
 
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!GoImgTest!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return imgtest;
 	}
 	// 카테고리별 식당을 반환한다.
@@ -64,7 +63,6 @@ public class RestaurantManagementController {
 	// category - 검색하려는 카테고리
 	@RequestMapping(value = "/lstRestaurant.do", method = RequestMethod.GET)
 	public ResponseEntity<String> lstRestaurant(@RequestParam("category") String category) throws Exception {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!lstRestaurant!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 		int requestcategory = Integer.parseInt(category.toString());
 		RestaurantVO newvo = new RestaurantVO();
@@ -94,9 +92,7 @@ public class RestaurantManagementController {
 	@RequestMapping(value = "/restaurantInformation.do", method = RequestMethod.GET)
 	public ResponseEntity<String> restaurantInformation(@RequestParam("restaurantID") String restaurantID)
 			throws Exception {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!restaurantInformation!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println(restaurantID);
-
+		
 		int requestrestaurantID = Integer.parseInt(restaurantID.toString());
 
 		RestaurantVO newvo = new RestaurantVO();
@@ -127,7 +123,7 @@ public class RestaurantManagementController {
 	@RequestMapping(value = "/updateRestaurantInfo.do", method = RequestMethod.POST)
 	public ResponseEntity<String> updateRestaurantInfo(@ModelAttribute("RestaurantVO") RestaurantVO vo)
 			throws Exception {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!updateRestaurantInfo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
 
 		// category컬럼이 1~11 사이값이 아닌경우 쿼리가 실패함. 0도 마찬가지. (제약조건)
 		// member_index 컬럼은 백엔드에서도 변경은 안함.(첫 insert시 고정되는 값이라고 생각함)
@@ -147,7 +143,6 @@ public class RestaurantManagementController {
 	@RequestMapping(value = "/restaurantInformationtest.do", method = RequestMethod.GET)
 	public String restaurantInformationtest(@RequestParam("restaurantID") String restaurantID, Model model)
 			throws Exception {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!restaurantInformation!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 		int requestrestaurantID = Integer.parseInt(restaurantID.toString());
 
