@@ -123,7 +123,7 @@ public class RestaurantManagementController {
 	}
 	// 한 식당의  정보업데이트
 	// request 
-	// RestaurantVO - 업데이트하려는 식당의 정보 (member_index를 제외하고 모드 업데이트)
+	// RestaurantVO - 업데이트하려는 식당의 정보 (member_index를 제외하고 모두 업데이트)
 	@RequestMapping(value = "/updateRestaurantInfo.do", method = RequestMethod.POST)
 	public ResponseEntity<String> updateRestaurantInfo(@ModelAttribute("RestaurantVO") RestaurantVO vo)
 			throws Exception {
