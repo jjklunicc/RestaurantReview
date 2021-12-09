@@ -17,6 +17,14 @@
   <header class="header text-uppercase header-main-text" id="mainHeader">
     <div class="container header-main-text">
       <div>Restaurant Review</div>
+      
+      <%-- 여기가 내가 추가한 버튼.실험용 --%>
+       <form action='mypage.do'>
+          <div style="margin-bottom: 0.5rem; margin-left: 60rem;">
+             <input class="btn btn-primary" style="width: 100%" id="mypage" type="submit" value="마이페이지"/>
+          </div>
+       </form>
+       <%-- 여기가 내가 추가한 버튼.실험용 --%>
     </div>
   </header>
   <main class="container">    

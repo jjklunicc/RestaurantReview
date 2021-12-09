@@ -11,7 +11,13 @@
 	<title>로그인</title>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/bootstrap.css'/>"/>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/main.css'/>"/>
-     <script type="text/javaScript" language="javascript" defer="defer"></script>
+     <script type="text/javaScript" language="javascript" defer="defer">
+     /* 회원가입 function */
+	     function login() {      		     	
+	     	document.loginForm.action = "<c:url value='/restaurantList.do'/>";
+	        	document.loginForm.submit();           
+	     }
+     </script>
 </head>
 <body>
   <header class="header text-uppercase header-main-text" id="mainHeader">
@@ -21,19 +27,19 @@
   </header>
   <main class="container page-section">
     <h1 class="text-center title">로그인</h1>
-    <form method="post" action='restaurantList.do'>
+    <form:form commandName="userVO" method="post" id="login-form" name="loginForm">
       <div class="form-group">
         <label for="id">아이디</label>
-        <input type="text" class="form-control" id="id" placeholder="아이디">
+        <input type="text" class="form-control" id="id" placeholder="아이디" name="id">
       </div>
       <div class="form-group">
-        <label for="name">비밀번호</label>
-        <input type="password" class="form-control" id="password" placeholder="비밀번호">
+        <label for="pw">비밀번호</label>
+        <input type="password" class="form-control" id="pw" placeholder="비밀번호" name="pw">
       </div>
       <div style="margin-bottom: 0.5rem;">
-        <input class="btn btn-success" style="width: 100%;" id="login" type="submit" value="로그인"/>
+        <input class="btn btn-success" style="width: 100%;" id="login" type="submit" value="로그인" onClick="login()"/>
       </div>      
-    </form>
+    </form:form>
     <form action='signUp.do'>
     	<div><input class="btn btn-primary" style="width: 100%;" id="singUp" type="submit" value="회원가입"/></div>
     </form>
