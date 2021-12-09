@@ -17,10 +17,12 @@ package restaurant.restaurantManagement.web;
 
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import restaurant.restaurantManagement.cmmn.Util_bin;
+import restaurant.restaurantManagement.domain.Menu;
 import restaurant.restaurantManagement.service.RestaurantManagementService;
 import restaurant.restaurantManagement.service.RestaurantMenuService;
 import restaurant.restaurantManagement.service.RestaurantVO;
@@ -40,6 +42,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,11 +51,45 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class RestaurantMenuController {
 
-	private String TestJspStr = "restaurant/restaurantmanagementtest";
-	private String imgtest = "restaurant/ImgUploadTest";
+	private String imgtest = "restaurant/ImgUploadTest2";
 
 	/** EgovSampleService */
+
 	@Resource(name = "restaurantMenuService")
 	private RestaurantMenuService restaurantMenuService;
 
+	// 해당 Mapping을 사용하는 jsp페이지는 아직없음.
+	// 이미지업데이트용, 이미지를 서버에 저장, 디비에 경로를 입력한다
+	// request
+	// req - 파일
+	// restaurantID 업데이트할 식당 아이디
+	@RequestMapping(value = "/updateMenuImage.do")
+	public ResponseEntity<String> updateMenuImage(
+			MultipartHttpServletRequest req,
+			@RequestParam("menuID") String menuID,
+			@RequestParam("restaurantID") String restaurantID) throws Exception {
+
+		Iterator<String> itr = req.getFileNames();
+
+		Menu vo = new Menu();
+		vo.setIndex(Integer.parseInt(menuID));
+		vo.setRestaurant_index(Integer.parseInt(restaurantID));
+		String requestUrl = new String(req.getRequestURL());
+		System.out.println(requestUrl);
+		String fullpath;
+		while (itr.hasNext()) {
+			MultipartFile mpf = req.getFile(itr.next());
+			fullpath = Util_bin.fileUpload(mpf);
+
+			vo.setImg_path_str(fullpath);
+			restaurantMenuService.UpdateMenuImage(vo);
+		}
+
+		Map<String, Object> responseMap = new HashMap<>();
+		String json;
+		HttpStatus resultstate = HttpStatus.OK;
+		json = Util_bin.AddHttpStateAndJson(responseMap, resultstate, true);
+		
+		return new ResponseEntity<String>(json, resultstate);
+	}
 }

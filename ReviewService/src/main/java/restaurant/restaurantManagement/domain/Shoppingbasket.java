@@ -5,28 +5,15 @@ import java.util.Date;
 
 public class Shoppingbasket {
 	Integer index;
-
 	int user_index;
 	int restaurant_index;
 	int menu_index;
 	int count;
 	String date;
-	
-	
-	
+
 	public Shoppingbasket() {
-		
+
 	}
-
-
-	
-	
-
-	
-
-
-
-
 
 	public Shoppingbasket(int user_index, int restaurant_index, int menu_index, int count, String date) {
 		super();
@@ -37,117 +24,28 @@ public class Shoppingbasket {
 		this.date = date;
 	}
 
-
-
-
-
-
-
-
-
-
-
 	public Integer getIndex() {
 		return index;
 	}
-
-
-
-
-
-
-
-
-
-
 
 	public int getUser_index() {
 		return user_index;
 	}
 
-
-
-
-
-
-
-
-
-
-
 	public int getRestaurant_index() {
 		return restaurant_index;
 	}
-
-
-
-
-
-
-
-
-
-
 
 	public int getMenu_index() {
 		return menu_index;
 	}
 
-
-
-
-
-
-
-
-
-
-
 	public int getCount() {
 		return count;
 	}
-
-
-
-
-
-
-
-
-
-
 
 	public String getDate() {
 		return date;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-
-	
-	
-	
-	
-
-	
-
-
-
-	
-	
-	
 }

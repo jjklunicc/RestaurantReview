@@ -30,7 +30,7 @@ import restaurant.restaurantManagement.domain.Shoppingbasket;
 import restaurant.restaurantManagement.service.CountryOfOrginInformationService;
 import restaurant.restaurantManagement.service.IMenuService;
 import restaurant.restaurantManagement.service.RestaurantCategoryService;
-
+import restaurant.restaurantManagement.service.RestaurantVO;
 import restaurant.restaurantManagement.service.ShoppingbasketService;
 
 @Controller
@@ -86,6 +86,17 @@ public class RestaurantController {
 		state = HttpStatus.OK;		
 		System.out.println("sqlResult"+sqlResult);	
 		if(sqlResult != null) {	
+			//이미지 바이너리 주입
+			for (Object vo : sqlResult) {
+
+				Menu resultvo = (Menu) vo;
+				if (resultvo.getImg_path_str() != null || resultvo.getImg_path_str().trim() != "") {
+					resultvo.setImg_src(Util_bin.ImgTobyte(resultvo.getImg_path_str()));
+
+				}
+			}
+			
+			
 			responseMap.put("listRestaurant",  sqlResult);		
 		}		
 		String json =Util_bin.AddHttpStateAndJson(responseMap, state);
@@ -112,7 +123,7 @@ public class RestaurantController {
 	
 	
 	
-
+	//?
 	@RequestMapping(value="/insertForwardingMenu.do", method=RequestMethod.POST, produces = "application/json; charset=utf8")
 	public String insertForwardingMenu(				ModelMap model,
 													@RequestParam("user_index")int user_index,

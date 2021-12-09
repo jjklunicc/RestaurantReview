@@ -17,7 +17,7 @@ package restaurant.restaurantManagement.service.impl;
 
 import java.util.List;
 
-import restaurant.restaurantManagement.service.MenuVO;
+import restaurant.restaurantManagement.domain.Menu;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import org.springframework.stereotype.Repository;
 
@@ -36,29 +36,29 @@ import org.springframework.stereotype.Repository;
  * 		Copyright (C) by MOPAS All right reserved.
  */
 
-@Repository("menuDAO")
-public class MenuDAO extends EgovAbstractDAO {
+@Repository("menuDAO_dabin")
+public class MenuDAO_dabin extends EgovAbstractDAO {
 
-	public String insertMenu(MenuVO vo) throws Exception {
-		return (String) insert("menuDAO.insertmenu", vo);
+	public String insertMenu(Menu vo) throws Exception {
+		return (String) insert("menuDAO_dabin.insertmenu", vo);
 	}
 
-	public void UpdateMenu(MenuVO vo) throws Exception {
-		update("menuDAO.updatemenu", vo);
+	public void UpdateMenu(Menu vo) throws Exception {
+		update("menuDAO_dabin.updatemenu", vo);
 	}
 
-	public void UpdateMenuImage(MenuVO vo) throws Exception {
-		update("menuDAO.updatemenuimage", vo);
+	public void UpdateMenuImage(Menu vo) throws Exception {
+		update("menuDAO_dabin.updatemenuimage", vo);
 	}
 
-	public void DeleteMenu(MenuVO vo) throws Exception {
-		delete("menuDAO.deletemenu", vo);
+	public void DeleteMenu(Menu vo) throws Exception {
+		delete("menuDAO_dabin.deletemenu", vo);
 	}
 
-	public List<MenuVO>  SelectRestaurantMenu(MenuVO vo) throws Exception {
-		List<?> list = list("menuDAO.selectreataurantmenu", vo);
+	public List<Menu>  SelectRestaurantMenu(Menu vo) throws Exception {
+		List<?> list = list("menuDAO_dabin.selectreataurantmenu", vo);
 		if (list != null)
-			return (List<MenuVO>) list;
+			return (List<Menu>) list;
 		else
 			return null;
 	}

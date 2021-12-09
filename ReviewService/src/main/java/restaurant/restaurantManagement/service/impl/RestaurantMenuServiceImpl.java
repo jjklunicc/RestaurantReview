@@ -17,7 +17,7 @@ package restaurant.restaurantManagement.service.impl;
 
 import java.util.List;
 
-import restaurant.restaurantManagement.service.MenuVO;
+import restaurant.restaurantManagement.domain.Menu;
 import restaurant.restaurantManagement.service.RestaurantMenuService;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -50,11 +50,11 @@ public class RestaurantMenuServiceImpl extends EgovAbstractServiceImpl implement
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RestaurantMenuServiceImpl.class);
 
-	@Resource(name = "menuDAO")
-	private MenuDAO menuDAO;
+	@Resource(name = "menuDAO_dabin")
+	private MenuDAO_dabin menuDAO;
 
 	@Override
-	public String insertMenu(MenuVO vo) throws Exception {
+	public String insertMenu(Menu vo) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("insertMenu");
 		menuDAO.insertMenu(vo);
@@ -62,7 +62,7 @@ public class RestaurantMenuServiceImpl extends EgovAbstractServiceImpl implement
 	}
 
 	@Override
-	public void UpdateMenu(MenuVO vo) throws Exception {
+	public void UpdateMenu(Menu vo) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("UpdateMenu");
 		menuDAO.UpdateMenu(vo);
@@ -70,14 +70,14 @@ public class RestaurantMenuServiceImpl extends EgovAbstractServiceImpl implement
 	}
 
 	@Override
-	public void UpdateMenuImage(MenuVO vo) throws Exception {
+	public void UpdateMenuImage(Menu vo) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("UpdateMenuImage");
 		menuDAO.UpdateMenuImage(vo);
 	}
 
 	@Override
-	public void DeleteMenu(MenuVO vo) throws Exception {
+	public void DeleteMenu(Menu vo) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("DeleteMenu");
 		menuDAO.DeleteMenu(vo);
@@ -85,7 +85,7 @@ public class RestaurantMenuServiceImpl extends EgovAbstractServiceImpl implement
 	}
 
 	@Override
-	public List<MenuVO> SelectRestaurantMenu(MenuVO vo) throws Exception {
+	public List<Menu> SelectRestaurantMenu(Menu vo) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("SelectRestaurantMenu");
 		return menuDAO.SelectRestaurantMenu(vo);

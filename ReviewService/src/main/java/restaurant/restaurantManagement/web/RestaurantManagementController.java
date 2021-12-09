@@ -17,6 +17,7 @@ package restaurant.restaurantManagement.web;
 
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +40,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,7 +56,7 @@ public class RestaurantManagementController {
 	@Resource(name = "restaurantManagementService")
 	private RestaurantManagementService restaurantService;
 
-	@RequestMapping(value = "/imgtest.do")
+	//@RequestMapping(value = "/imgtest.do")
 	public String GoImgTest(ModelMap model) throws Exception {
 
 		return imgtest;
@@ -140,7 +143,7 @@ public class RestaurantManagementController {
 	//request
 	//restaurantID 이미지를 얻어올 식당 아이디(인덱스)
 	//디비에 저장된 이미지 경로에 이미지가 있는경우 해당 이미지 파일을 바이너리로 변환 후 전송 
-	@RequestMapping(value = "/restaurantInformationtest.do", method = RequestMethod.GET)
+	//@RequestMapping(value = "/restaurantInformationtest.do", method = RequestMethod.GET)
 	public String restaurantInformationtest(@RequestParam("restaurantID") String restaurantID, Model model)
 			throws Exception {
 
@@ -163,94 +166,57 @@ public class RestaurantManagementController {
 		model.addAttribute("data", resultnewvo);
 		return "restaurant/ImgTest";
 	}
-
-//	
-//	@RequestMapping(value = "/GoRestaurantManagementTestPage.do")
-//	public String GoRestaurantManagementTestPage(ModelMap model) throws Exception {
-//
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!GoRestaurantManagementTestPage!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		return TestJspStr;
-//	}
-//
-//	@RequestMapping(value = "/addrestaurantManagement.do")
-//	public String addRestaurant(@ModelAttribute("RestaurantVO") RestaurantVO vo, ModelMap model) throws Exception {
-//
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!addRestaurant!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		RestaurantVO newvo = new RestaurantVO();
-//
-//		newvo.setMember_index(20);
-//		newvo.setAddress("주소");
-//		newvo.setBusiness_hours("영업시간");
-//		newvo.setBusiness_name("가게이름");
-//		newvo.setBusiness_number("사업자번호");
-//		newvo.setDescription("");
-//		newvo.setImg_path_str("C://2sadsad/sada");
-//		newvo.setName("");
-//		newvo.setPhone_number("");
-//		restaurantService.insertRestaurant(newvo);
-//
-//		return TestJspStr;
-//	}
-//
-//	@RequestMapping("/updaterestaurantManagement.do")
-//	public String updateRestaurant(@RequestParam("updateid") int id, Model model) throws Exception {
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!updatereataurant!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		RestaurantVO newvo = new RestaurantVO();
-//		newvo.setIndex(id);
-//		newvo.setMember_index(99999);
-//		newvo.setAddress("변경됨");
-//		newvo.setBusiness_hours("변경됨");
-//		newvo.setBusiness_name("변경됨");
-//		newvo.setBusiness_number("변경됨");
-//		newvo.setDescription("변경됨");
-//		newvo.setImg_path_str("변경됨");
-//		newvo.setName("변경됨");
-//		newvo.setPhone_number("변경됨");
-//		restaurantService.UpdateRestaurant(newvo);
-//
-//		return TestJspStr;
-//	}
-//
-//	@RequestMapping("/deleterestaurantManagement.do")
-//	public String deleteRestaurant(@RequestParam("updateid") int id, Model model) throws Exception {
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!deleteRestaurant!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		RestaurantVO newvo = new RestaurantVO();
-//		newvo.setIndex(id);
-//		restaurantService.DeleteRestaurant(newvo);
-//		return TestJspStr;
-//	}
-//
-//	@RequestMapping("/selectrestaurantManagement.do")
-//	public String selectRestaurant(@RequestParam("updateid") int id, Model model) throws Exception {
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!selectRestaurant!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		RestaurantVO newvo = new RestaurantVO();
-//		newvo.setIndex(id);
-//		RestaurantVO selectvo = restaurantService.SelectRestaurant(newvo);
-//		String json = new ObjectMapper().writeValueAsString(selectvo);
-//		model.addAttribute("value1", selectvo.getIndex());
-//		model.addAttribute("value2", selectvo.getAddress());
-//		model.addAttribute("value3", selectvo.getBusiness_hours());
-//		model.addAttribute("value4", selectvo.getBusiness_name());
-//		model.addAttribute("value5", selectvo.getBusiness_number());
-//		model.addAttribute("value6", selectvo.getDescription());
-//		model.addAttribute("value7", selectvo.getImg_path_str());
-//		model.addAttribute("value8", selectvo.getMember_index());
-//		model.addAttribute("value9", selectvo.getName());
-//		model.addAttribute("value10", selectvo.getPhone_number());
-//
-//		model.addAttribute("valueobj", selectvo);
-//		System.out.println(json);
-//		return "restaurantManagement/ShowRestaurantSelsect";
-//	}
-//
-//	@RequestMapping("/selectallrestaurantManagement.do")
-//	public String selectallRestaurant(Model model) throws Exception {
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!selectRestaurant!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//
-//		List<?> selectvo = restaurantService.SelectAllRestaurant();
-//		String json = new ObjectMapper().writeValueAsString(selectvo);
-//
-//		System.out.println(json);
-//		return TestJspStr;
-//	}
+	
+		//해당 Mapping을 사용하는 jsp페이지는 아직없음.
+		//이미지업데이트용, 이미지를 서버에 저장, 디비에 경로를 입력한다
+		//request 
+		//req - 파일
+		//restaurantID 업데이트할 식당 아이디
+		@RequestMapping(value="/updateRestaurantImage.do") 
+		public ResponseEntity<String> updateRestaurantImage(MultipartHttpServletRequest req,@RequestParam("restaurantID") String restaurantID) throws Exception {
+			
+			Iterator<String> itr = req.getFileNames();
+			
+			RestaurantVO vo = new RestaurantVO();
+			vo.setIndex(Integer.parseInt(restaurantID));
+			String requestUrl = new String(req.getRequestURL());
+			System.out.println(requestUrl);		
+			String fullpath;
+			while(itr.hasNext()) {
+				MultipartFile mpf = req.getFile(itr.next());
+				fullpath=Util_bin.fileUpload(mpf);
+				
+				vo.setImg_path_str(fullpath);
+				restaurantService.UpdateRestaurantImage(vo);
+			}
+			
+			Map<String, Object> responseMap = new HashMap<>();
+			String json;
+			HttpStatus resultstate = HttpStatus.OK;
+			json = Util_bin.AddHttpStateAndJson(responseMap, resultstate, true);
+			
+			return new ResponseEntity<String>(json, resultstate);
+		}
+		//이미지 업로드 테스트용 , 파일 선택 및 식당아이디를 입력하여 업로드한다.
+		/*@RequestMapping(value="/test_fileUpload.do") 
+		public String fileUploadTest(MultipartHttpServletRequest req) throws Exception {
+			
+			Iterator<String> itr = req.getFileNames();
+			
+			
+			RestaurantVO vo = new RestaurantVO();
+			vo.setIndex(Integer.parseInt(req.getParameter("id")));
+			String requestUrl = new String(req.getRequestURL());
+			System.out.println(requestUrl);		
+			String fullpath;
+			while(itr.hasNext()) {
+				MultipartFile mpf = req.getFile(itr.next());
+				fullpath=Util_bin.fileUpload(mpf);
+				
+				vo.setImg_path_str(fullpath);
+				restaurantService.UpdateRestaurantImage(vo);
+			}
+			
+			return "업로드 완료";
+		}*/
 }

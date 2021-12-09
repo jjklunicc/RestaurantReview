@@ -58,7 +58,6 @@ public class RestaurantManagementServiceImpl extends EgovAbstractServiceImpl imp
 	@Override
 	public String insertRestaurant(RestaurantVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("insertRestaurant");
 		restaurantDAO.insertReataurant(vo);
 		return null;
 	}
@@ -66,24 +65,19 @@ public class RestaurantManagementServiceImpl extends EgovAbstractServiceImpl imp
 
 	@Override
 	public void UpdateRestaurant(RestaurantVO vo) throws Exception {
-		System.out.println("UpdateRestaurant");
 		restaurantDAO.UpdateRestaurant(vo);
-		System.out.println("UpdateRestaurant complite");
 		
 	}
 
 	@Override
 	public void UpdateRestaurantImage(RestaurantVO vo) throws Exception {
-		System.out.println("UpdateRestaurantImage");
 		restaurantDAO.UpdateRestaurantImage(vo);
-		System.out.println("UpdateRestaurantImage complite");
 		
 	}
 
 
 	@Override
 	public void DeleteRestaurant(RestaurantVO vo) throws Exception {
-		System.out.println("DeleteRestaurant");
 		restaurantDAO.DeleteRestaurant(vo);
 	}
 
@@ -103,8 +97,6 @@ public class RestaurantManagementServiceImpl extends EgovAbstractServiceImpl imp
 	}
 	@Override
 	public List<?> SelectCategoryRestaurant(RestaurantVO vo) throws Exception {
-
-		System.out.println("SelectCategoryRestaurant");
 		List<?> listresultVO = restaurantDAO.SelectCategoryRestaurant(vo);
 		return listresultVO;
 	}

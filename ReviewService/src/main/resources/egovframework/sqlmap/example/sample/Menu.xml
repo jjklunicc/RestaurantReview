@@ -3,9 +3,9 @@
 
 <sqlMap namespace="RestaurantMenu">
 	<typeAlias alias="MenuVO"
-		type="restaurant.restaurantManagement.service.MenuVO" />
+		type="restaurant.restaurantManagement.domain.Menu" />
 
-	<select id="menuDAO.selectreataurantmenu"
+	<select id="menuDAO_dabin.selectreataurantmenu"
 		parameterClass="MenuVO" resultClass="MenuVO">
         <![CDATA[
            SELECT
@@ -20,7 +20,7 @@
         ]]>
 	</select>
 
-	<insert id="menuDAO.insertmenu">
+	<insert id="menuDAO_dabin.insertmenu">
 		<![CDATA[
 			INSERT INTO Menu 
 				(  
@@ -40,33 +40,32 @@
 	</insert>
 
 
-	<update id="menuDAO.updatemenu">
+	<update id="menuDAO_dabin.updatemenu">
 		<![CDATA[
 			UPDATE Menu
 			SET 
-				 	restaurant_index=#restaurant_index#,
 					img_path_str =#img_path_str#,
 					price =#price#,
 					menu_name=#menu_name#,
 					menu_info = #menu_info#
-				WHERE Menu.index=#index# 
+				WHERE Menu.index=#index#  AND  restaurant_index=#restaurant_index#
 		]]>
 
 	</update>
-	<update id="menuDAO.updatemenuimage">
+	<update id="menuDAO_dabin.updatemenuimage">
 		<![CDATA[
 			UPDATE Menu
 			SET 
 			   	img_path_str=#img_path_str#
-				WHERE Menu.index=#index#
+				WHERE Menu.index=#index# AND  restaurant_index=#restaurant_index#
 		]]>
 
 	</update>
 	
-	<delete id="menuDAO.deletemenu">
+	<delete id="menuDAO_dabin.deletemenu">
 		<![CDATA[
 			DELETE FROM Menu 
-			WHERE Menu.index=#index#
+			WHERE Menu.index=#index# AND  restaurant_index=#restaurant_index#
 		]]>
 	</delete>
 	

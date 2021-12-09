@@ -13,6 +13,7 @@ public class Menu {
 	private Integer	index;
 	private int restaurant_index;
 	private String img_path_str;
+	private String img_src;
 	private int price;
 	private String menu_name;
 	private String menu_info;
@@ -67,13 +68,14 @@ public class Menu {
 		this.menu_info = menu_info;
 	}
 
+	public String getImg_src() {
+		return img_src;
+	}
+
+	public void setImg_src(String img_src) {
+		this.img_src = img_src;
+	}
 	
-
-
-
-
-
-
 
 	
 }

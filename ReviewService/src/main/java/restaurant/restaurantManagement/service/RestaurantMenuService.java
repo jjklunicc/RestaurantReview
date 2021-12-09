@@ -17,6 +17,8 @@ package restaurant.restaurantManagement.service;
 
 import java.util.List;
 
+import restaurant.restaurantManagement.domain.Menu;
+
 /**
  * @Class Name : EgovSampleService.java
  * @Description : EgovSampleService Class
@@ -36,9 +38,9 @@ import java.util.List;
 public interface RestaurantMenuService {
 
 
-	String insertMenu(MenuVO vo) throws Exception;
-	void UpdateMenu(MenuVO vo) throws Exception;
-	void UpdateMenuImage(MenuVO vo) throws Exception;
-	void DeleteMenu(MenuVO vo) throws Exception;
-	List<MenuVO>  SelectRestaurantMenu(MenuVO vo) throws Exception;
+	String insertMenu(Menu vo) throws Exception;
+	void UpdateMenu(Menu vo) throws Exception;
+	void UpdateMenuImage(Menu vo) throws Exception;
+	void DeleteMenu(Menu vo) throws Exception;
+	List<Menu>  SelectRestaurantMenu(Menu vo) throws Exception;
 }
