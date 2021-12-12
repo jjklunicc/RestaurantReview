@@ -44,8 +44,8 @@
                     <div class="card-body" style="display: inline-block;">
                         <div class="card-title"> <img width="80px" src="<c:url value='/images/egovframework/review/profile.png'/>">
                             <div class="info_area">
-                                <p class="user_name">허근행</p>
-                                <p class="date">21.11.20</p>
+                                <p class="user_name">${reviewVO.userId}</p>
+                                <p class="date">${reviewVO.createDate}</p>
                                 <div class="star_like_area">
                                     <div class="star_area">
                                         <img src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px">
