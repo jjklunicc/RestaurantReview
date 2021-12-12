@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReviewMenuDAO">
+
+    <resultMap id="reviewMenu" type="restaurant.reviewManagement.service.ReviewMenuVO">
+        <result property="id" column="ID"/>
+        <result property="reviewId" column="Review_Id"/>
+        <result property="menuId" column="Menu_Id"/>
+        <result property="like" column="Like"/>
+        <result property="createDate" column="Create_Date"/>
+        <result property="updateDate" column="Update_Date"/>
+        
+    </resultMap>
+
+    <insert id="insertReviewMenu" parameterType="searchVO">
+
+			INSERT INTO ReviewMenu
+				(
+				ID,
+				Review_ID,
+				Menu_ID,
+				Like,
+				Create_Date,
+				Update_Date
+				)
+			VALUES (
+			    #{id},
+			    #{reviewId},
+			    #{menuId},
+			    #{like},
+			    #{createDate},
+			    #{updateDate}
+				)
+
+	</insert>
+
+    <update id="updateReviewMenu">
+
+			UPDATE ReviewMenu
+			SET Like = #{like},
+                Update_Date={updateDate}
+			WHERE ID=#{id}
+
+	</update>
+
+    <delete id="deleteReviewMenu">
+			DELETE FROM ReviewMenu
+			WHERE ID=#{id}
+	</delete>
+
+    <select id="selectReviewMenu" resultMap="reviewMenu">
+
+			SELECT
+				ID,
+				Review_ID,
+				Menu_ID,
+				Order_ID,
+				Like,
+				Create_Date,
+				Update_Date
+			FROM ReviewMenu
+			WHERE ID=#{id}
+
+	</select>
+
+    <select id="selectReviewMenuList" parameterType="searchVO" resultType="egovMap">
+
+        SELECT
+            ID,
+            Review_ID,
+            Menu_ID,
+            Order_ID,
+            Like,
+            Create_Date,
+            Update_Date
+        FROM ReviewMenu
+        WHERE 1=1
+        <if test="searchKeyword != null and searchKeyword != ''">
+            <choose>
+                <when test="searchCondition == 0">
+                    AND	Menu_ID LIKE '%' || #{searchKeyword} || '%'
+                </when>
+                <when test="searchCondition == 1">
+                    AND	Like LIKE '%' || #{searchKeyword} || '%'
+                </when>
+            </choose>
+        </if>
+        ORDER BY ID DESC
+        LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+    </select>
+
+    <select id="selectReviewListTotCnt" parameterType="searchVO" resultType="int">
+
+        SELECT COUNT(*) as totcnt
+        FROM ReviewMenu
+        WHERE 1=1
+        <if test="searchKeyword != null and searchKeyword != ''">
+            <choose>
+                <when test="searchCondition == 0">
+                    AND Menu_ID LIKE '%' || #{searchKeyword} || '%'
+                </when>
+                <when test="searchCondition == 1">
+                    AND	Like LIKE '%' || #{searchKeyword} || '%'
+                </when>
+            </choose>
+        </if>
+    </select>
+
+</mapper>

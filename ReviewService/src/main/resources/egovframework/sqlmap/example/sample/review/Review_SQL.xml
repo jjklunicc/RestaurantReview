@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Review">
+
+<!--    <typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>-->
+    <typeAlias  alias="ReviewVO" type="restaurant.reviewManagement.service.ReviewVO"/>
+    <typeAlias alias="ReviewDefaultVO" type="restaurant.reviewManagement.service.ReviewDefaultVO"/>
+
+    <resultMap id="ReviewVO" class="restaurant.reviewManagement.service.ReviewVO">
+        <result property="id" column="ID"/>
+        <result property="userId" column="User_ID"/>
+        <result property="shopId" column="Shop_ID"/>
+        <result property="orderId" column="Order_ID"/>
+        <result property="star" column="Star"/>
+        <result property="title" column="Title"/>
+        <result property="content" column="Content"/>
+        <result property="image" column="Image"/>
+        <result property="ceoReco" column="CEO_RECO"/>
+        <result property="createDate" column="Create_Date"/>
+        <result property="updateDate" column="Update_Date"/>
+    </resultMap>
+
+    <insert id="reviewDAO.insertReview">
+        <selectKey keyProperty="id" resultClass="int">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        <![CDATA[
+        INSERT INTO Review
+        (
+        User_ID,
+        Shop_ID,
+        Order_ID,
+        Star,
+        Title,
+        Content,
+        Image,
+        CEO_RECO,
+        Create_Date,
+        Update_Date
+        )
+        VALUES (
+        #userId#,
+        #shopId#,
+        #orderId#,
+        #star#,
+        #title#,
+        #content#,
+        #image#,
+        #ceoReco#,
+        NOW(),
+        NOW()
+        )
+        ]]>
+    </insert>
+
+    <update id="reviewDAO.updateReview">
+        <![CDATA[
+            UPDATE Review
+            SET Star=#star#,
+            Title=#title#,
+            Content=#content#,
+            Image=#image#,
+            CEO_RECO=#ceoReco#,
+            Update_Date=NOW()
+            WHERE ID=#id#
+        ]]>
+    </update>
+
+
+<!--    <update id="updateReview">-->
+<!--        <![CDATA[-->
+<!--			UPDATE Review-->
+<!--			SET Star=#{star},-->
+<!--                Title=#{title},-->
+<!--                Content=#{content},-->
+<!--                Image=#{image},-->
+<!--                CEO_RECO=#{ceoReco},-->
+<!--                Update_Date=#{updateDate}-->
+<!--			WHERE ID=#{id}-->
+<!--        ]]>-->
+<!--    </update>-->
+
+<!--    <delete id="deleteReview">-->
+<!--        <![CDATA[-->
+<!--			DELETE FROM Review-->
+<!--			WHERE ID=#{id}-->
+<!--        ]]>-->
+<!--    </delete>-->
+
+<!--    <select id="selectReview" resultMap="review">-->
+<!--        <![CDATA[-->
+<!--			SELECT-->
+<!--				ID,-->
+<!--				User_ID,-->
+<!--				Shop_ID,-->
+<!--				Order_ID,-->
+<!--				Star,-->
+<!--				Title,-->
+<!--				Content,-->
+<!--				Image,-->
+<!--				CEO_RECO,-->
+<!--				Create_Date,-->
+<!--				Update_Date-->
+<!--			FROM Review-->
+<!--			WHERE ID=#{id}-->
+<!--        ]]>-->
+<!--    </select>-->
+
+    <select id="reviewDAO.selectReviewList" parameterClass="ReviewDefaultVO" resultMap="ReviewVO">
+<!--        <![CDATA[-->
+        SELECT
+        *
+        FROM Review
+        WHERE 1=1
+        <isNotEmpty property="searchKeyword">
+<!--            <when test="searchCondition == 0">-->
+                AND Title LIKE '%' || #searchKeyword# || '%'
+<!--            </when>-->
+<!--            <when test="searchCondition == 1">-->
+                AND Content LIKE '%' || #searchKeyword# || '%'
+<!--            </when>-->
+        </isNotEmpty>
+        ORDER BY ID DESC
+        LIMIT #recordCountPerPage# OFFSET #firstIndex#
+<!--        ]]>-->
+    </select>
+
+    <select id="reviewDAO.selectReviewListTotCnt" parameterClass="ReviewDefaultVO" resultClass="int">
+<!--        <![CDATA[-->
+        SELECT COUNT(*)
+        FROM Review
+        WHERE 1=1
+        <isNotEmpty property="searchKeyword">
+<!--            <when test="searchCondition == 0">-->
+                AND Title LIKE '%' || #searchKeyword# || '%'
+<!--            </when>-->
+<!--            <when test="searchCondition == 1">-->
+                AND Content LIKE '%' || #searchKeyword# || '%'
+<!--            </when>-->
+        </isNotEmpty>
+<!--        ]]>-->
+    </select>
+</sqlMap>

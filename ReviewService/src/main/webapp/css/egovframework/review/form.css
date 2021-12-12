@@ -1,0 +1,327 @@
+a{
+    text-decoration: none;
+    color: inherit;
+}
+li{
+    list-style-type: none;
+}
+.review_detail_container{
+    margin: 50px auto;
+    text-align: left;
+    width: 80%;
+}
+.review_detail{
+    display: flex;
+    justify-content: space-between;
+}
+
+.recoReviewList {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+.card_container{
+    display: flex;
+    flex-direction: column;
+}
+.card_container .card-col {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.card_container .card-col:first-child {
+    padding-top: 0;
+}
+.card {
+    width: 70%;
+    text-align: left;
+    border: 0px transparent;
+}
+.info_area{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-top: 15px;
+    width: 70%;
+    text-align: left;
+}
+.user_name{
+    display: inline-block;
+}
+.date{
+    display: inline-block;
+    float: right;
+}
+.star_like_area{
+    margin-top: 10px;
+}
+.star_area{
+    display: inline-block;
+}
+.click_star_area{
+    display: inline-block;
+    display: none;
+}
+.like_area{
+    display: inline-block;
+    float: right;
+}
+.like_area2{
+    display: inline-block;
+}
+.like_count{
+    display: inline-block;
+}
+.recommend_area{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+}
+.menu_container{
+    width: 50%;
+}
+
+.menu_area img{
+    vertical-align: top;
+}
+.menu_list_area{
+    display: inline-block;
+    margin-left: 50px;
+}
+.review_area{
+    margin-top: 30px;
+}
+.review_title{
+    width: 100%;
+    text-align: left;
+    display: flex;
+    border: 1px solid rgba(0,0,0,.125);
+    justify-content: space-between;
+    padding: 15px 12px;
+}
+.review_write{
+    color: #7199d2;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    text-align: left;
+    margin-bottom: 60px;
+}
+.select_area{
+    border: 1px solid red;
+    max-height: 500px;
+}
+.selectpicker{
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 30px;
+}
+.menu_title{
+    color: #7199d2;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.title{
+    color: #7199d2;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    display: inline-block;
+}
+.review_content{
+    width: 100%;
+    height: 300px;
+    text-align: left;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 15px 12px;
+    margin-top: 20px;
+}
+.owner_area{
+    margin-top: 30px;
+    text-align: left;
+}
+.review_owner{
+    display: flex;
+    justify-content: space-between;
+}
+.owner_anwser{
+    margin-top: 30px;
+    width: 100%;
+    height: 200px;
+    text-align: left;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 15px 12px;
+}
+.owner{
+    color: #7199d2;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    display: inline-block;
+}
+.icon-cancel{
+    font-size: 40px;
+    color: black;
+    cursor: pointer;
+}
+*{
+    margin:0;
+    padding: 0;
+  }
+  
+  .like_area{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  input.like{
+  display:none;
+  
+  }
+    input.like + label{
+    display: inline-block;
+    width: 15px;
+    vertical-align: middle;
+    height: 15px;
+    background-image:url(../../../images/egovframework/review/like.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+  
+  input.like:checked + label{
+    background-image:url(../../../images/egovframework/review/like_click.png);
+    background-repeat: no-repeat;
+    background-size: contain
+  }
+  
+  
+  input.like2{
+    display:none;
+    
+    }
+  input.like2 + label{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    background-image:url(../../../images/egovframework/review/unlike.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+  
+  input.like2:checked + label{
+    background-image:url(../../../images/egovframework/review/unlike_click.png);
+  
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .icon-cancel{
+    font-size: 15px;
+    color: rgb(255, 0, 98);
+    cursor: pointer;
+  }
+  .icon-cancel{
+    font-size: 15px;
+    color: rgb(255, 0, 98);
+    cursor: pointer;
+  }
+  .text-dark {
+      border: 1px solid black;
+      margin-right: 10px;
+      margin-top: 15px;
+  }
+  .cancle_btn{
+      display: inline-block;
+      font-size: 18px;
+      color: red;
+      cursor: pointer;
+  }
+  .badge{
+      display: none;
+  }
+  .unclick_star{
+      cursor: pointer;
+  }
+  .click_star{
+      cursor: pointer;
+      display: none;
+  }
+#menu1{
+ 	display: none;
+    min-width: 10px;
+    padding: 3px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10px;
+    background-color: #dce6f5;
+    border: 1px solid #7199d2;
+    margin-right: 10px;
+    margin-top: 15px;
+    border-radius: 50rem;
+}
+#menu2{
+ 	display: none;
+    min-width: 10px;
+    padding: 3px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10px;
+    background-color: #dce6f5;
+    border: 1px solid #7199d2;
+    margin-right: 10px;
+    margin-top: 15px;
+    border-radius: 50rem;
+}
+#menu3{
+ 	display: none;
+    min-width: 10px;
+    padding: 3px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10px;
+    background-color: #dce6f5;
+    border: 1px solid #7199d2;
+    margin-right: 10px;
+    margin-top: 15px;
+    border-radius: 50rem;
+}
+#menu4{
+	display: none;
+    min-width: 10px;
+    padding: 3px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10px;
+    background-color: #dce6f5;
+    border: 1px solid #7199d2;
+    margin-right: 10px;
+    margin-top: 15px;
+    border-radius: 50rem;
+}
