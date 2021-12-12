@@ -25,8 +25,9 @@ function searchReview() {
 						<img
 							src="<c:url value='/images/egovframework/review/profile.png'/>"
 							alt="프로필 아이콘" width="80px">
-						<form class="review_check"action='detailReview.do'>
-   							<div><input class="btn btn-primary" style="float:right; id="write_btn" type="submit" value="리뷰 보기"/></div>
+						<form class="review_check" action='detailReview.do'>
+   							<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"/></div>
+							<input type="hidden" name="id" value="7"/>
 				    	</form>
 					</div>
 					<div class="info_area">

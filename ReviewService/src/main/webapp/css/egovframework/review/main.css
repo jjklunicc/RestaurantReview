@@ -169,11 +169,11 @@
     display: inline-block;
 }
 .unclick_star{
-    cursor: none;
+    cursor: default;
     display: none;
 }
 .click_star{
-    cursor: none;
+    cursor: default;
     display: none;
 }
 .like_area{

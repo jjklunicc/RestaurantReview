@@ -110,7 +110,7 @@
         </section>
         <section class="review_area">
             <div class="review_title">
-                <p class="title">리뷰 제목</p>
+                <p class="title">${reviewVO.title}</p>
                 <div class="button_area">
                     <button type="button" id="modify_btn" class="btn btn-outline-primary">수정</button>
                     <button type="button" class="btn btn-outline-primary">삭제</button>

@@ -67,20 +67,6 @@
         ]]>
     </update>
 
-
-<!--    <update id="updateReview">-->
-<!--        <![CDATA[-->
-<!--			UPDATE Review-->
-<!--			SET Star=#{star},-->
-<!--                Title=#{title},-->
-<!--                Content=#{content},-->
-<!--                Image=#{image},-->
-<!--                CEO_RECO=#{ceoReco},-->
-<!--                Update_Date=#{updateDate}-->
-<!--			WHERE ID=#{id}-->
-<!--        ]]>-->
-<!--    </update>-->
-
 <!--    <delete id="deleteReview">-->
 <!--        <![CDATA[-->
 <!--			DELETE FROM Review-->
@@ -88,24 +74,24 @@
 <!--        ]]>-->
 <!--    </delete>-->
 
-<!--    <select id="selectReview" resultMap="review">-->
-<!--        <![CDATA[-->
-<!--			SELECT-->
-<!--				ID,-->
-<!--				User_ID,-->
-<!--				Shop_ID,-->
-<!--				Order_ID,-->
-<!--				Star,-->
-<!--				Title,-->
-<!--				Content,-->
-<!--				Image,-->
-<!--				CEO_RECO,-->
-<!--				Create_Date,-->
-<!--				Update_Date-->
-<!--			FROM Review-->
-<!--			WHERE ID=#{id}-->
-<!--        ]]>-->
-<!--    </select>-->
+    <select id="reviewDAO.selectReview" resultMap="ReviewVO">
+        <![CDATA[
+			SELECT
+				ID,
+				User_ID,
+				Shop_ID,
+				Order_ID,
+				Star,
+				Title,
+				Content,
+				Image,
+				CEO_RECO,
+				Create_Date,
+				Update_Date
+			FROM Review
+			WHERE ID=#id#
+        ]]>
+    </select>
 
     <select id="reviewDAO.selectReviewList" parameterClass="ReviewDefaultVO" resultMap="ReviewVO">
 <!--        <![CDATA[-->

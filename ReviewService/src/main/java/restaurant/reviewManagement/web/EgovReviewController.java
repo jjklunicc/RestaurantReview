@@ -38,14 +38,16 @@ public class EgovReviewController {
 		return "review/main";
 	}
 
+	@RequestMapping(value = "/detailReview.do", method = RequestMethod.GET)
+	public String detailReviewView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, ReviewVO reviewVO, Model model) throws Exception {
+		model.addAttribute("reviewVO", reviewService.selectReview(reviewVO));
+		return "review/detail";
+	}
+
 	@RequestMapping(value = "/addReview.do", method = RequestMethod.GET)
 	public String addReviewView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, Model model) throws Exception {
 		model.addAttribute("reviewVO", new ReviewVO());
 		return "review/form";
-	}
-	@RequestMapping(value = "/detailReview.do", method = RequestMethod.GET)
-	public String detailReviewView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, Model model) throws Exception {
-		return "review/detail";
 	}
 
 	@RequestMapping(value = "/addReview.do", method = RequestMethod.POST)
@@ -61,7 +63,7 @@ public class EgovReviewController {
 
 		reviewService.insertReview(reviewVO);
 		status.setComplete();
-		return "review/main";
+		return "redirect:/reviewMain.do";
 	}
 
 	@RequestMapping(value = "/updateReview.do", method = RequestMethod.GET)
@@ -83,6 +85,6 @@ public class EgovReviewController {
 
 		reviewService.updateReview(reviewVO);
 		status.setComplete();
-		return "review/main";
+		return "redirect:/reviewMain.do";
 	}
 }
