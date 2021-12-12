@@ -14,7 +14,7 @@ public class ReviewVO extends ReviewDefaultVO {
 	private int id;
 
 	/** 이름 */
-	private int userId;
+	private String userId;
 
 	/** 내용 */
 	private int shopId;
@@ -47,11 +47,11 @@ public class ReviewVO extends ReviewDefaultVO {
 		this.id = id;
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
