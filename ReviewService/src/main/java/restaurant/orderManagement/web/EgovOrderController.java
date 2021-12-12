@@ -15,22 +15,25 @@
  */
 package restaurant.orderManagement.web;
 
+import java.util.Date;
 import java.util.List;
 
-import egovframework.rte.fdl.property.EgovPropertyService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import restaurant.orderManagement.service.OrderManagementService;
+import restaurant.orderManagement.service.OrderRequestVO;
+import restaurant.orderManagement.service.OrderResponseVO;
+
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springmodules.validation.commons.DefaultBeanValidator;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 /**
  * @Class Name : EgovSampleController.java
@@ -51,14 +54,31 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 @Controller
 public class EgovOrderController {	
+	
+	@Resource(name = "orderServic")
+	private OrderManagementService orderSevice;
+	
+	@PostMapping(value = "/orderComplete.do")
+	public String selectSampleList(@ModelAttribute OrderRequestVO orderRequestVO) throws Exception {	
+		orderSevice.insertOrder(orderRequestVO);
+		return "order/orderComplete";		
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "/orderList.do")
-	public String selectSampleList() throws Exception {		
+	public String selectOrderList() throws Exception {	
+		System.out.println(">>>>>>>>>>>>>>>>>>>>> orderList 실행됨!");
 		return "order/orderList";
 	}
 	
-	@RequestMapping(value = "/orderComplete.do")
-	public String selectOrderList() throws Exception {		
+	@RequestMapping(value = "/orderList.do", method = RequestMethod.POST)
+	public String selectOrder(@RequestParam("userCd") String userCd, Model model) throws Exception {	
+		System.out.println(">>>>>>>>>>>>>>>>>>>>> orderList >>>> ");
+		List<OrderResponseVO> orderVO =  orderSevice.selectOrder(userCd);
+		model.addAttribute("data", orderVO);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>> orderList 실행됨 >>> ");
 		return "order/orderComplete";
+		
 	}
 
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="Order">
+	<typeAlias alias="OrderResponseVO"
+		type="restaurant.orderManagement.service.OrderResponseVO" />
+	<typeAlias alias="OrderRequestVO"
+		type="restaurant.orderManagement.service.OrderRequestVO" />
+
+	<insert id="orderDAO.insertOrder" parameterClass="OrderRequestVO">
+		<![CDATA[
+			INSERT INTO Orders
+				(  
+				    user_index
+				  , restaurant_index
+				  , date
+				  , address
+				  , state
+				  , total_price
+				  )
+			VALUES ( 
+					#user_index#
+				  , #restaurant_index#
+				  , NOW()
+				  , #order_address#
+				  , #order_state# 
+				  , #order_total_price# 
+				 )
+		]]>
+	</insert>
+	  <select id="orderDAO.selectOrder"  resultClass="restaurant.orderManagement.service.OrderResponseVO" >
+        <![CDATA[
+            SELECT
+                Orders.order_index
+                , Restaurant.name As restaurant_name
+                , Orders.order_date
+                , Orders.order_adress
+                , Orders.order_state
+                , Orders.order_total_price
+            FROM Orders 
+            LEFT JOIN Restaurant ON Orders.restaurant_index = Restaurant.index
+            WHERE Orders.user_index = #user_id#
+            ORDER BY Orders.order_date
+        ]]>
+    </select>
+    
+    <select id="orderDAO.selectMenu">
+     <![CDATA[
+    	SELECT *
+    	FROM OrderList
+    	LEFT JOIN Menu ON OrderList.menu_index = Menu.index
+    	WHERE OrderList.order_index = #order_index#
+    ]]>
+    </select>
+    
+    	<delete id="orderDAO.deleteOrder">
+		<![CDATA[
+			DELETE FROM Orders 
+			WHERE order_index=#order_index#
+		]]>
+	</delete>
+	
+</sqlMap>
