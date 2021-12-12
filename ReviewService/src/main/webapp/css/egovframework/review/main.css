@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* 리뷰 상단 박스 */
 .reviewMainTopBox > div {
     width: 100%;
@@ -17,6 +18,8 @@
     font-size: 20px;
     font-weight: bold;
     padding: 10px;
+    display: inline-block;
+    width:80%;
 }
 
 .reviewContentTitle span {
@@ -134,6 +137,9 @@
 .card_container .card {
     width: 48%;
 }
+.card{
+    cursor:pointer;
+}
 .info_area{
     display: inline-block;
     vertical-align: top;
@@ -154,6 +160,14 @@
 }
 .star_area{
     display: inline-block;
+}
+.unclick_star{
+    cursor: none;
+    display: none;
+}
+.click_star{
+    cursor: none;
+    display: none;
 }
 .like_area{
     display: inline-block;
@@ -182,6 +196,10 @@
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+}
+.review_area{
+	display:flex;
+    justify-content: space-between;
 }
 .review{
     display: flex;

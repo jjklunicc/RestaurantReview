@@ -169,12 +169,20 @@
                 </div>
             </section>
             <section class="review_area">
-                <input name="title" type="text" class="review_title" placeholder="리뷰 제목">
+               	<div class="review_write_area">
+                	<input name="title" type="text" class="review_title" placeholder="리뷰 제목">
+                	<div class="button_area">
+	                    <button type="button" id="add_btn" class="btn btn-outline-primary">저장</button>
+                	</div>
+	            </div>
                 <textarea name="content" type="text" class="review_content" placeholder="리뷰내용" multiple
                           style="resize: none;"></textarea>
                 <div class="owner_area">
                     <div class="review_owner">
                         <p class="owner">사장님 답변</p>
+                        <div class="button_area">
+                    		<button type="button" id="add_btn2" class="btn btn-outline-primary">저장</button>
+                		</div>
                     </div>
                     <textarea type="text" class="owner_anwser" placeholder="사장님 답글 내용" multiple
                               style="resize: none;"></textarea>
@@ -186,7 +194,6 @@
           	<input type="hidden" name="userId" value="1" class="disable_input"/>
           	<input type="hidden" name="shopId" value="2" class="disable_input"/>
           	<input type="hidden" name="orderId" value="3" class="disable_input"/>       
-          
             <input type="hidden" name="star" id="starhidden" value="" class="disable_star"/>
             
             <script>

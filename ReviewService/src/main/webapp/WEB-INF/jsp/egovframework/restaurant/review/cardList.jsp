@@ -7,20 +7,54 @@
 
 <div class="card_container">
 	<div class="card-col">
+	
+	<c:forEach var="result" items="${resultList}" varStatus="status">
+			<li id="card${result.id}">
+			<input type="hidden" name="id" class="disable_input" value="${result.id}"/>
 		<div class="card">
 			<div class="card-body">
 				<div class="card-title">
 					<img src="<c:url value='/images/egovframework/review/profile.png'/>" alt="프로필 아이콘" width="80px">
 					<div class="info_area">
-						<p class="user_name">위승빈</p>
-						<p class="date">21.11.20</p>
+						<p class="user_name">${result.userId}</p>
+						<p class="date">${result.createDate}</p>
 						<div class="star_like_area">
 							<div class="star_area">
-								<img src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px">
+							<div class="star_like_area">
+	                                <div id="starArea${result.id}" class="star_area">
+	                                    <img class="unclick_star"
+	                                         src="<c:url value='/images/egovframework/review/unclick_star.png'/>"
+	                                         alt="별점" width="15px">
+	                                    <img class="click_star"
+	                                         src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점"
+	                                         width="15px">
+	                                    <img class="unclick_star"
+	                                         src="<c:url value='/images/egovframework/review/unclick_star.png'/>"
+	                                         alt="별점" width="15px">
+	                                    <img class="click_star"
+	                                         src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점"
+	                                         width="15px">
+	                                    <img class="unclick_star"
+	                                         src="<c:url value='/images/egovframework/review/unclick_star.png'/>"
+	                                         alt="별점" width="15px">
+	                                    <img class="click_star"
+	                                         src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점"
+	                                         width="15px">
+	                                    <img class="unclick_star"
+	                                         src="<c:url value='/images/egovframework/review/unclick_star.png'/>"
+	                                         alt="별점" width="15px">
+	                                    <img class="click_star"
+	                                         src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점"
+	                                         width="15px">
+	                                    <img class="unclick_star"
+	                                         src="<c:url value='/images/egovframework/review/unclick_star.png'/>"
+	                                         alt="별점" width="15px">
+	                                    <img class="click_star"
+	                                         src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점"
+	                                         width="15px">
+	                                </div>
+	                                ${result.star}
+	                            </div>
 							</div>
 							<div class="like_area">
 								<img src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요" width="25px">
@@ -29,139 +63,27 @@
 						</div>
 					</div>
 				</div>
-				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">최고에요</h6>
+				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">${result.content}</h6>
 			</div>
 		</div>
-		<div class="card">
-			<div class="card-body">
-				<div class="card-title">
-					<img src="<c:url value='/images/egovframework/review/profile.png'/>" alt="프로필 아이콘" width="80px">
-					<div class="info_area">
-						<p class="user_name">강찬영</p>
-						<p class="date">21.11.23</p>
-						<div class="star_like_area">
-							<div class="star_area">
-								<img src="<c:url value='/images/egovframework/review/star.png'/>"
-									src="<c:url value='/images/egovframework/review/star.png'/>" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>"alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" width="15px">
-							</div>
-							<div class="like_area">
-								<img src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요" width="25px">
-								<p class="like_count">32</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">최고에요</h6>
-			</div>
-		</div>
-	</div>
-	<div class="card-col">
-		<div class="card">
-			<div class="card-body">
-				<div class="card-title">
-					<img src="<c:url value='/images/egovframework/review/profile.png'/>" alt="프로필 아이콘" width="80px">
-					<div class="info_area">
-						<p class="user_name">차진성</p>
-						<p class="date">21.11.4</p>
-						<div class="star_like_area">
-							<div class="star_area">
-								<img src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px">
-							</div>
-							<div class="like_area">
-								<img src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요" width="25px">
-								<p class="like_count">10</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">최고에요</h6>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<div class="card-title">
-					<img src="<c:url value='/images/egovframework/review/profile.png'/>" alt="프로필 아이콘" width="80px">
-					<div class="info_area">
-						<p class="user_name">허근행</p>
-						<p class="date">21.11.7</p>
-						<div class="star_like_area">
-							<div class="star_area">
-								<img src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px">
-							</div>
-							<div class="like_area">
-								<img src="<c:url value='/images/egovframework/review/like.png'/>"alt="좋아요" width="25px">
-								<p class="like_count">8</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">최고에요</h6>
-			</div>
-		</div>
-	</div>
-	<div class="card-col">
-		<div class="card">
-			<div class="card-body">
-				<div class="card-title">
-					<img src="<c:url value='/images/egovframework/review/profile.png'/>"alt="프로필 아이콘" width="80px">
-					<div class="info_area">
-						<p class="user_name">홍길동</p>
-						<p class="date">21.11.28</p>
-						<div class="star_like_area">
-							<div class="star_area">
-								<img src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px">
-							</div>
-							<div class="like_area">
-								<img src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요" width="25px">
-								<p class="like_count">5</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">최고에요</h6>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<div class="card-title">
-					<img src="<c:url value='/images/egovframework/review/profile.png'/>" alt="프로필 아이콘" width="80px">
-					<div class="info_area">
-						<p class="user_name">김철수</p>
-						<p class="date">21.11.23</p>
-						<div class="star_like_area">
-							<div class="star_area">
-								<img src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px"> <img
-									src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점" width="15px">
-							</div>
-							<div class="like_area">
-								<img src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요" width="25px">
-								<p class="like_count">1</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">최고에요</h6>
-			</div>
-		</div>
-	</div>
+	</li>
+	</c:forEach>
 
+
+    <script type="text/javascript">
+    	function starDisplay(starNum, starAreaId) {
+    		const unstarElemets = starAreaId.getElementsByClassName("unclick_star");
+    		for (let i = starNum; i < unstarElemets.length; i++) {
+    			unstarElemets[i].style.display = "inline-block";
+    		}
+    		const starElements = starAreaId.getElementsByClassName("click_star");
+    		for (let i = 0; i < starNum; i++) {
+    			starElements[i].style.display = "inline-block";
+    		}
+    	}
+    	
+    	<c:forEach var="result" items="${resultList}" varStatus="status">
+			starDisplay(${result.star}, document.getElementById("starArea" + ${result.id}));
+		</c:forEach>
+    </script>
 </div>

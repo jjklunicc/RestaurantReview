@@ -7,7 +7,7 @@ li{
 }
 .review_detail_container{
     margin: 50px auto;
-    text-align: left;
+    text-align: center;
     width: 80%;
 }
 .review_detail{
@@ -36,7 +36,7 @@ li{
 .card {
     width: 70%;
     text-align: left;
-    border: none !important;
+   	border:none !important;
 }
 .info_area{
     display: inline-block;
@@ -59,16 +59,19 @@ li{
 .star_area{
     display: inline-block;
 }
-.click_star_area{
-    display: inline-block;
-    display: none;
-}
 .like_area{
     display: inline-block;
     float: right;
 }
 .like_area2{
     display: inline-block;
+}
+.like_unclick{
+    cursor: pointer;
+}
+.like_click{
+    cursor: pointer;
+    display: none;
 }
 .like_count{
     display: inline-block;
@@ -81,7 +84,12 @@ li{
 .menu_container{
     width: 50%;
 }
-
+.badge rounded-pill{
+    margin-right: 10px;
+}
+.menu_area{
+	display:flex
+}
 .menu_area img{
     vertical-align: top;
 }
@@ -93,19 +101,10 @@ li{
     margin-top: 30px;
 }
 .review_title{
-    width: 80%;
+    width: 100%;
     text-align: left;
-    display: inline-block;
-    border: 1px solid rgba(0,0,0,.125);
+    display: flex;
     justify-content: space-between;
-    padding: 15px 12px;
-}
-.button_area{
-	display:inline-block;
-}
-.review_write_area{
-	display:flex;
-	justify-content: space-between;
 }
 .review_write{
     color: #7199d2;
@@ -121,6 +120,7 @@ li{
     max-height: 500px;
 }
 .selectpicker{
+
     padding: 5px 10px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -175,6 +175,9 @@ li{
     padding: 10px;
     display: inline-block;
 }
+.button_area{
+    display: inline-block;
+}
 .icon-cancel{
     font-size: 40px;
     color: black;
@@ -191,46 +194,44 @@ li{
   }
   input.like{
   display:none;
-  
   }
-    input.like + label{
+  
+  input.like + label{
     display: inline-block;
     width: 15px;
     vertical-align: middle;
     height: 15px;
-    background-image:url(../../../images/egovframework/review/like.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-  }
-  
-  input.like:checked + label{
     background-image:url(../../../images/egovframework/review/like_click.png);
     background-repeat: no-repeat;
-    background-size: contain
+    background-size: contain;
   }
+  
+  /* input.like:checked + label{
+    background-image:url(../img/like_click.png);
+    background-repeat: no-repeat;
+    background-size: contain
+  } */
   
   
   input.like2{
     display:none;
-    
+    cursor: pointer;
     }
   input.like2 + label{
     display: inline-block;
     width: 15px;
     height: 15px;
     vertical-align: middle;
-    background-image:url(../../../images/egovframework/review/unlike.png);
+    background-image:url(../../../images/egovframework/review/unlike_click.png);
     background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
+    background-size: contain
   }
   
   input.like2:checked + label{
     background-image:url(../../../images/egovframework/review/unlike_click.png);
   
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: contain
   }
   
   .icon-cancel{
@@ -254,19 +255,8 @@ li{
       color: red;
       cursor: pointer;
   }
-  .badge{
-      display: none;
-  }
-  .unclick_star{
-      cursor: pointer;
-  }
-  .click_star{
-      cursor: pointer;
-      display: none;
-  }
-#menu1{
- 	display: none;
-    min-width: 10px;
+  #menu1{
+    display: flex;
     padding: 3px 15px;
     font-size: 12px;
     font-weight: bold;
@@ -279,10 +269,12 @@ li{
     margin-right: 10px;
     margin-top: 15px;
     border-radius: 50rem;
+    flex-direction: row;
+    align-self: center;
+    
 }
 #menu2{
- 	display: none;
-    min-width: 10px;
+ 	display: flex;
     padding: 3px 15px;
     font-size: 12px;
     font-weight: bold;
@@ -295,10 +287,12 @@ li{
     margin-right: 10px;
     margin-top: 15px;
     border-radius: 50rem;
+    flex-direction: row;
+    align-self: center;
+    
 }
 #menu3{
- 	display: none;
-    min-width: 10px;
+ 	display: flex;
     padding: 3px 15px;
     font-size: 12px;
     font-weight: bold;
@@ -311,10 +305,12 @@ li{
     margin-right: 10px;
     margin-top: 15px;
     border-radius: 50rem;
+    flex-direction: row;
+    align-self: center;
+    
 }
 #menu4{
-	display: none;
-    min-width: 10px;
+	display: flex;
     padding: 3px 15px;
     font-size: 12px;
     font-weight: bold;
@@ -327,30 +323,8 @@ li{
     margin-right: 10px;
     margin-top: 15px;
     border-radius: 50rem;
+    flex-direction: row;
+    align-self: center;
+    
 }
-#add_btn{
-    color: #007bff;
-    border-color: #007bff;
-    background-color: transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-}
-#add_btn:hover{
-	background-color: #007bff;
-	color: white;
-}
-#add_btn2{
-	color: #007bff;
-    border-color: #007bff;
-    background-color: transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-}
-#add_btn2:hover{
-	background-color: #007bff;
-	color: white;
-}
+  

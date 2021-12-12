@@ -11,7 +11,12 @@
 	<title>리뷰 메인</title>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/bootstrap.css'/>"/>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/main.css'/>"/>
-	<script type="text/javaScript" language="javascript" defer="defer"></script>
+	<script type="text/javaScript" language="javascript" defer="defer">
+    function searchReview() {
+	    	document.reviewForm.action = "<c:url value='/detailReview.do'/>";
+	    	document.reviewForm.submit();
+    }
+	</script>
 	<link type="text/css" rel="stylesheet"
 		  href="<c:url value='/css/egovframework/review/reset.css'/>" />
 	<link type="text/css" rel="stylesheet"
@@ -37,11 +42,17 @@
 
 			<div class="reviewRecoBox">
 				<!--제목-->
-				<h5 class="reviewContentTitle">
+				<div class="review_area">
+					<h5 class="reviewContentTitle">
 					사용자 리뷰 추천 <span class="badge badge-secondary">사장님이 추천하는 리뷰!
 						식당의 주력 상품을 확인해보세요!</span>
-				</h5>
-
+					</h5>
+					<div class="write_btn_area">
+    					<form action='addReview.do'>
+   							<div><input class="btn btn-primary" style="float:right; margin-right:20px;" id="write_btn" type="submit" value="글 작성"/></div>
+   						</form>
+					</div>
+				</div>
 				<jsp:include page="recoList.jsp" />
 				<!--사용자 리뷰 추천-->
 			</div>
