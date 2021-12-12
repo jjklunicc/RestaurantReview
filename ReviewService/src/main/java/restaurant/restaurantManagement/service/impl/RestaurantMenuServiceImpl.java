@@ -17,11 +17,10 @@ package restaurant.restaurantManagement.service.impl;
 
 import java.util.List;
 
-import restaurant.restaurantManagement.service.RestaurantManagementService;
-import restaurant.restaurantManagement.service.RestaurantVO;
+import restaurant.restaurantManagement.domain.Menu;
+import restaurant.restaurantManagement.service.RestaurantMenuService;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 import javax.annotation.Resource;
 
@@ -46,60 +45,53 @@ import org.springframework.stereotype.Service;
  *  Copyright (C) by MOPAS All right reserved.
  */
 
-@Service("restaurantManagementService")
-public class RestaurantManagementServiceImpl extends EgovAbstractServiceImpl implements RestaurantManagementService {
+@Service("restaurantMenuService")
+public class RestaurantMenuServiceImpl extends EgovAbstractServiceImpl implements RestaurantMenuService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(RestaurantManagementServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(RestaurantMenuServiceImpl.class);
 
-	@Resource(name = "restaurantDAO")
-	private RestaurantDAO restaurantDAO;
-
+	@Resource(name = "menuDAO_dabin")
+	private MenuDAO_dabin menuDAO;
 
 	@Override
-	public String insertRestaurant(RestaurantVO vo) throws Exception {
+	public String insertMenu(Menu vo) throws Exception {
 		// TODO Auto-generated method stub
-		restaurantDAO.insertReataurant(vo);
+		System.out.println("insertMenu");
+		menuDAO.insertMenu(vo);
 		return null;
 	}
 
-
 	@Override
-	public void UpdateRestaurant(RestaurantVO vo) throws Exception {
-		restaurantDAO.UpdateRestaurant(vo);
+	public void UpdateMenu(Menu vo) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("UpdateMenu");
+		menuDAO.UpdateMenu(vo);
 		
 	}
 
 	@Override
-	public void UpdateRestaurantImage(RestaurantVO vo) throws Exception {
-		restaurantDAO.UpdateRestaurantImage(vo);
+	public void UpdateMenuImage(Menu vo) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("UpdateMenuImage");
+		menuDAO.UpdateMenuImage(vo);
+	}
+
+	@Override
+	public void DeleteMenu(Menu vo) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("DeleteMenu");
+		menuDAO.DeleteMenu(vo);
 		
 	}
 
-
 	@Override
-	public void DeleteRestaurant(RestaurantVO vo) throws Exception {
-		restaurantDAO.DeleteRestaurant(vo);
+	public List<Menu> SelectRestaurantMenu(Menu vo) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("SelectRestaurantMenu");
+		return menuDAO.SelectRestaurantMenu(vo);
 	}
 
 
-	@Override
-	public RestaurantVO SelectRestaurant(RestaurantVO vo) throws Exception {
-		RestaurantVO resultVO = restaurantDAO.SelectRestaurant(vo);
-		return resultVO;
-	}
-
-
-	@Override
-	public List<?> SelectAllRestaurant() throws Exception {
-		
-		List<?> listresultVO = restaurantDAO.SelectAllRestaurant();
-		return listresultVO;
-	}
-	@Override
-	public List<?> SelectCategoryRestaurant(RestaurantVO vo) throws Exception {
-		List<?> listresultVO = restaurantDAO.SelectCategoryRestaurant(vo);
-		return listresultVO;
-	}
-
+	
 
 }

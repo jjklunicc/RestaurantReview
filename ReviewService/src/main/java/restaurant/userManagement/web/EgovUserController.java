@@ -66,12 +66,17 @@ public class EgovUserController {
 		return "user/login";
 	}
 	
+	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
+	public String loadSignUpPage() throws Exception {		
+		return "user/signUp";
+	}
+	
 
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST) 
 	public String signUp(UserVO UserVO, Model model, SessionStatus status) throws Exception {
 		userService.insertUser(UserVO);
 		status.setComplete();
 		
-		return "forward:/login.do";
+		return "user/login";
 	}
 }

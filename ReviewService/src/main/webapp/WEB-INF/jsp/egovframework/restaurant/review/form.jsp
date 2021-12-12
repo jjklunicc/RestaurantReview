@@ -27,7 +27,7 @@
     
     function addReview() {
     	const checkTitle = check(document.reviewForm["title"]);
-    	const checkContent = false;
+    	let checkContent = false;
     	if (checkTitle) {
     		checkContent = check(document.reviewForm["content"]);
     	}
@@ -187,11 +187,11 @@
           	<input type="hidden" name="shopId" value="2" class="disable_input"/>
           	<input type="hidden" name="orderId" value="3" class="disable_input"/>       
           
-            <input type="hidden" name="starhidden" id="starhidden" value="" class="disable_star"/>
+            <input type="hidden" name="star" id="starhidden" value="" class="disable_star"/>
             
             <script>
             var starpath = 0;
-			$('input[name=starhidden]').attr('value',starpath);
+			$('input[name=star]').attr('value',starpath);
             </script>
             	
           	</div>

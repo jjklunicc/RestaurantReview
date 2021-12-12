@@ -59,4 +59,26 @@ public class EgovReviewController {
 		status.setComplete();
 		return "review/main";
 	}
+
+	@RequestMapping(value = "/updateReview.do", method = RequestMethod.GET)
+	public String updateReviewView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, Model model) throws Exception {
+		model.addAttribute("reviewVO", new ReviewVO());
+		return "review/form";
+	}
+
+	@RequestMapping(value = "/updateReview.do", method = RequestMethod.PUT)
+	public String updateReview(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, ReviewVO reviewVO, BindingResult bindingResult, Model model, SessionStatus status)
+			throws Exception {
+
+		beanValidator.validate(reviewVO, bindingResult);
+
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("reviewVO", reviewVO);
+			return "review/form";
+		}
+
+		reviewService.updateReview(reviewVO);
+		status.setComplete();
+		return "review/main";
+	}
 }
