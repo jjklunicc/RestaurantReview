@@ -17,15 +17,18 @@ function searchReview() {
 <!--리뷰 추천 리스트-->
 <ul class="recoReviewList">
 	<!--리뷰 추천 1-->
-	<li>
-		<div class="card" onclick="searchReview()">
-		
-			<form action='detailReview.do'>
+	<li onclick="searchReview()">
+		<div class="card">
 			<div class="card-body">
 				<div class="card-title">
-					<img
-						src="<c:url value='/images/egovframework/review/profile.png'/>"
-						alt="프로필 아이콘" width="80px">
+					<div class="profile_btn">
+						<img
+							src="<c:url value='/images/egovframework/review/profile.png'/>"
+							alt="프로필 아이콘" width="80px">
+						<form class="review_check"action='detailReview.do'>
+   							<div><input class="btn btn-primary" style="float:right; id="write_btn" type="submit" value="리뷰 보기"/></div>
+				    	</form>
+					</div>
 					<div class="info_area">
 						<p class="user_name">위승빈</p>
 						<p class="date">21.11.20</p>
@@ -54,7 +57,6 @@ function searchReview() {
 				</div>
 				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">최고에요</h6>
 			</div>
-			</form>
 		</div>
 	</li>
 	<!--리뷰 추천 2-->
@@ -62,9 +64,14 @@ function searchReview() {
 		<div class="card">
 			<div class="card-body">
 				<div class="card-title">
-					<img
-						src="<c:url value='/images/egovframework/review/profile.png'/>"
-						alt="프로필 아이콘" width="80px">
+					<div class="profile_btn">
+						<img
+							src="<c:url value='/images/egovframework/review/profile.png'/>"
+							alt="프로필 아이콘" width="80px">
+						<form class="review_check"action='detailReview.do'>
+   							<div><input class="btn btn-primary" style="float:right; id="write_btn" type="submit" value="리뷰 보기"/></div>
+				    	</form>
+					</div>
 					<div class="info_area">
 						<p class="user_name">위승빈</p>
 						<p class="date">21.11.20</p>
@@ -100,9 +107,14 @@ function searchReview() {
 		<div class="card">
 			<div class="card-body">
 				<div class="card-title">
-					<img
-						src="<c:url value='/images/egovframework/review/profile.png'/>"
-						alt="프로필 아이콘" width="80px">
+					<div class="profile_btn">
+						<img
+							src="<c:url value='/images/egovframework/review/profile.png'/>"
+							alt="프로필 아이콘" width="80px">
+						<form class="review_check"action='detailReview.do'>
+   							<div><input class="btn btn-primary" style="float:right; id="write_btn" type="submit" value="리뷰 보기"/></div>
+				    	</form>
+					</div>
 					<div class="info_area">
 						<p class="user_name">위승빈</p>
 						<p class="date">21.11.20</p>

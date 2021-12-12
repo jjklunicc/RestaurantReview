@@ -16,7 +16,9 @@
   font-weight: bold;
   margin-bottom: 1.5em;
 }
-
+.review_check{
+	vertical-align:top;	
+}
 .page-section {
   padding: 12rem 25em;
 }

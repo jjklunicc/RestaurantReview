@@ -21,7 +21,10 @@
     display: inline-block;
     width:80%;
 }
-
+.profile_btn{
+	display:flex;
+    justify-content: space-between;
+}
 .reviewContentTitle span {
     margin-left: 5px;
     font-size: 12px;
