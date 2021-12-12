@@ -1,0 +1,197 @@
+@charset "UTF-8";
+/* 리뷰 상단 박스 */
+.reviewMainTopBox > div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+/* .reviewMainTopBox > div >  */
+
+/* 사용자 리뷰 추천 */
+.reviewMainTopBox .reviewRecoBox {
+    flex-direction: column;
+}
+
+.reviewContentTitle {
+    color: #7199d2;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.reviewContentTitle span {
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/* 리뷰 추천 리스트 */
+.recoReviewList {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+.recoReviewList > li {
+    flex: 1;
+    padding: 10px;
+    padding-top: 0;
+    /* height: 100%; */
+}
+
+/* 별점 통계 및 메뉴 추천 순위 */
+.recoStateBox > div {
+    flex: 1;
+}
+
+/* 메뉴 추천 순위 */
+.recoMenuList {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 10px;
+    padding-top: 0;
+}
+.recoMenuList > li {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.recoMenuList > li > strong {
+    width: 95%;
+    margin-bottom: 5px;
+    padding: 3px;
+    text-align: center;
+}
+.recoMenuList > li > div.img-thumbnail {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.recoMenuList > li img {
+    width: 100%;
+    margin-bottom: 5px;
+    /* border-radius: 10px; */
+    
+}
+
+/* 별점 통계 */
+.starStateBox {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+.starStateBox > .averageStarBox {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.starStateBox > .averageStarBox img {
+    width: 50px;
+    margin-bottom: 5px;
+}
+.starStateBox > .averageStarBox strong {
+    font-size: 30px;
+    font-weight: bold;
+}
+.starStateBox > .starStateContent {
+    flex: 1;
+}
+.starStateBox > .starStateContent > div {
+    margin-bottom: 10px;
+}
+.starStateBox > .starStateContent .star_area {
+    margin-bottom: 0;
+}
+
+/* 리뷰 리스트 */
+.reviewListTopBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.reviewListFilter {
+    padding: 10px;
+}
+
+
+.card_container{
+    display: flex;
+    flex-direction: column;
+}
+.card_container .card-col {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.card_container .card-col:first-child {
+    padding-top: 0;
+}
+.card_container .card {
+    width: 48%;
+}
+.info_area{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-top: 15px;
+    width: 70%;
+    text-align: left;
+}
+.user_name{
+    display: inline-block;
+}
+.date{
+    display: inline-block;
+    float: right;
+}
+.star_like_area{
+    margin-top: 10px;
+}
+.star_area{
+    display: inline-block;
+}
+.like_area{
+    display: inline-block;
+    float: right;
+}
+.like_count{
+    display: inline-block;
+}
+.review_content_area{
+    text-align: center;
+    margin-top: 30px;
+    padding: 5px 5px 30px;
+    text-align: left;
+}
+.review_list_area{
+    margin-top: 100px;
+}
+.review_list_area p{
+    display: inline;
+}
+.review_list_title{
+    display: flex;
+    justify-content: space-between;
+}
+.user_review_list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.review{
+    display: flex;
+    justify-content: space-between;
+}
+.profile_area{
+    display: flex;
+    justify-content: space-between;
+}
+#fillter_combobox{
+    width: 170px;
+    padding: 10px 0px;
+}

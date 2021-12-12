@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReviewCommentDAO">
+
+    <resultMap id="reviewComment" type="restaurant.reviewManagement.service.ReviewCommentVO">
+        <result property="id" column="ID"/>
+        <result property="reviewId" column="Review_ID"/>
+        <result property="content" column="Content"/>
+        <result property="createDate" column="Create_Date"/>
+        <result property="updateDate" column="Update_Date"/>
+    </resultMap>
+
+    <insert id="insertReviewComment" parameterType="searchVO">
+
+			INSERT INTO ReviewComment
+				(
+				ID,
+				Review_ID,
+				Content,
+				Create_Date,
+				Update_Date
+				)
+			VALUES (
+			    #{id},
+			    #{reviewId},
+			    #{content},
+			    #{createDate},
+			    #{updateDate}
+				)
+
+	</insert>
+
+    <update id="updateReviewComment">
+
+			UPDATE ReviewComment
+			SET Content=#{content},         
+                Update_Date=#{updateDate}
+			WHERE ID=#{id}
+
+	</update>
+
+    <delete id="deleteReviewComment">
+			DELETE FROM ReviewComment
+			WHERE ID=#{id}
+	</delete>
+
+    <select id="selectReviewComment" resultMap="reviewComment">
+
+			SELECT
+				ID,
+				Review_ID,
+				Content,
+				Create_Date,
+				Update_Date
+			FROM ReviewComment
+			WHERE ID=#{id}
+
+	</select>
+
+    <select id="selectReviewList" parameterType="searchVO" resultType="egovMap">
+
+        SELECT
+           	ID,
+		    Review_ID,
+		    Content,
+		    Create_Date,
+		    Update_Date
+			FROM ReviewComment
+        WHERE 1=1
+        <if test="searchKeyword != null and searchKeyword != ''">
+            <choose>
+                <when test="searchCondition == 0">
+                    AND	Review_ID LIKE '%' || #{searchKeyword} || '%'
+                </when>
+                <when test="searchCondition == 1">
+                    AND	Content LIKE '%' || #{searchKeyword} || '%'
+                </when>
+            </choose>
+        </if>
+        ORDER BY ID DESC
+        LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+    </select>
+
+    <select id="selectReviewListTotCnt" parameterType="searchVO" resultType="int">
+        SELECT COUNT(*) as totcnt
+        FROM ReviewComment
+        WHERE 1=1
+        <if test="searchKeyword != null and searchKeyword != ''">
+            <choose>
+                <when test="searchCondition == 0">
+                    AND Review_ID LIKE '%' || #{searchKeyword} || '%'
+                </when>
+                <when test="searchCondition == 1">
+                    AND	Content LIKE '%' || #{searchKeyword} || '%'
+                </when>
+            </choose>
+        </if>
+    </select>
+
+</mapper>
