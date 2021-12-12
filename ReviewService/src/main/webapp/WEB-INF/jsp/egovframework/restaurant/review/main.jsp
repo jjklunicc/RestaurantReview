@@ -12,15 +12,13 @@
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/bootstrap.css'/>"/>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/main.css'/>"/>
 	<script type="text/javaScript" language="javascript" defer="defer">
-    function searchReview() {
-	    	document.reviewForm.action = "<c:url value='/detailReview.do'/>";
-	    	document.reviewForm.submit();
-    }
+	    function searchReview() {
+		    	document.reviewForm.action = "<c:url value='/detailReview.do'/>";
+		    	document.reviewForm.submit();
+	    }
 	</script>
-	<link type="text/css" rel="stylesheet"
-		  href="<c:url value='/css/egovframework/review/reset.css'/>" />
-	<link type="text/css" rel="stylesheet"
-		  href="<c:url value='/css/egovframework/review/main.css'/>" />
+	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/review/reset.css'/>" />
+	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/review/main.css'/>" />
 	<link rel="stylesheet"
 		  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -30,13 +28,11 @@
 </head>
 <body>
 <header class="header text-uppercase header-main-text" id="mainHeader">
-	<div class="container header-main-text">
-		<div>Restaurant Review</div>
-	</div>
-</header>
-
-<body>
-<main class="container page-section">
+   <div class="container header-main-text">
+     <div>Restaurant Review</div>
+   </div>
+ </header>
+<main class="container page-section-review">
 	<div class="reviewMain">
 		<div class="reviewMainTopBox">
 

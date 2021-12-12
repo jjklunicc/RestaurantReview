@@ -9,9 +9,9 @@
 	<div class="card-col">
 	
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-			<li id="card${result.id}">
-			<input type="hidden" name="id" class="disable_input" value="${result.id}"/>
+		<div id="card${result.id}" class="card_width">			
 		<div class="card">
+			<input type="hidden" name="id" class="disable_input" value="${result.id}"/>
 			<div class="card-body">
 				<div class="card-title">
 					<img src="<c:url value='/images/egovframework/review/profile.png'/>" alt="프로필 아이콘" width="80px">
@@ -53,7 +53,6 @@
 	                                         src="<c:url value='/images/egovframework/review/star.png'/>" alt="별점"
 	                                         width="15px">
 	                                </div>
-	                                ${result.star}
 	                            </div>
 							</div>
 							<div class="like_area">
@@ -66,24 +65,25 @@
 				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">${result.content}</h6>
 			</div>
 		</div>
-	</li>
+	</div>
 	</c:forEach>
+	 <script type="text/javascript">
+        function starDisplay(starNum, starAreaId) {
+          const unstarElemets = starAreaId.getElementsByClassName("unclick_star");
+          for (let i = starNum; i < unstarElemets.length; i++) {
+            unstarElemets[i].style.display = "inline-block";
+          }
+          const starElements = starAreaId.getElementsByClassName("click_star");
+          for (let i = 0; i < starNum; i++) {
+            starElements[i].style.display = "inline-block";
+          }
+        }
+
+        <c:forEach var="result" items="${resultList}" varStatus="status">
+          starDisplay(${result.star}, document.getElementById("starArea" + ${result.id}));
+        </c:forEach>
+      </script>
 
 
-    <script type="text/javascript">
-    	function starDisplay(starNum, starAreaId) {
-    		const unstarElemets = starAreaId.getElementsByClassName("unclick_star");
-    		for (let i = starNum; i < unstarElemets.length; i++) {
-    			unstarElemets[i].style.display = "inline-block";
-    		}
-    		const starElements = starAreaId.getElementsByClassName("click_star");
-    		for (let i = 0; i < starNum; i++) {
-    			starElements[i].style.display = "inline-block";
-    		}
-    	}
-    	
-    	<c:forEach var="result" items="${resultList}" varStatus="status">
-			starDisplay(${result.star}, document.getElementById("starArea" + ${result.id}));
-		</c:forEach>
-    </script>
+   
 </div>
