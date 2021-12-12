@@ -12,10 +12,10 @@
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/bootstrap.css'/>"/>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/main.css'/>"/>
 	<script type="text/javaScript" language="javascript" defer="defer">
-	    function searchReview() {
-		    	document.reviewForm.action = "<c:url value='/detailReview.do'/>";
-		    	document.reviewForm.submit();
-	    }
+	    <%--function searchReview() {--%>
+		<%--    	document.reviewForm.action = "<c:url value='/detailReview.do'/>";--%>
+		<%--    	document.reviewForm.submit();--%>
+	    <%--}--%>
 	</script>
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/review/reset.css'/>" />
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/review/main.css'/>" />

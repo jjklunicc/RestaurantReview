@@ -3,7 +3,6 @@
 
 <sqlMap namespace="Review">
 
-<!--    <typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>-->
     <typeAlias  alias="ReviewVO" type="restaurant.reviewManagement.service.ReviewVO"/>
     <typeAlias alias="ReviewDefaultVO" type="restaurant.reviewManagement.service.ReviewDefaultVO"/>
 
@@ -67,12 +66,12 @@
         ]]>
     </update>
 
-<!--    <delete id="deleteReview">-->
-<!--        <![CDATA[-->
-<!--			DELETE FROM Review-->
-<!--			WHERE ID=#{id}-->
-<!--        ]]>-->
-<!--    </delete>-->
+    <delete id="reviewDAO.deleteReview">
+        <![CDATA[
+			DELETE FROM Review
+			WHERE ID=#id#
+        ]]>
+    </delete>
 
     <select id="reviewDAO.selectReview" resultMap="ReviewVO">
         <![CDATA[

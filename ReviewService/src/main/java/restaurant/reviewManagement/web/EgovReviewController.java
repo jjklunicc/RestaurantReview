@@ -87,4 +87,10 @@ public class EgovReviewController {
 		status.setComplete();
 		return "redirect:/reviewMain.do";
 	}
+
+	@RequestMapping(value = "/deleteReview.do", method = RequestMethod.DELETE)
+	public String deleteReviewView(ReviewVO reviewVO, Model model) throws Exception {
+		reviewService.deleteReview(reviewVO);
+		return "redirect:/reviewMain.do";
+	}
 }

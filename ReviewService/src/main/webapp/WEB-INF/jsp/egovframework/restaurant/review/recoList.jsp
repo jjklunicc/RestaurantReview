@@ -5,19 +5,17 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!--사용자 리뷰 추천-->
-<head>
 <script type="text/javaScript" language="javascript" defer="defer">
-    
-function searchReview() {
-	document.reviewForm.action = "<c:url value='/detailReview.do'/>";
-	document.reviewForm.submit();
-}
-    </script>
-</head>
+
+	<%--function searchReview() {--%>
+	<%--	document.reviewForm.action = "<c:url value='/detailReview.do'/>";--%>
+	<%--	document.reviewForm.submit();--%>
+	<%--}--%>
+</script>
 <!--리뷰 추천 리스트-->
 <ul class="recoReviewList">
 	<!--리뷰 추천 1-->
-	<li onclick="searchReview()">
+	<li>
 		<div class="card">
 			<div class="card-body">
 				<div class="card-title">
@@ -26,7 +24,7 @@ function searchReview() {
 							src="<c:url value='/images/egovframework/review/profile.png'/>"
 							alt="프로필 아이콘" width="80px">
 						<form class="review_check" action='detailReview.do'>
-   							<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"/></div>
+   							<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"" /></div>
 							<input type="hidden" name="id" value="7"/>
 				    	</form>
 					</div>
@@ -70,7 +68,7 @@ function searchReview() {
 							src="<c:url value='/images/egovframework/review/profile.png'/>"
 							alt="프로필 아이콘" width="80px">
 						<form class="review_check"action='detailReview.do'>
-   							<div><input class="btn btn-primary" style="float:right; id="write_btn" type="submit" value="리뷰 보기"/></div>
+   							<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"/></div>
 				    	</form>
 					</div>
 					<div class="info_area">
@@ -113,7 +111,7 @@ function searchReview() {
 							src="<c:url value='/images/egovframework/review/profile.png'/>"
 							alt="프로필 아이콘" width="80px">
 						<form class="review_check"action='detailReview.do'>
-   							<div><input class="btn btn-primary" style="float:right; id="write_btn" type="submit" value="리뷰 보기"/></div>
+   							<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"/></div>
 				    	</form>
 					</div>
 					<div class="info_area">

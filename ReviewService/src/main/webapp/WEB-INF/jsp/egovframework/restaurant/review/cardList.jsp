@@ -11,7 +11,6 @@
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 		<div id="card${result.id}" class="card_width">			
 		<div class="card">
-			<input type="hidden" name="id" class="disable_input" value="${result.id}"/>
 			<div class="card-body">
 				<div class="card-title">
 					<img src="<c:url value='/images/egovframework/review/profile.png'/>" alt="프로필 아이콘" width="80px">
@@ -62,7 +61,13 @@
 						</div>
 					</div>
 				</div>
-				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">${result.title}</h6>
+				<div >
+					<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">${result.title}</h6>
+					<form class="review_check" action='detailReview.do'>
+						<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"/></div>
+						<input type="hidden" name="id" value="${result.id}"/>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
