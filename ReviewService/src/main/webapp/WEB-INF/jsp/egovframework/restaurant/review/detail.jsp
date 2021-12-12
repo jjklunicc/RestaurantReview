@@ -116,7 +116,7 @@
                     <button type="button" class="btn btn-outline-primary">삭제</button>
                 </div>
             </div>
-            <textarea name="review" class="review_content" readonly placeholder="리뷰내용" style="resize: none;"></textarea>
+            <textarea name="review" class="review_content" readonly placeholder="리뷰내용" style="resize: none;">${reviewVO.content}</textarea>
             <div class="owner_area">
                 <div class="review_owner">
                     <p class="owner">사장님 답변</p>

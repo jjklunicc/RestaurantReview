@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">${result.content}</h6>
+				<h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">${result.title}</h6>
 			</div>
 		</div>
 	</div>
