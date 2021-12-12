@@ -43,6 +43,10 @@ public class EgovReviewController {
 		model.addAttribute("reviewVO", new ReviewVO());
 		return "review/form";
 	}
+	@RequestMapping(value = "/detailReview.do", method = RequestMethod.GET)
+	public String detailReviewView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, Model model) throws Exception {
+		return "review/detail";
+	}
 
 	@RequestMapping(value = "/addReview.do", method = RequestMethod.POST)
 	public String addReview(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, ReviewVO reviewVO, BindingResult bindingResult, Model model, SessionStatus status)
