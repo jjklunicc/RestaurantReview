@@ -24,7 +24,7 @@
         <property name="url" value="jdbc:mariadb://moonkshome.iptime.org:44306/BU_Restaurant" />
         <property name="username" value="sukyeongh"/>
         <property name="password" value="sk1027"/>
-     </bean>
+    </bean>
    
     
     <!-- oracle (POM에서 commons-dbcp, ojdbc(라이센스 사항으로 별도로 배포되지 않음) 관련 라이브러리 설정)

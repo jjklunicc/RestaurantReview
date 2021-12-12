@@ -5,8 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -85,34 +83,6 @@ public class Util_bin {
 	}
 
 	
-	public static String fileUpload(MultipartFile file) throws Exception
-	{
-		
-		String filePath = "c:\\upload\\image";
 	
-		File Folder = new File(filePath);
-
-		String orgFileNm = file.getOriginalFilename();
-		String fileExt = orgFileNm.substring(orgFileNm.lastIndexOf('.')+1);
-		String fileName =orgFileNm.substring(0, orgFileNm.lastIndexOf('.'));
-		
-		String fullFileName =fileName +"_"+ new SimpleDateFormat("yyyyMMddhhmm").format(new Date()) + "." + fileExt;
-		String fullfilepath =filePath + File.separator + fullFileName;
-		System.out.println(fullFileName);
-		
-		try {
-			
-			if (!Folder.exists()) 
-				Folder.mkdirs();
-			
-			file.transferTo(new File(fullfilepath));
-			
-		}
-		catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-		return fullfilepath;
-	}
 	
 }

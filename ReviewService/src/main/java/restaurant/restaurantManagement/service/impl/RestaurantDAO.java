@@ -67,8 +67,9 @@ public class RestaurantDAO extends EgovAbstractDAO {
 	public RestaurantVO SelectRestaurant(RestaurantVO vo) throws Exception 
 	{
 		Object sql= select("restaurantDAO.selectreataurant", vo);
+		System.out.println(sql);
 		if(sql != null)
-			return (RestaurantVO) sql;
+			return (RestaurantVO) select("restaurantDAO.selectreataurant", vo);
 		else return null;
 	}
 
