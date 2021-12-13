@@ -178,6 +178,9 @@ li{
 .button_area{
     display: inline-block;
 }
+.button_area2{
+	display: none;
+}
 .icon-cancel{
     font-size: 40px;
     color: black;
@@ -326,5 +329,22 @@ li{
     flex-direction: row;
     align-self: center;
     
+}
+
+.toggle_area{
+	width: 100%;
+	text-align: right;
+}
+.toggle-on.btn{
+	padding: 7px;
+}
+.toggle-off.btn{
+	padding: 7px;
+}
+.btn btn-success toggle-on{
+	padding: 6px;
+}
+.btn btn-danger active toggle-off{
+	padding: 6px;
 }
   

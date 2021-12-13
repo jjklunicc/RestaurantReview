@@ -43,7 +43,9 @@
           href="<c:url value='/css/egovframework/review/form.css'/>"/>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<c:url value='/js/review/like.js'/>"></script>
 </head>
@@ -177,15 +179,6 @@
 	            </div>
                 <textarea name="content" type="text" class="review_content" placeholder="리뷰내용" multiple
                           style="resize: none;"></textarea>
-                <div class="owner_area">
-                    <div class="review_owner">
-                        <p class="owner">사장님 답변</p>
-                        <div class="button_area">
-                    		<button type="button" id="add_btn2" class="btn btn-outline-primary">저장</button>
-                		</div>
-                    </div>
-                    <textarea type="text" class="owner_anwser" placeholder="사장님 답글 내용" multiple
-                              style="resize: none;"></textarea>
             </section>
             <button onclick="addReview()">add Test</button>
 
@@ -202,6 +195,11 @@
             </script>
             	
           	</div>
+          	<div class="toggle_area">
+			<div class="toggle">
+				<input type="checkbox" checked data-toggle="toggle" data-on="유저" data-off="사장님" data-onstyle="success" data-offstyle="danger">
+			</div>
+		</div>
         </form:form>
     </div>
 <footer class="footer text-center">

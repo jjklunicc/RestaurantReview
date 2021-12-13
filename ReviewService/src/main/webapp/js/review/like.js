@@ -12,15 +12,29 @@ function likeclick(element) {
   
   element.checked = true;
 }
-
 $(function(){
+$('#toggle_btn').change(function(){
+					const toggle_value = $('#toggle_btn').prop("checked")
+					console.log(toggle_value);
+					if(toggle_value==true){
+						$(".button_area").css("display","inline-block");
+						$(".button_area2").css("display","none");
+					}
+					else{
+						$(".button_area").css("display","none");
+						$(".button_area2").css("display","inline-block");
+					}
+				})
+  $(".dropdown-menu li a").click(function(){
+  var selText = $(this).text();
+  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText);
+});
   var today = getTodayType();
   $(".date").text(today);
 //   $("#like1").click(function(){
 //     let index = $("#like1").index(this);
 //     console.log(index);
 //   })
-
   $("#modify_btn").click(function(){
     $(".review_content").attr("readonly", false);
   })

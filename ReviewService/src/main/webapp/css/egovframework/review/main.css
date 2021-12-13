@@ -220,3 +220,22 @@
     width: 170px;
     padding: 10px 0px;
 }
+.toggle_area{
+	width: 100%;
+}
+.toggle{
+	float:right;
+	margin-right:10px;
+}
+.toggle-on.btn{
+	padding: 7px;
+}
+.toggle-off.btn{
+	padding: 7px;
+}
+.btn btn-success toggle-on{
+	padding: 6px;
+}
+.btn btn-danger active toggle-off{
+	padding: 6px;
+}

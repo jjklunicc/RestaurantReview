@@ -23,8 +23,10 @@
           href="<c:url value='/css/egovframework/review/detail.css'/>"/>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<c:url value='/js/review/like.js'/>"></script>
 </head>
@@ -120,18 +122,25 @@
             <div class="owner_area">
                 <div class="review_owner">
                     <p class="owner">사장님 답변</p>
-                    <div class="button_area">
-                        <button type="button" id="modify_btn2" class="btn btn-outline-primary">수정</button>
+                    <div class="button_area2">
+                        <button type="button" id="modify_btn2" class="btn btn-outline-primary">저장</button>
                         <button type="button" class="btn btn-outline-primary">삭제</button>
                     </div>
                 </div>
                 <textarea name="review" class="owner_anwser" readonly placeholder="사장님 답글 내용" style="resize: none;"></textarea>
             </section>
         </section>
+        <div class="toggle_area">
+			<div class="toggle">
+				<input type="checkbox" id="toggle_btn" checked data-toggle="toggle" data-on="유저" data-off="사장님" data-onstyle="success" data-offstyle="danger">
+<!-- 				<input id="autologin" type="checkbox" checked="checked" data-size="micro" data-on-color="success" data-off-color="danger" class="bs-switch"> -->
+			</div>
+		</div>
     </div>         &nbsp</span>
                     </div>
                     <!-- 메뉴옆에 좋아요 싫어요 -->
                 </div>
+              
             </section>
     </div>
 <footer class="footer text-center">

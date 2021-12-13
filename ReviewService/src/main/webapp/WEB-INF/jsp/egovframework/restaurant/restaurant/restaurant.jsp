@@ -26,6 +26,11 @@
         <input class="btn btn-success" style="width: 100%;" type="submit" value="주문관리 페이지로"/>
       </div>      
     </form>
+    <form method="get" action='reviewMain.do'>     
+      <div style="margin-bottom: 0.5rem;">
+        <input class="btn btn-success" style="width: 100%;" type="submit" value="리뷰 페이지로"/>
+      </div>      
+    </form>
   </main>
   <footer class="footer text-center">
     <div class="container">

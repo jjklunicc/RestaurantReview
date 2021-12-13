@@ -6,8 +6,9 @@
 		data-toggle="dropdown" aria-expanded="false"
 		style="background-color: #0679fa; border: 1px solid #0679fa;">
 		추천순</button>
-	<div class="dropdown-menu">
-		<a class="dropdown-item" href="#">추천순</a> <a class="dropdown-item"
-			href="#">최신순</a> <a class="dropdown-item" href="#">좋아요순</a>
-	</div>
+	<ul class="dropdown-menu">
+		<li><a class="dropdown-item" href="#">추천순</a></li>
+		<li><a class="dropdown-item" href="#">최신순</a></li>
+		<li><a class="dropdown-item" href="#">좋아요순</a></li>
+	</ul>
 </div>
