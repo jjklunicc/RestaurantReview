@@ -347,4 +347,24 @@ li{
 .btn btn-danger active toggle-off{
 	padding: 6px;
 }
-  
+#user_save_btn{
+	display:none;
+}
+#save_btn{
+	display:none;
+}
+.save_btn_area{
+	display:inline-block;
+}
+.save_btn_area2{
+	display:inline-block;
+}
+
+.unclick_star{
+    cursor: pointer;
+    display: none;
+}
+.click_star{
+    cursor: pointer;
+    display: none;
+}

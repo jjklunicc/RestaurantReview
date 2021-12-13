@@ -71,7 +71,7 @@
                         <div class="card-title"><img src="<c:url value='/images/egovframework/review/profile.png'/>"
                                                      alt="프로필 아이콘" width="80px">
                             <div class="info_area">
-                                <p class="user_name">허근행</p>
+                                <p class="user_name">reviewUser</p>
                                 <p class="date"></p>
                                 <div class="star_like_area">
                                     <div class="star_area">
@@ -178,13 +178,12 @@
             <div class="review_write_area">
                 <input name="title" type="text" class="review_title" placeholder="리뷰 제목">
                 <div class="button_area">
-                    <button type="button" id="add_btn" class="btn btn-outline-primary">저장</button>
+                    <button type="button" id="add_btn" class="btn btn-outline-primary" onclick="addReview()">저장</button>
                 </div>
             </div>
             <textarea name="content" type="text" class="review_content" placeholder="리뷰내용" multiple
                       style="resize: none;"></textarea>
         </section>
-        <button onclick="addReview()">add Test</button>
 
         <div>
 

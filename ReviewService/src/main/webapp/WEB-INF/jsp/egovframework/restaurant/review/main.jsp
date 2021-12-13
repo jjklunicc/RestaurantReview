@@ -90,7 +90,7 @@
         </div>
         <div class="toggle_area">
             <div class="toggle">
-                <input type="checkbox" checked data-toggle="toggle" data-on="유저" data-off="사장님" data-onstyle="success"
+                <input type="checkbox" id="main_toggle_btn" checked data-toggle="toggle" data-on="유저" data-off="사장님" data-onstyle="success"
                        data-offstyle="danger">
             </div>
         </div>

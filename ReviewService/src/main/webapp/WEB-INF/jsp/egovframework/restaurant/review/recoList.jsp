@@ -5,6 +5,7 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!--사용자 리뷰 추천-->
+ <script type="text/javascript" src="<c:url value='/js/review/like.js'/>"></script>
 <script type="text/javaScript" language="javascript" defer="defer">
 
 	<%--function searchReview() {--%>
@@ -23,13 +24,18 @@
 						<img
 							src="<c:url value='/images/egovframework/review/profile.png'/>"
 							alt="프로필 아이콘" width="80px">
-						<form class="review_check" action='detailReview.do'>
-   							<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"" /></div>
-							<input type="hidden" name="id" value="7"/>
-				    	</form>
+						<div class="recommend_area" style="float:right; width:100%; text-align:right;">
+							<form class="recommand_cancle" style="display:none;" action'>
+	   							<div><input class="btn btn-primary" style="background-color:#ff7369; border-color:#ff7369;" id="write_btn" type="submit" value="추천 취소" /></div>
+					    	</form>
+							<form class="review_check" style="display:inline-block;"action='detailReview.do'>
+	   							<div><input class="btn btn-primary" id="write_btn" type="submit" value="리뷰 보기" /></div>
+								<input type="hidden" name="id" value="7"/>
+					    	</form>
+				    	</div>
 					</div>
 					<div class="info_area">
-						<p class="user_name">위승빈</p>
+						<p class="user_name">reviewUser</p>
 						<p class="date">21.11.20</p>
 						<div class="star_like_area">
 							<div class="star_area">
@@ -67,13 +73,18 @@
 						<img
 							src="<c:url value='/images/egovframework/review/profile.png'/>"
 							alt="프로필 아이콘" width="80px">
-						<form class="review_check" action='detailReview.do'>
-							<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"" /></div>
-							<input type="hidden" name="id" value="7"/>
-						</form>
+						<div class="recommend_area" style="float:right; width:100%; text-align:right;">
+							<form class="recommand_cancle" style="display:none;" action'>
+	   							<div><input class="btn btn-primary" style="background-color:#ff7369; border-color:#ff7369;" id="write_btn" type="submit" value="추천 취소" /></div>
+					    	</form>
+							<form class="review_check" style="display:inline-block;"action='detailReview.do'>
+	   							<div><input class="btn btn-primary" id="write_btn" type="submit" value="리뷰 보기" /></div>
+								<input type="hidden" name="id" value="7"/>
+					    	</form>
+				    	</div>
 					</div>
 					<div class="info_area">
-						<p class="user_name">위승빈</p>
+						<p class="user_name">reviewUser</p>
 						<p class="date">21.11.20</p>
 						<div class="star_like_area">
 							<div class="star_area">
@@ -111,13 +122,18 @@
 						<img
 							src="<c:url value='/images/egovframework/review/profile.png'/>"
 							alt="프로필 아이콘" width="80px">
-						<form class="review_check" action='detailReview.do'>
-							<div><input class="btn btn-primary" style="float:right;" id="write_btn" type="submit" value="리뷰 보기"" /></div>
-							<input type="hidden" name="id" value="7"/>
-						</form>
+						<div class="recommend_area" style="float:right; width:100%; text-align:right;">
+							<form class="recommand_cancle" style="display:none;" action'>
+	   							<div><input class="btn btn-primary" style="background-color:#ff7369; border-color:#ff7369;" id="write_btn" type="submit" value="추천 취소" /></div>
+					    	</form>
+							<form class="review_check" style="display:inline-block;"action='detailReview.do'>
+	   							<div><input class="btn btn-primary" id="write_btn" type="submit" value="리뷰 보기" /></div>
+								<input type="hidden" name="id" value="7"/>
+					    	</form>
+				    	</div>
 					</div>
 					<div class="info_area">
-						<p class="user_name">위승빈</p>
+						<p class="user_name">reviewUser</p>
 						<p class="date">21.11.20</p>
 						<div class="star_like_area">
 							<div class="star_area">
