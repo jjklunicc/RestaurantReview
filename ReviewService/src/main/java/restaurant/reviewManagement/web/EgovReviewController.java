@@ -23,10 +23,6 @@ public class EgovReviewController {
 	@Resource(name = "reviewService")
 	private EgovReviewService reviewService;
 
-	/** EgovPropertyService */
-	@Resource(name = "propertiesService")
-	protected EgovPropertyService propertiesService;
-
 	/** Validator */
 	@Resource(name = "beanValidator")
 	protected DefaultBeanValidator beanValidator;

@@ -11,31 +11,13 @@ import javax.annotation.Resource;
 @Service("reviewCommentService")
 public class EgovReviewCommentServiceImpl extends EgovAbstractServiceImpl implements EgovReviewCommentService {
 
-//	private static final Logger LOGGER = LoggerFactory.getLogger(EgovReviewCommentServiceImpl.class);
-
 	@Resource(name = "reviewCommentDAO")
 	private ReviewCommentDAO reviewCommentDAO;
 
-//	// TODO mybatis 사용
-//	//  @Resource(name="reviewMapper")
-//	//	private ReviewCommentMapper reviewDAO;
-
-	/** ID Generation */
-	@Resource(name = "egovIdGnrService")
-	private EgovIdGnrService egovIdGnrService;
-
     // 등록
 	@Override
-	public int insertReviewComment(ReviewCommentVO vo) throws Exception {
-		// LOGGER.debug(vo.toString());
-
-		/** ID Generation Service */
-		int id = egovIdGnrService.getNextIntegerId();
-		vo.setId(id);
-		// LOGGER.debug(vo.toString());
-
+	public void insertReviewComment(ReviewCommentVO vo) throws Exception {
 		reviewCommentDAO.insertReviewComment(vo);
-		return id;
 	}
 
     // 수정

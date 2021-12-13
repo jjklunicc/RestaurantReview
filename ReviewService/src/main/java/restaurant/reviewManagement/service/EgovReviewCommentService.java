@@ -3,7 +3,7 @@ package restaurant.reviewManagement.service;
 public interface EgovReviewCommentService {
 
     // 등록
-	int insertReviewComment(ReviewCommentVO vo) throws Exception;
+	void insertReviewComment(ReviewCommentVO vo) throws Exception;
 
     // 수정
 	void updateReviewComment(ReviewCommentVO vo) throws Exception;

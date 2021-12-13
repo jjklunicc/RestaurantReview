@@ -13,21 +13,8 @@ import java.util.List;
 @Service("reviewService")
 public class EgovReviewServiceImpl extends EgovAbstractServiceImpl implements EgovReviewService {
 
-//	private static final Logger LOGGER = LoggerFactory.getLogger(EgovReviewServiceImpl.class);
-
 	@Resource(name = "reviewDAO")
 	private ReviewDAO reviewDAO;
-
-//	@Resource(name = "reviewMapper")
-//	private ReviewMapper reviewMapper;
-
-	// TODO mybatis 사용
-//	//  @Resource(name="reviewMapper")
-//	//	private ReviewMapper reviewDAO;
-
-	/** ID Generation */
-	@Resource(name = "egovIdGnrService")
-	private EgovIdGnrService egovIdGnrService;
 
 	// 등록
 	@Override

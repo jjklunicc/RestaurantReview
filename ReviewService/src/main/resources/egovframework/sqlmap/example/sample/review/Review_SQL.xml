@@ -21,9 +21,6 @@
     </resultMap>
 
     <insert id="reviewDAO.insertReview">
-        <selectKey keyProperty="id" resultClass="int">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
         <![CDATA[
         INSERT INTO Review
         (
@@ -76,17 +73,7 @@
     <select id="reviewDAO.selectReview" resultMap="ReviewVO">
         <![CDATA[
 			SELECT
-				ID,
-				User_ID,
-				Shop_ID,
-				Order_ID,
-				Star,
-				Title,
-				Content,
-				Image,
-				CEO_RECO,
-				Create_Date,
-				Update_Date
+			*
 			FROM Review
 			WHERE ID=#id#
         ]]>
