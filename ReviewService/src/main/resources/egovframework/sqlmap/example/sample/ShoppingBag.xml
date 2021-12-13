@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ShoppingBag">
+	<typeAlias alias="ShoppingBagVO" type="restaurant.orderManagement.service.ShoppingBagVO"/>
+	
+	<delete id="ShoppingBagDAO.deleteShoppingBag">
+		<![CDATA[
+			DELETE FROM shopping_basket
+			WHERE shopping_basket.user_index=#{user_index}
+		]]>
+	
+	</delete>
+</sqlMap>
