@@ -33,11 +33,41 @@ public class EgovReviewCommentController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("reviewCommentVO", reviewCommentVO);
-			return "review/detail";
+			return "redirect:/reviewMain.do";
 		}
 
 		reviewCommentService.insertReviewComment(reviewCommentVO);
 		status.setComplete();
+
+		ReviewVO redirectReviewVO = new ReviewVO();
+		redirectReviewVO.setId(reviewCommentVO.getReviewId());
+		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
+		return "redirect:/detailReview.do";
+	}
+
+	@RequestMapping(value = "/updateReviewComment.do", method = RequestMethod.PUT)
+	public String updateReviewComment(@ModelAttribute("searchVO") ReviewCommentDefaultVO searchVO, ReviewCommentVO reviewCommentVO, BindingResult bindingResult, Model model, SessionStatus status, RedirectAttributes redirectAttributes)
+			throws Exception {
+
+		beanValidator.validate(reviewCommentVO, bindingResult);
+
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("reviewCommentVO", reviewCommentVO);
+			return "redirect:/reviewMain.do";
+		}
+
+		reviewCommentService.updateReviewComment(reviewCommentVO);
+		status.setComplete();
+
+		ReviewVO redirectReviewVO = new ReviewVO();
+		redirectReviewVO.setId(reviewCommentVO.getReviewId());
+		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
+		return "redirect:/detailReview.do";
+	}
+
+	@RequestMapping(value = "/deleteReviewComment.do", method = RequestMethod.DELETE)
+	public String deleteReviewViewComment(ReviewCommentVO reviewCommentVO, Model model, RedirectAttributes redirectAttributes) throws Exception {
+		reviewCommentService.deleteReviewComment(reviewCommentVO);
 
 		ReviewVO redirectReviewVO = new ReviewVO();
 		redirectReviewVO.setId(reviewCommentVO.getReviewId());
