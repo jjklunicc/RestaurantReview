@@ -176,7 +176,8 @@ li{
     display: inline-block;
 }
 .button_area{
-    display: inline-block;
+    display: flex;
+    flex-display: row;
 }
 .button_area2{
 	display: none;
@@ -260,6 +261,8 @@ li{
   }
   #menu1{
     display: flex;
+
+
     padding: 3px 15px;
     font-size: 12px;
     font-weight: bold;
@@ -352,9 +355,6 @@ li{
 }
 #save_btn{
 	display:none;
-}
-.save_btn_area{
-	display:inline-block;
 }
 .save_btn_area2{
 	display:inline-block;

@@ -68,7 +68,7 @@ public class EgovReviewController {
 		return "review/form";
 	}
 
-	@RequestMapping(value = "/updateReview.do", method = RequestMethod.PUT)
+	@RequestMapping(value = "/updateReview.do", method = RequestMethod.POST)
 	public String updateReview(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, ReviewVO reviewVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
@@ -84,7 +84,7 @@ public class EgovReviewController {
 		return "redirect:/reviewMain.do";
 	}
 
-	@RequestMapping(value = "/deleteReview.do", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deleteReview.do", method = RequestMethod.POST)
 	public String deleteReviewView(ReviewVO reviewVO, Model model) throws Exception {
 		reviewService.deleteReview(reviewVO);
 		return "redirect:/reviewMain.do";

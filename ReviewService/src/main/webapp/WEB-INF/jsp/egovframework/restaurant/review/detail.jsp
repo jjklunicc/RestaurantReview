@@ -12,12 +12,34 @@
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/bootstrap.css'/>"/>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/main.css'/>"/>
     <script type="text/javaScript" language="javascript" defer="defer">
-        function addReview() {
-            document.reviewForm.action = "<c:url value='/addReview.do'/>";
-            document.reviewForm.submit();
+        function check(str) {
+            if (str.value == ''
+                || str.value == null
+                || str.value.replace(/^\s+|\s+$/g, '') == ""
+                || /[\s]/g.test(str.value) == true) {
+                alert('입력이 올바르지 않습니다.');
+                return false;
+            }
+
+            return true;
         }
 
+        function updateReview() {
+            const checkTitle = check(document.reviewUpdateForm["title"]);
+            let checkContent = false;
+            if (checkTitle) {
+                checkContent = check(document.reviewUpdateForm["content"]);
+            }
+            if (checkTitle && checkContent) {
+                document.reviewUpdateForm.action = "<c:url value='/updateReview.do'/>";
+                document.reviewUpdateForm.submit();
+            }
+        }
 
+        function deleteReview() {
+            document.reviewUpdateForm.action = "<c:url value='/deleteReview.do'/>";
+            document.reviewUpdateForm.submit();
+        }
     </script>
     <link type="text/css" rel="stylesheet"
           href="<c:url value='/css/egovframework/review/reset.css'/>"/>
@@ -148,19 +170,25 @@
         </div>
     </section>
     <section class="review_area">
-        <div class="review_title">
-            <p class="title">${reviewVO.title}</p>
-            <div class="button_area">
-                <button type="button" id="modify_btn" class="btn btn-outline-primary">수정</button>
-                <form class="save_btn_area" action>
+        <form:form commandName="searchVO" name="reviewUpdateForm" method="post">
+            <div class="review_title">
+                    <%--                <p class="title">${reviewVO.title}</p>--%>
+                <input name="title" type="text" class="review_title" value="${reviewVO.title}" readonly>
+                <div class="button_area">
+                    <button type="button" id="modify_btn" class="btn btn-outline-primary">수정</button>
+
+                    <input type="hidden" name="id" value="${reviewVO.id}" class="disable_input"/>
+                    <input type="hidden" name="star" id="starhidden" value="" class="disable_star"/>
+
                     <input class="btn btn-primary" id="user_save_btn" style="margin-right:2px;"
-                           type="submit" value="저장"/>
-                </form>
-                <button type="button" class="btn btn-outline-primary">삭제</button>
+                           type="submit" onclick="updateReview()" value="저장"/>
+                    <input class="btn btn-outline-primary"
+                           type="submit" onclick="deleteReview()" value="삭제"/>
+                </div>
             </div>
-        </div>
-        <textarea name="review" class="review_content" readonly placeholder="리뷰내용"
-                  style="resize: none;">${reviewVO.content}</textarea>
+            <textarea name="content" class="review_content" readonly placeholder="리뷰내용"
+                      style="resize: none;">${reviewVO.content}</textarea>
+        </form:form>
         <div class="owner_area">
             <div class="review_owner">
                 <p class="owner">사장님 답변</p>
@@ -175,6 +203,7 @@
             </div>
             <textarea name="review" class="owner_anwser" readonly placeholder="사장님 답글 내용"
                       style="resize: none;"></textarea>
+        </div>
     </section>
     </section>
     <div class="toggle_area">
@@ -214,6 +243,8 @@
     }
 
     starDisplay(${reviewVO.star}, document.getElementById("starArea"));
+
+    $('input[name=star]').attr('value', ${reviewVO.star});
 </script>
 </body>
 </html>

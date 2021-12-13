@@ -33,6 +33,7 @@ $(function () {
         if(toggle_value==true){
             $(".button_area").css("display","inline-block");
             $(".button_area2").css("display","none");
+            $(".review_title").attr("readonly", false);
             $(".review_content").attr("readonly", false);
             $(".owner_anwser").attr("readonly", true);
             $(".recommand_cancle").css("display", "none");
@@ -40,6 +41,7 @@ $(function () {
         else{
             $(".button_area").css("display","none");
             $(".button_area2").css("display","inline-block");
+            $(".review_title").attr("readonly", true);
             $(".review_content").attr("readonly", true);
             $(".owner_anwser").attr("readonly", false);
             $(".recommand_cancle").css("display", "inline-block");
@@ -66,6 +68,7 @@ $(function () {
 //     console.log(index);
 //   })
     $("#modify_btn").click(function () {
+        $(".review_title").attr("readonly", false);
         $(".review_content").attr("readonly", false);
     })
     $("#modify_btn2").click(function () {
