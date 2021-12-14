@@ -204,7 +204,7 @@
 
 
 	<insert id="insertForwardingMenu" parameterType="shoppingbasketVo">
-	INSERT INTO Shopping_Basket(user_index, restaurant_index, menu_index, COUNT, DATE)
+	INSERT INTO shopping_basket(user_index, restaurant_index, menu_index, COUNT, DATE)
 						 VALUES(
 						 		#{user_index}
 						 		,#{restaurant_index}

@@ -1,7 +1,5 @@
 package restaurant.restaurantManagement.web;
 
-
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,57 +33,55 @@ import restaurant.restaurantManagement.service.ShoppingbasketService;
 @Controller
 public class RestaurantController {
 
-	@Resource(name="daoMyBatis")
+	@Resource(name = "daoMyBatis")
 	private IMenuService menuservice;
-	
-	@Resource(name="countryOfOrginInformationService")
+
+	@Resource(name = "countryOfOrginInformationService")
 	private CountryOfOrginInformationService countryOfOrginInformationService;
-	
-	@Resource(name="restaurantCategoryService")
+
+	@Resource(name = "restaurantCategoryService")
 	private RestaurantCategoryService restaurantCategoryService;
-	
-	@Resource(name="shoppingbasketService")
+
+	@Resource(name = "shoppingbasketService")
 	private ShoppingbasketService shoppingbasketService;
-	
-	
-	@RequestMapping(value="/lstRestaurantCategory.do", method=RequestMethod.GET, produces = "application/json; charset=utf8")
-	public String lstRestaurantCategory(ModelMap model)throws Exception{
-	
-		RestaurantCategory restaurantCategory= new RestaurantCategory();
-		List<RestaurantCategory> sqlResult= restaurantCategoryService.SelectRestaurantCategoryList(restaurantCategory);
-			System.out.println("sqlResult"+sqlResult);
+
+	@RequestMapping(value = "/lstRestaurantCategory.do", method = RequestMethod.GET, produces = "application/json; charset=utf8")
+	public String lstRestaurantCategory(ModelMap model) throws Exception {
+
+		RestaurantCategory restaurantCategory = new RestaurantCategory();
+		List<RestaurantCategory> sqlResult = restaurantCategoryService.SelectRestaurantCategoryList(restaurantCategory);
+		System.out.println("sqlResult" + sqlResult);
 		Map<String, Object> responseMap = new HashMap<>();
 		HttpStatus state = HttpStatus.OK;
-		responseMap.put("listRestaurant",  sqlResult);
-		String json =Util_bin.AddHttpStateAndJson(responseMap, state);
-		model.addAttribute("responseEntity",new ResponseEntity<String>(json, state));
+		responseMap.put("listRestaurant", sqlResult);
+		String json = Util_bin.AddHttpStateAndJson(responseMap, state);
+		model.addAttribute("responseEntity", new ResponseEntity<String>(json, state));
 		return "redirect:/";
 	}
-	
 
-	@RequestMapping(value="/lstRestaurantMenu.do", method=RequestMethod.GET, produces = "application/json; charset=utf8")
-	public String lstRestaurantMenu(@RequestParam("category")int restaurant_index, ModelMap model)throws Exception{
-		
-		Menu menu= new Menu();
+	@RequestMapping(value = "/lstRestaurantMenu.do", method = RequestMethod.GET, produces = "application/json; charset=utf8")
+	public String lstRestaurantMenu(@RequestParam("category") int restaurant_index, ModelMap model) throws Exception {
+
+		Menu menu = new Menu();
 		menu.setRestaurant_index(restaurant_index);
 		List<Menu> sqlResult;
 		Map<String, Object> responseMap = new HashMap<>();
-		HttpStatus 	state;
-		 
-		/**
-		 *  0일때 식당 카테고리 전체 보여주기 1 이상일때는 선택된 식당 카테고리보여주기 
-		 */
-		if(restaurant_index!=0) {		
-			sqlResult=  menuservice.lstRestaurantSelect(menu);
+		HttpStatus state;
 
-		}else {
-			
-			sqlResult=  menuservice.selectMenuList(menu);
-		}		
-		state = HttpStatus.OK;		
-		System.out.println("sqlResult"+sqlResult);	
-		if(sqlResult != null) {	
-			//이미지 바이너리 주입
+		/**
+		 * 0일때 식당 카테고리 전체 보여주기 1 이상일때는 선택된 식당 카테고리보여주기
+		 */
+		if (restaurant_index != 0) {
+			sqlResult = menuservice.lstRestaurantSelect(menu);
+
+		} else {
+
+			sqlResult = menuservice.selectMenuList(menu);
+		}
+		state = HttpStatus.OK;
+		System.out.println("sqlResult" + sqlResult);
+		if (sqlResult != null) {
+			// 이미지 바이너리 주입
 			for (Object vo : sqlResult) {
 
 				Menu resultvo = (Menu) vo;
@@ -95,92 +90,70 @@ public class RestaurantController {
 
 				}
 			}
-			
-			
-			responseMap.put("listRestaurant",  sqlResult);		
-		}		
-		String json =Util_bin.AddHttpStateAndJson(responseMap, state);
-		model.addAttribute("responseEntity",new ResponseEntity<String>(json, state));
+
+			responseMap.put("listRestaurant", sqlResult);
+		}
+
+		String json = Util_bin.AddHttpStateAndJson(responseMap, state);
+		model.addAttribute("responseEntity", new ResponseEntity<String>(json, state));
 		return "redirect:/";
 	}
-	
 
+	@RequestMapping(value = "/updateMenuInfo.do", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	public String updateMenuInfo(@ModelAttribute("menuVo") Menu menu, ModelMap model) throws Exception {
 
-	
-	@RequestMapping(value="/updateMenuInfo.do", method=RequestMethod.POST, produces = "application/json; charset=utf8")
-	public String updateMenuInfo(@ModelAttribute("menuVo") Menu menu, ModelMap model)throws Exception{
-		
-		menuservice.updateMenu(menu);	
+		menuservice.updateMenu(menu);
 		Map<String, Object> responseMap = new HashMap<>();
-		HttpStatus 	state = HttpStatus.OK;	
+		HttpStatus state = HttpStatus.OK;
 
-			
-		String json =Util_bin.AddHttpStateAndJson(responseMap, state, true);
-		model.addAttribute("responseEntity",new ResponseEntity<String>(json, state));
+		String json = Util_bin.AddHttpStateAndJson(responseMap, state, true);
+		model.addAttribute("responseEntity", new ResponseEntity<String>(json, state));
 		return "redirect:/";
-		
+
 	}
-	
-	
-	
-	//?
-	@RequestMapping(value="/insertForwardingMenu.do", method=RequestMethod.POST, produces = "application/json; charset=utf8")
-	public String insertForwardingMenu(				ModelMap model,
-													@RequestParam("user_index")int user_index,
-													@RequestParam("restaurantID")int restaurantID,
-													@RequestParam("menu_index")int munu_index,
-													@RequestParam("count")int count													
-		)throws Exception{
-		String date=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyy-MM-dd HH:MM:SS "));
-		Shoppingbasket shoppingbasket = new Shoppingbasket( user_index, restaurantID, munu_index,count, date);
-		
+
+	// ?
+	@RequestMapping(value = "/insertForwardingMenu.do", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	public String insertForwardingMenu(ModelMap model, @RequestParam("user_index") int user_index,
+			@RequestParam("restaurantID") int restaurantID, @RequestParam("menu_index") int munu_index,
+			@RequestParam("count") int count) throws Exception {
+		String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss "));
+		Shoppingbasket shoppingbasket = new Shoppingbasket(user_index, restaurantID, munu_index, count, date);
+
 		shoppingbasketService.InsertForwardingMenu(shoppingbasket);
-		List<Shoppingbasket> list=shoppingbasketService.SelectShoppingbasketList(shoppingbasket);
-		
+		List<Shoppingbasket> list = shoppingbasketService.SelectShoppingbasketList(shoppingbasket);
+
 		Map<String, Object> responseMap = new HashMap<>();
 		responseMap.put("SelectShoppingbasketList", list);
-		HttpStatus 	state = HttpStatus.OK;	
-		String json =Util_bin.AddHttpStateAndJson(responseMap, state);
-		
-		model.addAttribute("responseEntity", new ResponseEntity<String>( json ,state));
+		HttpStatus state = HttpStatus.OK;
+		String json = Util_bin.AddHttpStateAndJson(responseMap, state);
+
+		model.addAttribute("responseEntity", new ResponseEntity<String>(json, state));
 		return "redirect:/";
 	}
 
-	
-	
-	
+	// api에 없어서 냅뒀음.
+	@RequestMapping(value = "/FindMenuCountryOfOrginInformation.do", method = RequestMethod.GET, produces = "application/json; charset=utf8")
+	public String findMenuCountryOfOrginInformation(@ModelAttribute("menuVo") Menu menu,
+			@ModelAttribute("countryOfOrginInformationVo") CountryOfOrginInformation countryOfOrginInformation,
+			ModelMap model) throws Exception {
 
-	
-	//api에 없어서 냅뒀음.
-	@RequestMapping(value="/FindMenuCountryOfOrginInformation.do", method=RequestMethod.GET, produces = "application/json; charset=utf8")
-	public String findMenuCountryOfOrginInformation(
-												    @ModelAttribute("menuVo") Menu menu,
-													@ModelAttribute("countryOfOrginInformationVo") CountryOfOrginInformation countryOfOrginInformation,
-													ModelMap model
-			)throws Exception{
-		
-		HashMap<String, Object> inputMap= new HashMap<String, Object>();
-		inputMap.put("countryOfOrginInformationVo", countryOfOrginInformation);	
+		HashMap<String, Object> inputMap = new HashMap<String, Object>();
+		inputMap.put("countryOfOrginInformationVo", countryOfOrginInformation);
 		inputMap.put("menuVo", menu);
-		
-		List<Object> sqlResult=countryOfOrginInformationService.FindMenuCountryOfOrginInformation(inputMap);
-		
+
+		List<Object> sqlResult = countryOfOrginInformationService.FindMenuCountryOfOrginInformation(inputMap);
+
 		Map<String, Object> responseMap = new HashMap<>();
-		responseMap.put("listRestaurant",  sqlResult);	
-		
-		HttpStatus 	state = HttpStatus.OK;	
-		String json =Util_bin.AddHttpStateAndJson(responseMap, state);
-		
-		model.addAttribute("responseEntity",new ResponseEntity<String>(json, state));
+		responseMap.put("listRestaurant", sqlResult);
+
+		HttpStatus state = HttpStatus.OK;
+		String json = Util_bin.AddHttpStateAndJson(responseMap, state);
+
+		model.addAttribute("responseEntity", new ResponseEntity<String>(json, state));
 		return "redirect:/";
 	}
 
-	
-	
-	
-	
-	
-	
 //	@GetMapping("/lstRestaurantCategory2.do")
 //	public String testURL(Model model) throws Exception{
 //		return "redirect:lstRestaurantCategory2.jsp";
@@ -199,7 +172,7 @@ public class RestaurantController {
 //		model.addAttribute("a", "test");
 //		return"redirect:/lstRestaurantCategory2.jsp";	
 //	}
-	
+
 //	@RequestMapping(value="/lstRestaurantCategory.do", method=RequestMethod.GET)
 //	public String lstRestaurantTest(@RequestParam("id") int id,ModelMap model) throws Exception{
 //		System.out.println("lstRestaurantCategory2.do");
@@ -212,10 +185,7 @@ public class RestaurantController {
 //		model.addAttribute("lstRestaurant", lstRestaurant);
 //		return"redirect:/lstRestaurantCategory2.jsp";	
 //	}	
-	
-	
-	
-	
+
 //	
 //	@RequestMapping(value="/insertForwardingMenuTest.do", method=RequestMethod.POST, produces = "application/json; charset=utf8")
 //	public String insertForwardingMenu(		ModelMap model													
@@ -237,5 +207,5 @@ public class RestaurantController {
 //		model.addAttribute("responseEntity", new ResponseEntity<String>( json ,state));
 //		return "redirect:/";	
 //	}
-	
-}	
+
+}

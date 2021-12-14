@@ -104,7 +104,8 @@
 	<select id="restaurantDAO.selectcategory" parameterClass="RestaurantVO"
 		resultClass="RestaurantVO">
 		SELECT
-		member_index
+		Restaurant.index
+		, member_index
 		, category
 		, img_path_str
 		, name

@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 import restaurant.restaurantManagement.cmmn.Util_bin;
+import restaurant.restaurantManagement.domain.Menu;
+import restaurant.restaurantManagement.service.IMenuService;
 import restaurant.restaurantManagement.service.RestaurantManagementService;
 import restaurant.restaurantManagement.service.RestaurantVO;
 
@@ -55,6 +57,9 @@ public class RestaurantManagementController {
 	/** EgovSampleService */
 	@Resource(name = "restaurantManagementService")
 	private RestaurantManagementService restaurantService;
+	
+	@Resource(name = "daoMyBatis")
+	private IMenuService menuservice; 
 
 	//@RequestMapping(value = "/imgtest.do")
 	public String GoImgTest(ModelMap model) throws Exception {
@@ -65,7 +70,7 @@ public class RestaurantManagementController {
 	// request 
 	// category - 검색하려는 카테고리
 	@RequestMapping(value = "/lstRestaurant.do", method = RequestMethod.GET)
-	public ResponseEntity<String> lstRestaurant(@RequestParam("category") String category) throws Exception {
+	public String lstRestaurant(@RequestParam("category") String category, Model model) throws Exception {
 
 		int requestcategory = Integer.parseInt(category.toString());
 		RestaurantVO newvo = new RestaurantVO();
@@ -85,15 +90,19 @@ public class RestaurantManagementController {
 			}
 			responseMap.put("lstRestaurant", sqlresult);
 		}
-		String json = Util_bin.AddHttpStateAndJson(responseMap, resultstate);
-		return new ResponseEntity<String>(json, resultstate);
+		
+//		String json = Util_bin.AddHttpStateAndJson(responseMap, resultstate);
+//		return new ResponseEntity<String>(json, resultstate);
+		
+		model.addAttribute("lstRestaurant", sqlresult);
+		return "restaurant/restaurantList";
 
 	}
 	// 한 식당의 상세정보 표시 (식당테이블의 모든 컬럼 반환)
 	// request 
 	// restaurantID - 검색하려는 식당 id
 	@RequestMapping(value = "/restaurantInformation.do", method = RequestMethod.GET)
-	public ResponseEntity<String> restaurantInformation(@RequestParam("restaurantID") String restaurantID)
+	public String restaurantInformation(@RequestParam("restaurantID") String restaurantID, Model model)
 			throws Exception {
 		
 		int requestrestaurantID = Integer.parseInt(restaurantID.toString());
@@ -116,8 +125,43 @@ public class RestaurantManagementController {
 			responseMap.put("data", resultnewvo);
 		}
 
-		json = Util_bin.AddHttpStateAndJson(responseMap, resultstate, resultnewvo != null);
-		return new ResponseEntity<String>(json, resultstate);
+//		json = Util_bin.AddHttpStateAndJson(responseMap, resultstate, resultnewvo != null);
+//		return new ResponseEntity<String>(json, resultstate);
+		
+		Menu menu = new Menu();
+		menu.setRestaurant_index(Integer.parseInt(restaurantID.toString()));
+		List<Menu> sqlResult;
+		HttpStatus state;
+
+		/**
+		 * 0일때 식당 카테고리 전체 보여주기 1 이상일때는 선택된 식당 카테고리보여주기
+		 */
+		if (Integer.parseInt(restaurantID.toString()) != 0) {
+			sqlResult = menuservice.lstRestaurantSelect(menu);
+
+		} else {
+
+			sqlResult = menuservice.selectMenuList(menu);
+		}
+		state = HttpStatus.OK;
+		
+		if (sqlResult != null) {
+			// 이미지 바이너리 주입
+			for (Object vo : sqlResult) {
+
+				Menu resultvo = (Menu) vo;
+				if (resultvo.getImg_path_str() != null || resultvo.getImg_path_str().trim() != "") {
+					resultvo.setImg_src(Util_bin.ImgTobyte(resultvo.getImg_path_str()));
+
+				}
+			}
+
+			responseMap.put("listRestaurant", sqlResult);
+		}
+
+		model.addAttribute("restaurantVO", resultnewvo);
+		model.addAttribute("lstMenuVO", sqlResult);
+		return "restaurant/restaurant";
 
 	}
 	// 한 식당의  정보업데이트
