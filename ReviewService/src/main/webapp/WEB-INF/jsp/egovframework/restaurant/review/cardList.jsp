@@ -5,6 +5,12 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <script type="text/javascript" src="<c:url value='/js/review/like.js'/>"></script>
+<script type="text/javaScript" language="javascript" defer="defer">
+    function updateReview() {
+        document.reviewCeoRecoForm.action = "<c:url value='/updateReview.do'/>";
+        document.reviewCeoRecoForm.submit();
+    }
+</script>
 <div class="card_container">
     <div class="card-col">
 
@@ -71,11 +77,18 @@
                         <div>
                             <h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">${result.title}</h6>
                             <div class="recommend_area" style="float:right; width:100%; text-align:right;">
-                                <form class="recommand_btn" style="display:none;" action
-                                '>
-                                <div><input class="btn btn-primary"
-                                            style="background-color:#ff7369; border-color:#ff7369;" id="write_btn"
-                                            type="submit" value="리뷰 추천"/></div>
+                                <form name="reviewCeoRecoForm" class="recommand_btn" style="display:none;" action>
+                                    <div>
+
+                                        <input type="hidden" name="id" value="${result.id}" class="disable_input"/>
+                                        <input type="hidden" name="title" value="${result.title}" class="disable_input"/>
+                                        <input type="hidden" name="content" value="${result.content}" class="disable_input"/>
+                                        <input type="hidden" name="star" value="${result.star}" class="disable_star"/>
+                                        <input type="hidden" name="ceoReco" value="1" class="disable_star"/>
+                                        <input class="btn btn-primary"
+                                               style="background-color:#ff7369; border-color:#ff7369;" id="write_btn"
+                                               type="submit" onclick="" value="리뷰 추천"/>
+                                    </div>
                                 </form>
                                 <form class="review_check" style="display:inline-block;" action='detailReview.do'>
                                     <div><input class="btn btn-primary" style="float:right;" id="write_btn"

@@ -28,6 +28,19 @@
 							<form class="recommand_cancle" style="display:none;" action'>
 	   							<div><input class="btn btn-primary" style="background-color:#ff7369; border-color:#ff7369;" id="write_btn" type="submit" value="추천 취소" /></div>
 					    	</form>
+<%--							<form name="reviewCeoRecoDeleteForm" class="recommand_btn" style="display:none;" action>--%>
+<%--								<div>--%>
+
+<%--									<input type="hidden" name="id" value="${result.id}" class="disable_input"/>--%>
+<%--									<input type="hidden" name="title" value="${result.title}" class="disable_input"/>--%>
+<%--									<input type="hidden" name="content" value="${result.content}" class="disable_input"/>--%>
+<%--									<input type="hidden" name="star" value="${result.star}" class="disable_star"/>--%>
+<%--									<input type="hidden" name="ceoReco" value="0" class="disable_star"/>--%>
+<%--									<input class="btn btn-primary"--%>
+<%--										   style="background-color:#ff7369; border-color:#ff7369;" id="write_btn"--%>
+<%--										   type="submit" onclick="" value="리뷰 추천"/>--%>
+<%--								</div>--%>
+<%--							</form>--%>
 							<form class="review_check" style="display:inline-block;"action='detailReview.do'>
 	   							<div><input class="btn btn-primary" id="write_btn" type="submit" value="리뷰 보기" /></div>
 								<input type="hidden" name="id" value="7"/>
