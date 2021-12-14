@@ -77,7 +77,7 @@
                         <div>
                             <h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">${result.title}</h6>
                             <div class="recommend_area" style="float:right; width:100%; text-align:right;">
-                                <form name="reviewCeoRecoForm" class="recommand_btn" style="display:none;" action>
+                                <form name="reviewCeoRecoForm" class="recommand_btn" style="display:none;" method="post">
                                     <div>
 
                                         <input type="hidden" name="id" value="${result.id}" class="disable_input"/>
