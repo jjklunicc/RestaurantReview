@@ -63,13 +63,14 @@ public class EgovOrderController {
 		orderSevice.insertOrder(orderRequestVO);
 		return "order/orderComplete";		
 	}
-	
-	@ResponseBody
+		
 	@RequestMapping(value = "/orderList.do")
-	public String selectOrderList() throws Exception {	
+	public String selectOrderList() throws Exception 
+	{	
 		System.out.println(">>>>>>>>>>>>>>>>>>>>> orderList 실행됨!");
 		return "order/orderList";
 	}
+
 	
 	@RequestMapping(value = "/orderList.do", method = RequestMethod.POST)
 	public String selectOrder(@RequestParam("userCd") String userCd, Model model) throws Exception {	
