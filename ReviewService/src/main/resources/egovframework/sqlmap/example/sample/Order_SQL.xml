@@ -13,10 +13,10 @@
 				(  
 				    user_index
 				  , restaurant_index
-				  , date
-				  , address
-				  , state
-				  , total_price
+				  , order_date
+				  , order_address
+				  , order_state
+				  , order_total_price
 				  )
 			VALUES ( 
 					#user_index#
@@ -53,7 +53,7 @@
     ]]>
     </select>
     
-    	<delete id="orderDAO.deleteOrder">
+    <delete id="orderDAO.deleteOrder">
 		<![CDATA[
 			DELETE FROM Orders 
 			WHERE order_index=#order_index#
