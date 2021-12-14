@@ -21,7 +21,8 @@ import java.util.List;
 import restaurant.orderManagement.service.OrderManagementService;
 import restaurant.orderManagement.service.OrderRequestVO;
 import restaurant.orderManagement.service.OrderResponseVO;
-
+import restaurant.restaurantManagement.domain.Shoppingbasket;
+import restaurant.restaurantManagement.service.ShoppingbasketService;
 
 import javax.annotation.Resource;
 
@@ -58,6 +59,9 @@ public class EgovOrderController {
 	@Resource(name = "orderServic")
 	private OrderManagementService orderSevice;
 	
+	@Resource(name = "shoppingbasketService")
+	private ShoppingbasketService shoppingbasketService;
+	
 	@PostMapping(value = "/orderComplete.do")
 	public String selectSampleList(@ModelAttribute OrderRequestVO orderRequestVO) throws Exception {	
 		orderSevice.insertOrder(orderRequestVO);
@@ -65,14 +69,16 @@ public class EgovOrderController {
 	}
 		
 	@RequestMapping(value = "/orderList.do")
-	public String selectOrderList() throws Exception 
+	public String selectOrderList(@ModelAttribute Shoppingbasket vo, Model model ) throws Exception 
 	{	
 		System.out.println(">>>>>>>>>>>>>>>>>>>>> orderList 실행됨!");
+		List<Shoppingbasket> ShoppingbasketList = shoppingbasketService.SelectShoppingbasketList(vo);
+		model.addAttribute("data", ShoppingbasketList);
 		return "order/orderList";
 	}
 
 	
-	@RequestMapping(value = "/orderList.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/userOrderList.do", method = RequestMethod.POST)
 	public String selectOrder(@RequestParam("userCd") String userCd, Model model) throws Exception {	
 		System.out.println(">>>>>>>>>>>>>>>>>>>>> orderList >>>> ");
 		List<OrderResponseVO> orderVO =  orderSevice.selectOrder(userCd);
@@ -81,5 +87,7 @@ public class EgovOrderController {
 		return "order/orderComplete";
 		
 	}
+	
+
 
 }
