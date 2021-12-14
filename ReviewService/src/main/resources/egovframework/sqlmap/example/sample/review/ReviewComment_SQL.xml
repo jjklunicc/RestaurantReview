@@ -4,7 +4,7 @@
 <sqlMap namespace="ReviewComment">
 
     <typeAlias  alias="ReviewCommentVO" type="restaurant.reviewManagement.service.ReviewCommentVO"/>
-    <typeAlias alias="ReviewCommentDefaultVO" type="restaurant.reviewManagement.service.ReviewCommentDefaultVO"/>
+    <typeAlias alias="ReviewCommentDefaultVO" type="restaurant.reviewManagement.service.ReviewUserRecoDefaultVO"/>
 
     <resultMap id="ReviewCommentVO" class="restaurant.reviewManagement.service.ReviewCommentVO">
         <result property="id" column="ID"/>
@@ -16,7 +16,7 @@
 
     <insert id="reviewCommentDAO.insertReviewComment">
         <![CDATA[
-			INSERT INTO ReviewComment
+			INSERT INTO Review_Comment
 				(
 				Review_ID,
 				Content,
@@ -34,7 +34,7 @@
 
     <update id="reviewCommentDAO.updateReviewComment">
         <![CDATA[
-			UPDATE ReviewComment
+			UPDATE Review_Comment
 			SET Content=#content#,
                 Update_Date=NOW()
 			WHERE Review_ID=#reviewId#
@@ -43,7 +43,7 @@
 
     <delete id="reviewCommentDAO.deleteReviewComment">
         <![CDATA[
-			DELETE FROM ReviewComment
+			DELETE FROM Review_Comment
 			WHERE Review_ID=#reviewId#
         ]]>
 	</delete>
@@ -52,7 +52,7 @@
         <![CDATA[
 			SELECT
             *
-			FROM ReviewComment
+			FROM Review_Comment
 			WHERE Review_ID=#reviewId#
         ]]>
 	</select>

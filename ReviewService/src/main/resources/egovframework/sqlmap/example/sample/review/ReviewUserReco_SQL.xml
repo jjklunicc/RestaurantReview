@@ -16,7 +16,7 @@
 
     <insert id="reviewUserRecoDAO.insertReviewUserReco">
         <![CDATA[
-			INSERT INTO ReviewUserReco
+			INSERT INTO Review_User_Reco
 				(
 				Review_ID,
 				User_ID,
@@ -34,7 +34,7 @@
 
     <delete id="reviewUserRecoDAO.deleteReviewUserReco">
         <![CDATA[
-			DELETE FROM ReviewUserReco
+			DELETE FROM Review_User_Reco
 			WHERE Review_ID=#reviewId# AND User_ID=#userId#
         ]]>
 	</delete>
@@ -43,7 +43,7 @@
         <![CDATA[
 			SELECT
             *
-			FROM ReviewUserReco
+			FROM Review_User_Reco
 			WHERE Review_ID=#reviewId# AND User_ID=#userId#
         ]]>
 	</select>
@@ -52,7 +52,7 @@
         <![CDATA[
         SELECT
         *
-        FROM Review
+        FROM Review_User_Reco
         WHERE Review_ID=#reviewId#
         ]]>
     </select>
@@ -60,7 +60,7 @@
     <select id="reviewUserRecoDAO.selectReviewUserRecoListTotCnt" resultClass="int">
         <![CDATA[
         SELECT COUNT(*)
-        FROM Review
+        FROM Review_User_Reco
         WHERE Review_ID=#reviewId#
         ]]>
     </select>

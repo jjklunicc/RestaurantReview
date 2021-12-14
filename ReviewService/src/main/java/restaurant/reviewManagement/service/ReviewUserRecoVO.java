@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class ReviewCommentVO extends ReviewCommentDefaultVO {
+public class ReviewUserRecoVO extends ReviewUserRecoDefaultVO {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,12 +39,12 @@ public class ReviewCommentVO extends ReviewCommentDefaultVO {
 		this.reviewId = reviewId;
 	}
 	
-	public String getContent() {
-		return content;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public Date getCreateDate() {

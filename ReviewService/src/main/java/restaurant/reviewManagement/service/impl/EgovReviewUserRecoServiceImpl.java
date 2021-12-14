@@ -1,17 +1,18 @@
 package restaurant.reviewManagement.service.impl;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import org.springframework.stereotype.Service;
-import restaurant.reviewManagement.service.EgovReviewCommentService;
+import restaurant.reviewManagement.service.EgovReviewUserRecoService;
 import restaurant.reviewManagement.service.ReviewCommentVO;
+import restaurant.reviewManagement.service.ReviewUserRecoVO;
 
 import javax.annotation.Resource;
+import java.util.List;
 
-@Service("reviewCommentService")
-public class EgovReviewCommentServiceImpl extends EgovAbstractServiceImpl implements EgovReviewUserRecoService {
+@Service("reviewUserRecoService")
+public class EgovReviewUserRecoServiceImpl extends EgovAbstractServiceImpl implements EgovReviewUserRecoService {
 
-	@Resource(name = "reviewCommentDAO")
+	@Resource(name = "reviewUserRecoDAO")
 	private ReviewUserRecoDAO reviewUserRecoDAO;
 
     // 등록
@@ -28,7 +29,7 @@ public class EgovReviewCommentServiceImpl extends EgovAbstractServiceImpl implem
 
     // 조회
 	@Override
-	public ReviewCommentVO selectReviewUserReco(ReviewUserRecoVO vo) throws Exception {
+	public ReviewUserRecoVO selectReviewUserReco(ReviewUserRecoVO vo) throws Exception {
 		ReviewUserRecoVO resultVO = reviewUserRecoDAO.selectReviewUserReco(vo);
 		if (resultVO == null)
 			throw processException("info.nodata.msg");

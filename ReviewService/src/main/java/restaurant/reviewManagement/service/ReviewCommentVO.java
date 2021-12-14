@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class ReviewCommentVO extends ReviewCommentDefaultVO {
+public class ReviewCommentVO extends ReviewUserRecoDefaultVO {
 
 	private static final long serialVersionUID = 1L;
 

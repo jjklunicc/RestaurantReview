@@ -6,15 +6,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
-import restaurant.reviewManagement.service.EgovReviewService;
+import restaurant.reviewManagement.service.*;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
-import restaurant.reviewManagement.service.ReviewDefaultVO;
-import restaurant.reviewManagement.service.ReviewVO;
 
 @Controller
 public class EgovReviewController {
@@ -22,6 +20,9 @@ public class EgovReviewController {
 	/** EgovReviewService */
 	@Resource(name = "reviewService")
 	private EgovReviewService reviewService;
+
+	@Resource(name = "reviewCommentService")
+	private EgovReviewCommentService reviewCommentService;
 
 	/** Validator */
 	@Resource(name = "beanValidator")
@@ -37,6 +38,9 @@ public class EgovReviewController {
 	@RequestMapping(value = "/detailReview.do", method = RequestMethod.GET)
 	public String detailReviewView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, ReviewVO reviewVO, Model model) throws Exception {
 		model.addAttribute("reviewVO", reviewService.selectReview(reviewVO));
+		ReviewCommentVO reviewCommentVO = new ReviewCommentVO();
+		reviewCommentVO.setReviewId(reviewVO.getId());
+		model.addAttribute("reviewCommentVO", reviewCommentService.selectReviewComment(reviewCommentVO));
 		return "review/detail";
 	}
 

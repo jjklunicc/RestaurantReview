@@ -211,15 +211,21 @@
                     <div class="button_area2">
                         <input type="hidden" name="reviewId" value="${reviewVO.id}" class="disable_input"/>
                         <button type="button" id="modify_btn2" class="btn btn-outline-primary">작성</button>
-                        <input class="btn btn-primary" id="save_btn" style="margin-right:2px;"
-                               type="submit" onclick="addReviewComment()" value="저장"/>
+                        <c:if test="${empty reviewCommentVO.content}">
+                            <input class="btn btn-primary" id="save_btn" style="margin-right:2px;"
+                                   type="submit" onclick="addReviewComment()" value="저장"/>
+                        </c:if>
+                        <c:if test="${not empty reviewCommentVO.content}">
+                            <input class="btn btn-primary" id="save_btn" style="margin-right:2px;"
+                                   type="submit" onclick="updateReviewComment()" value="수정"/>
+                        </c:if>
                         <input class="btn btn-outline-primary" style="margin-right:2px;"
                                type="submit" onclick="deleteReviewComment()" value="삭제"/>
 <%--                        <button type="button" class="btn btn-outline-primary">삭제</button>--%>
                     </div>
                 </div>
                 <textarea name="content" class="owner_anwser" readonly placeholder="사장님 답글 내용"
-                          style="resize: none;"></textarea>
+                          style="resize: none;">${reviewCommentVO.content}</textarea>
             </form:form>
         </div>
     </section>

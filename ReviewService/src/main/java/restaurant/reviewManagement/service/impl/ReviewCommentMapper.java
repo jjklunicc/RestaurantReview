@@ -1,7 +1,7 @@
 package restaurant.reviewManagement.service.impl;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import restaurant.reviewManagement.service.ReviewCommentDefaultVO;
+import restaurant.reviewManagement.service.ReviewUserRecoDefaultVO;
 import restaurant.reviewManagement.service.ReviewCommentVO;
 
 import java.util.List;
@@ -17,6 +17,6 @@ public interface ReviewCommentMapper {
 
 	ReviewCommentVO selectReviewMenu(ReviewCommentVO vo) throws Exception;
 
-	List<?> selectReviewMenuList(ReviewCommentDefaultVO searchVO) throws Exception;
+	List<?> selectReviewMenuList(ReviewUserRecoDefaultVO searchVO) throws Exception;
 
 }

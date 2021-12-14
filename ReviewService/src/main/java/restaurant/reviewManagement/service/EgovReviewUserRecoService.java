@@ -1,6 +1,8 @@
 package restaurant.reviewManagement.service;
 
-public interface EgovReviewCommentService {
+import java.util.List;
+
+public interface EgovReviewUserRecoService {
 
     // 등록
 	void insertReviewUserReco(ReviewUserRecoVO vo) throws Exception;

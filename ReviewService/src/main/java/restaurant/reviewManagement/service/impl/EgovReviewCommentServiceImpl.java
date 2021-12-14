@@ -1,9 +1,9 @@
 package restaurant.reviewManagement.service.impl;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import org.springframework.stereotype.Service;
 import restaurant.reviewManagement.service.EgovReviewCommentService;
+import restaurant.reviewManagement.service.EgovReviewUserRecoService;
 import restaurant.reviewManagement.service.ReviewCommentVO;
 
 import javax.annotation.Resource;
@@ -36,8 +36,8 @@ public class EgovReviewCommentServiceImpl extends EgovAbstractServiceImpl implem
 	@Override
 	public ReviewCommentVO selectReviewComment(ReviewCommentVO vo) throws Exception {
 		ReviewCommentVO resultVO = reviewCommentDAO.selectReviewComment(vo);
-		if (resultVO == null)
-			throw processException("info.nodata.msg");
+//		if (resultVO == null)
+//			throw processException("info.nodata.msg");
 		return resultVO;
 	}
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class ReviewCommentDefaultVO implements Serializable {
+public class ReviewUserRecoDefaultVO implements Serializable {
 
 	/**
 	 *  serialVersion UID

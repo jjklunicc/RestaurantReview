@@ -1,6 +1,5 @@
 package restaurant.reviewManagement.web;
 
-import egovframework.rte.fdl.property.EgovPropertyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +25,7 @@ public class EgovReviewCommentController {
 	protected DefaultBeanValidator beanValidator;
 
 	@RequestMapping(value = "/addReviewComment.do", method = RequestMethod.POST)
-	public String addReviewComment(@ModelAttribute("searchVO") ReviewCommentDefaultVO searchVO, ReviewCommentVO reviewCommentVO, BindingResult bindingResult, Model model, SessionStatus status, RedirectAttributes redirectAttributes)
+	public String addReviewComment(@ModelAttribute("searchVO") ReviewUserRecoDefaultVO searchVO, ReviewCommentVO reviewCommentVO, BindingResult bindingResult, Model model, SessionStatus status, RedirectAttributes redirectAttributes)
 			throws Exception {
 
 		beanValidator.validate(reviewCommentVO, bindingResult);
@@ -39,14 +38,15 @@ public class EgovReviewCommentController {
 		reviewCommentService.insertReviewComment(reviewCommentVO);
 		status.setComplete();
 
-		ReviewVO redirectReviewVO = new ReviewVO();
-		redirectReviewVO.setId(reviewCommentVO.getReviewId());
-		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
-		return "redirect:/detailReview.do";
+//		ReviewVO redirectReviewVO = new ReviewVO();
+//		redirectReviewVO.setId(reviewCommentVO.getReviewId());
+//		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
+//		return "redirect:/detailReview.do";
+		return "redirect:/reviewMain.do";
 	}
 
 	@RequestMapping(value = "/updateReviewComment.do", method = RequestMethod.POST)
-	public String updateReviewComment(@ModelAttribute("searchVO") ReviewCommentDefaultVO searchVO, ReviewCommentVO reviewCommentVO, BindingResult bindingResult, Model model, SessionStatus status, RedirectAttributes redirectAttributes)
+	public String updateReviewComment(@ModelAttribute("searchVO") ReviewUserRecoDefaultVO searchVO, ReviewCommentVO reviewCommentVO, BindingResult bindingResult, Model model, SessionStatus status, RedirectAttributes redirectAttributes)
 			throws Exception {
 
 		beanValidator.validate(reviewCommentVO, bindingResult);
@@ -59,19 +59,21 @@ public class EgovReviewCommentController {
 		reviewCommentService.updateReviewComment(reviewCommentVO);
 		status.setComplete();
 
-		ReviewVO redirectReviewVO = new ReviewVO();
-		redirectReviewVO.setId(reviewCommentVO.getReviewId());
-		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
-		return "redirect:/detailReview.do";
+//		ReviewVO redirectReviewVO = new ReviewVO();
+//		redirectReviewVO.setId(reviewCommentVO.getReviewId());
+//		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
+//		return "redirect:/detailReview.do";
+		return "redirect:/reviewMain.do";
 	}
 
 	@RequestMapping(value = "/deleteReviewComment.do", method = RequestMethod.POST)
 	public String deleteReviewViewComment(ReviewCommentVO reviewCommentVO, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		reviewCommentService.deleteReviewComment(reviewCommentVO);
 
-		ReviewVO redirectReviewVO = new ReviewVO();
-		redirectReviewVO.setId(reviewCommentVO.getReviewId());
-		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
-		return "redirect:/detailReview.do";
+//		ReviewVO redirectReviewVO = new ReviewVO();
+//		redirectReviewVO.setId(reviewCommentVO.getReviewId());
+//		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
+//		return "redirect:/detailReview.do";
+		return "redirect:/reviewMain.do";
 	}
 }
