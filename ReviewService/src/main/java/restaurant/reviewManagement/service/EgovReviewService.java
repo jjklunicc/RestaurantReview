@@ -19,6 +19,8 @@ public interface EgovReviewService {
     // 목록 조회
 	List<?> selectReviewList(ReviewDefaultVO searchVO) throws Exception;
 
+    List<?> selectReviewOrderStarList(ReviewDefaultVO searchVO) throws Exception;
+
     // 리뷰 수 조회
 	int selectReviewListTotCnt(ReviewDefaultVO searchVO);
 

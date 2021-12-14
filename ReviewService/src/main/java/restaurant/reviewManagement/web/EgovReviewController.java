@@ -35,6 +35,13 @@ public class EgovReviewController {
 		return "review/main";
 	}
 
+	@RequestMapping(value = "/reviewMain_orderStar.do", method = RequestMethod.GET)
+	public String selectReviewMainView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, Model model) throws Exception {
+		model.addAttribute("resultList", reviewService.selectReviewList(searchVO));
+		model.addAttribute("total", reviewService.selectReviewListTotCnt(searchVO));
+		return "review/main";
+	}
+
 	@RequestMapping(value = "/detailReview.do", method = RequestMethod.GET)
 	public String detailReviewView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, ReviewVO reviewVO, Model model) throws Exception {
 		model.addAttribute("reviewVO", reviewService.selectReview(reviewVO));

@@ -80,37 +80,31 @@
     </select>
 
     <select id="reviewDAO.selectReviewList" parameterClass="ReviewDefaultVO" resultMap="ReviewVO">
-<!--        <![CDATA[-->
         SELECT
         *
         FROM Review
         WHERE 1=1
         <isNotEmpty property="searchKeyword">
-<!--            <when test="searchCondition == 0">-->
-                AND Title LIKE '%' || #searchKeyword# || '%'
-<!--            </when>-->
-<!--            <when test="searchCondition == 1">-->
-                AND Content LIKE '%' || #searchKeyword# || '%'
-<!--            </when>-->
+                AND (Title LIKE '%' || #searchKeyword# || '%'
+                OR Content LIKE '%' || #searchKeyword# || '%')
         </isNotEmpty>
         ORDER BY ID DESC
         LIMIT #recordCountPerPage# OFFSET #firstIndex#
-<!--        ]]>-->
+    </select>
+
+    <select id="reviewDAO.selectReviewOrderStarList" parameterClass="ReviewDefaultVO" resultMap="ReviewVO">
+        SELECT * FROM Review
+        ORDER BY Star DESC
+        LIMIT #recordCountPerPage# OFFSET #firstIndex#
     </select>
 
     <select id="reviewDAO.selectReviewListTotCnt" parameterClass="ReviewDefaultVO" resultClass="int">
-<!--        <![CDATA[-->
         SELECT COUNT(*)
         FROM Review
         WHERE 1=1
         <isNotEmpty property="searchKeyword">
-<!--            <when test="searchCondition == 0">-->
-                AND Title LIKE '%' || #searchKeyword# || '%'
-<!--            </when>-->
-<!--            <when test="searchCondition == 1">-->
-                AND Content LIKE '%' || #searchKeyword# || '%'
-<!--            </when>-->
+                AND (Title LIKE '%' || #searchKeyword# || '%'
+                OR Content LIKE '%' || #searchKeyword# || '%')
         </isNotEmpty>
-<!--        ]]>-->
     </select>
 </sqlMap>

@@ -49,6 +49,11 @@ public class EgovReviewServiceImpl extends EgovAbstractServiceImpl implements Eg
 		return reviewDAO.selectReviewList(searchVO);
 	}
 
+	@Override
+	public List<?> selectReviewOrderStarList(ReviewDefaultVO searchVO) throws Exception {
+		return reviewDAO.selectReviewOrderStarList(searchVO);
+	}
+
     // 리뷰 수 조회
 	@Override
 	public int selectReviewListTotCnt(ReviewDefaultVO searchVO) {

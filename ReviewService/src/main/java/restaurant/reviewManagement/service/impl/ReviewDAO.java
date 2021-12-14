@@ -35,6 +35,10 @@ public class ReviewDAO extends EgovAbstractDAO {
         return list("reviewDAO.selectReviewList", searchVO);
     }
 
+    public List<?> selectReviewOrderStarList(ReviewDefaultVO searchVO) throws Exception {
+        return list("reviewDAO.selectReviewOrderStarList", searchVO);
+    }
+
     // 리뷰 수 조회
     public int selectReviewListTotCnt(ReviewDefaultVO searchVO) {
         return (Integer) select("reviewDAO.selectReviewListTotCnt", searchVO);
