@@ -80,7 +80,7 @@
     </select>
 
     <select id="reviewDAO.selectReviewList" parameterClass="ReviewDefaultVO" resultMap="ReviewVO">
-        <![CDATA[
+<!--        <![CDATA[-->
         SELECT
         *
         FROM Review
@@ -91,20 +91,20 @@
         </isNotEmpty>
         ORDER BY ID DESC
         LIMIT #recordCountPerPage# OFFSET #firstIndex#
-        ]]>
+<!--        ]]>-->
     </select>
 
     <select id="reviewDAO.selectReviewOrderStarList" parameterClass="ReviewDefaultVO" resultMap="ReviewVO">
-        <![CDATA[
+<!--        <![CDATA[-->
         SELECT * FROM Review
         WHERE 1=1
         ORDER BY Star DESC
         LIMIT #recordCountPerPage# OFFSET #firstIndex#
-        ]]>
+<!--        ]]>-->
     </select>
 
     <select id="reviewDAO.selectReviewListTotCnt" parameterClass="ReviewDefaultVO" resultClass="int">
-        <![CDATA[
+<!--        <![CDATA[-->
         SELECT COUNT(*)
         FROM Review
         WHERE 1=1
@@ -112,6 +112,6 @@
                 AND (Title LIKE '%' || #searchKeyword# || '%'
                 OR Content LIKE '%' || #searchKeyword# || '%')
         </isNotEmpty>
-        ]]>
+<!--        ]]>-->
     </select>
 </sqlMap>
