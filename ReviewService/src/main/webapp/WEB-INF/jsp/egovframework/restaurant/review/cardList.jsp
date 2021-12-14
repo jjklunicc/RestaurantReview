@@ -87,7 +87,7 @@
                                         <input type="hidden" name="ceoReco" value="1" class="disable_star"/>
                                         <input class="btn btn-primary"
                                                style="background-color:#ff7369; border-color:#ff7369;" id="write_btn"
-                                               type="submit" onclick="" value="리뷰 추천"/>
+                                               type="submit" onclick="updateReview()" value="리뷰 추천"/>
                                     </div>
                                 </form>
                                 <form class="review_check" style="display:inline-block;" action='detailReview.do'>
