@@ -138,6 +138,9 @@
                                 </div>
                                 <div class="like_area">
                                     <form:form commandName="searchVO" name="reviewLikeForm" method="post">
+                                        <input type="hidden" name="reviewId" value="${reviewVO.id}" class="disable_input"/>
+                                        <input type="hidden" name="userId" value="${reviewVO.userId}" class="disable_input"/>
+
                                         <img class="like_unclick"
                                              src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요"
                                              width="25px" onclick="reviewLike()">
