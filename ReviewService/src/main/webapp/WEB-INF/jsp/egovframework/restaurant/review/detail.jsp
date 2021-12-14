@@ -40,6 +40,21 @@
             document.reviewUpdateForm.action = "<c:url value='/deleteReview.do'/>";
             document.reviewUpdateForm.submit();
         }
+
+        function addReviewComment() {
+            document.reviewCommentForm.action = "<c:url value='/addReviewComment.do'/>";
+            document.reviewCommentForm.submit();
+        }
+
+        function updateReviewComment() {
+            document.reviewCommentForm.action = "<c:url value='/updateReviewComment.do'/>";
+            document.reviewCommentForm.submit();
+        }
+
+        function deleteReviewComment() {
+            document.reviewCommentForm.action = "<c:url value='/deleteReviewComment.do'/>";
+            document.reviewCommentForm.submit();
+        }
     </script>
     <link type="text/css" rel="stylesheet"
           href="<c:url value='/css/egovframework/review/reset.css'/>"/>
@@ -132,7 +147,7 @@
                     <span id="menu1">
                     <div class="menu_name">
                     	&nbsp야채튀김&nbsp
-                    </div>  
+                    </div>
                         <div class="like_area2">
                             <input name="click" type="checkbox" class="like" id="like1" onclick="likeclick(this)">
                             <label for="like1"></label>
@@ -141,7 +156,7 @@
                 <span id="menu2">
                     <div class="menu_name">
                     	&nbsp고구마튀김&nbsp
-                    </div>  
+                    </div>
                         <div class="like_area2">
                             <input name="click" type="checkbox" class="like2" id="like2" onclick="likeclick(this)">
                             <label for="like2"></label>
@@ -150,7 +165,7 @@
                 <span id="menu3">
                     <div class="menu_name">
                     	&nbsp오징어튀김&nbsp
-                    </div>  
+                    </div>
                         <div class="like_area2">
                             <input name="click" type="checkbox" class="like2" id="like2" onclick="likeclick(this)">
                             <label for="like2"></label>
@@ -159,7 +174,7 @@
                 <span id="menu4">
                     <div class="menu_name">
                     	&nbsp김말이&nbsp
-                    </div>  
+                    </div>
                         <div class="like_area2">
                             <input name="click" type="checkbox" class="like" id="like1" onclick="likeclick(this)">
                             <label for="like1"></label>
@@ -190,19 +205,22 @@
                       style="resize: none;">${reviewVO.content}</textarea>
         </form:form>
         <div class="owner_area">
-            <div class="review_owner">
-                <p class="owner">사장님 답변</p>
-                <div class="button_area2">
-                    <button type="button" id="modify_btn2" class="btn btn-outline-primary">작성</button>
-                    <form class="save_btn_area2" action>
+            <form:form commandName="searchVO" name="reviewCommentForm" method="post">
+                <div class="review_owner">
+                    <p class="owner">사장님 답변</p>
+                    <div class="button_area2">
+                        <input type="hidden" name="reviewId" value="${reviewVO.id}" class="disable_input"/>
+                        <button type="button" id="modify_btn2" class="btn btn-outline-primary">작성</button>
                         <input class="btn btn-primary" id="save_btn" style="margin-right:2px;"
-                               type="submit" value="저장"/>
-                    </form>
-                    <button type="button" class="btn btn-outline-primary">삭제</button>
+                               type="submit" onclick="addReviewComment()" value="저장"/>
+                        <input class="btn btn-outline-primary" style="margin-right:2px;"
+                               type="submit" onclick="deleteReviewComment()" value="삭제"/>
+<%--                        <button type="button" class="btn btn-outline-primary">삭제</button>--%>
+                    </div>
                 </div>
-            </div>
-            <textarea name="review" class="owner_anwser" readonly placeholder="사장님 답글 내용"
-                      style="resize: none;"></textarea>
+                <textarea name="content" class="owner_anwser" readonly placeholder="사장님 답글 내용"
+                          style="resize: none;"></textarea>
+            </form:form>
         </div>
     </section>
     </section>

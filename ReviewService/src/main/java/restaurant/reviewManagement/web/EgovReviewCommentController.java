@@ -45,7 +45,7 @@ public class EgovReviewCommentController {
 		return "redirect:/detailReview.do";
 	}
 
-	@RequestMapping(value = "/updateReviewComment.do", method = RequestMethod.PUT)
+	@RequestMapping(value = "/updateReviewComment.do", method = RequestMethod.POST)
 	public String updateReviewComment(@ModelAttribute("searchVO") ReviewCommentDefaultVO searchVO, ReviewCommentVO reviewCommentVO, BindingResult bindingResult, Model model, SessionStatus status, RedirectAttributes redirectAttributes)
 			throws Exception {
 
@@ -65,7 +65,7 @@ public class EgovReviewCommentController {
 		return "redirect:/detailReview.do";
 	}
 
-	@RequestMapping(value = "/deleteReviewComment.do", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deleteReviewComment.do", method = RequestMethod.POST)
 	public String deleteReviewViewComment(ReviewCommentVO reviewCommentVO, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		reviewCommentService.deleteReviewComment(reviewCommentVO);
 
