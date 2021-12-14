@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ReviewUserReco">
+
+    <typeAlias  alias="ReviewUserRecoVO" type="restaurant.reviewManagement.service.ReviewUserRecoVO"/>
+    <typeAlias alias="ReviewUserRecoDefaultVO" type="restaurant.reviewManagement.service.ReviewUserRecoDefaultVO"/>
+
+    <resultMap id="ReviewUserRecoVO" class="restaurant.reviewManagement.service.ReviewUserRecoVO">
+        <result property="id" column="ID"/>
+        <result property="reviewId" column="Review_ID"/>
+        <result property="userId" column="User_ID"/>
+        <result property="createDate" column="Create_Date"/>
+        <result property="updateDate" column="Update_Date"/>
+    </resultMap>
+
+    <insert id="reviewUserRecoDAO.insertReviewUserReco">
+        <![CDATA[
+			INSERT INTO ReviewUserReco
+				(
+				Review_ID,
+				User_ID,
+				Create_Date,
+				Update_Date
+				)
+			VALUES (
+			    #reviewId#,
+			    #userId#,
+			    NOW(),
+			    NOW()
+				)
+        ]]>
+	</insert>
+
+    <delete id="reviewUserRecoDAO.deleteReviewUserReco">
+        <![CDATA[
+			DELETE FROM ReviewUserReco
+			WHERE Review_ID=#reviewId# AND User_ID=#userId#
+        ]]>
+	</delete>
+
+    <select id="reviewUserRecoDAO.selectReviewUserReco" resultMap="ReviewUserRecoVO">
+        <![CDATA[
+			SELECT
+            *
+			FROM ReviewUserReco
+			WHERE Review_ID=#reviewId# AND User_ID=#userId#
+        ]]>
+	</select>
+
+    <select id="reviewUserRecoDAO.selectReviewUserRecoList" resultMap="ReviewUserRecoVO">
+        <![CDATA[
+        SELECT
+        *
+        FROM Review
+        WHERE Review_ID=#reviewId#
+        ]]>
+    </select>
+
+    <select id="reviewUserRecoDAO.selectReviewUserRecoListTotCnt" resultClass="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM Review
+        WHERE Review_ID=#reviewId#
+        ]]>
+    </select>
+</sqlMap>
