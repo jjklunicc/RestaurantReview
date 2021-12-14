@@ -78,7 +78,7 @@
 
                                             <img src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요"
                                                  width="25px" onclick="reviewLike()">
-                                            <p class="like_count">${result.likeCnt}</p>
+                                            <p class="like_count">45</p>
                                         </form:form>
                                     </div>
                                 </div>
