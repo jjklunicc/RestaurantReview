@@ -9,4 +9,6 @@
 	<sqlMap resource="egovframework/sqlmap/example/sample/review/Review_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/example/sample/review/ReviewComment_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/example/sample/review/ReviewUserReco_SQL.xml"/>
+	<sqlMap resource="egovframework/sqlmap/example/sample/Order_SQL.xml"/>
+
 </sqlMapConfig>
