@@ -55,6 +55,16 @@
             document.reviewCommentForm.action = "<c:url value='/deleteReviewComment.do'/>";
             document.reviewCommentForm.submit();
         }
+
+        function reviewLike() {
+            document.reviewLikeForm.action = "<c:url value='/addReviewUserReco.do'/>";
+            document.reviewLikeForm.submit();
+        }
+
+        function reviewUnlike() {
+            document.reviewLikeForm.action = "<c:url value='/deleteReviewUserReco.do'/>";
+            document.reviewLikeForm.submit();
+        }
     </script>
     <link type="text/css" rel="stylesheet"
           href="<c:url value='/css/egovframework/review/reset.css'/>"/>
@@ -127,13 +137,15 @@
                                          width="15px">
                                 </div>
                                 <div class="like_area">
-                                    <img class="like_unclick"
-                                         src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요"
-                                         width="25px">
-                                    <img class="like_click"
-                                         src="<c:url value='/images/egovframework/review/like_click.png'/>" alt="좋아요"
-                                         width="25px" style="display: none;">
-                                    <p class="like_count">45</p>
+                                    <form:form commandName="searchVO" name="reviewLikeForm" method="post">
+                                        <img class="like_unclick"
+                                             src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요"
+                                             width="25px" onclick="reviewLike()">
+                                        <img class="like_click"
+                                             src="<c:url value='/images/egovframework/review/like_click.png'/>" alt="좋아요"
+                                             width="25px" style="display: none;" onclick="reviewUnlike()">
+                                        <p class="like_count">${likeCnt}</p>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>

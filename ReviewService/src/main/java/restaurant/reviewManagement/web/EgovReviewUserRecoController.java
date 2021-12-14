@@ -39,19 +39,23 @@ public class EgovReviewUserRecoController {
 		reviewUserRecoService.insertReviewUserReco(reviewUserRecoVO);
 		status.setComplete();
 
-		ReviewVO redirectReviewVO = new ReviewVO();
-		redirectReviewVO.setId(reviewUserRecoVO.getReviewId());
-		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
-		return "redirect:/detailReview.do";
+//		ReviewVO redirectReviewVO = new ReviewVO();
+//		redirectReviewVO.setId(reviewUserRecoVO.getReviewId());
+//		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
+//		return "redirect:/detailReview.do";
+
+		return "redirect:/reviewMain.do";
 	}
 
 	@RequestMapping(value = "/deleteReviewUserReco.do", method = RequestMethod.POST)
 	public String deleteReviewViewUserReco(ReviewUserRecoVO reviewUserRecoVO, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		reviewUserRecoService.deleteReviewUserReco(reviewUserRecoVO);
 
-		ReviewVO redirectReviewVO = new ReviewVO();
-		redirectReviewVO.setId(reviewUserRecoVO.getReviewId());
-		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
-		return "redirect:/detailReview.do";
+//		ReviewVO redirectReviewVO = new ReviewVO();
+//		redirectReviewVO.setId(reviewUserRecoVO.getReviewId());
+//		redirectAttributes.addAttribute("reviewVO", redirectReviewVO);
+//		return "redirect:/detailReview.do";
+
+		return "redirect:/reviewMain.do";
 	}
 }

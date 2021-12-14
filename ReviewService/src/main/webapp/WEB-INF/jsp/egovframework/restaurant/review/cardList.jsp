@@ -10,6 +10,11 @@
         document.reviewCeoRecoForm.action = "<c:url value='/updateReview.do'/>";
         document.reviewCeoRecoForm.submit();
     }
+
+    function reviewLike() {
+        document.reviewLikeForm.action = "<c:url value='/addReviewUserReco.do'/>";
+        document.reviewLikeForm.submit();
+    }
 </script>
 <div class="card_container">
     <div class="card-col">
@@ -67,9 +72,14 @@
                                         </div>
                                     </div>
                                     <div class="like_area">
-                                        <img src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요"
-                                             width="25px">
-                                        <p class="like_count">45</p>
+                                        <form:form commandName="searchVO" name="reviewLikeForm" method="post">
+                                            <input type="hidden" name="reviewId" value="${result.id}" class="disable_input"/>
+                                            <input type="hidden" name="userId" value="${result.userId}" class="disable_input"/>
+
+                                            <img src="<c:url value='/images/egovframework/review/like.png'/>" alt="좋아요"
+                                                 width="25px" onclick="reviewLike()">
+                                            <p class="like_count">${result.likeCnt}</p>
+                                        </form:form>
                                     </div>
                                 </div>
                             </div>

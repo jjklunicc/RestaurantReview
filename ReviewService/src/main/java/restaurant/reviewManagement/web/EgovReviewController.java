@@ -24,6 +24,9 @@ public class EgovReviewController {
 	@Resource(name = "reviewCommentService")
 	private EgovReviewCommentService reviewCommentService;
 
+	@Resource(name = "reviewUserRecoService")
+	private EgovReviewUserRecoService reviewUserRecoService;
+
 	/** Validator */
 	@Resource(name = "beanValidator")
 	protected DefaultBeanValidator beanValidator;
@@ -31,13 +34,18 @@ public class EgovReviewController {
 	@RequestMapping(value = "/reviewMain.do", method = RequestMethod.GET)
 	public String selectReviewMainView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, Model model) throws Exception {
 		model.addAttribute("resultList", reviewService.selectReviewList(searchVO));
+		for (Model m : model.getAttribute("resultList")) {
+			ReviewUserRecoVO reviewUserRecoVO = new reviewUserRecoVO();
+			reviewUserRecoVO.setReviewId((Integer) m.getAttribute("id"));
+			m.addAttribute("likeCnt", reviewUserRecoService.selectReviewUserRecoListTotCnt(reviewUserRecoVO));
+		}
 		model.addAttribute("total", reviewService.selectReviewListTotCnt(searchVO));
 		return "review/main";
 	}
 
 	@RequestMapping(value = "/reviewMain_orderStar.do", method = RequestMethod.GET)
 	public String selectReviewMainView(@ModelAttribute("searchVO") ReviewDefaultVO searchVO, Model model) throws Exception {
-		model.addAttribute("resultList", reviewService.selectReviewList(searchVO));
+		model.addAttribute("resultList", reviewService.selectReviewOrderStarList(searchVO));
 		model.addAttribute("total", reviewService.selectReviewListTotCnt(searchVO));
 		return "review/main";
 	}
@@ -48,6 +56,9 @@ public class EgovReviewController {
 		ReviewCommentVO reviewCommentVO = new ReviewCommentVO();
 		reviewCommentVO.setReviewId(reviewVO.getId());
 		model.addAttribute("reviewCommentVO", reviewCommentService.selectReviewComment(reviewCommentVO));
+		ReviewUserRecoVO reviewUserRecoVO = new reviewUserRecoVO();
+		reviewUserRecoVO.setReviewId(reviewVO.getId());
+		model.addAttribute("likeCnt", reviewUserRecoService.selectReviewUserRecoListTotCnt(reviewUserRecoVO));
 		return "review/detail";
 	}
 
