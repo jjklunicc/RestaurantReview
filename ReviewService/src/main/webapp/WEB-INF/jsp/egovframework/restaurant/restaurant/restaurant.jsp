@@ -23,17 +23,32 @@
 	function selectMenu() {
 		document.getElementById("menuTab").classList.add("active");
 		document.getElementById("infoTab").classList.remove("active");
+		document.getElementById("reviewTab").classList.remove("active");
 
 		document.getElementById("menu").style = "display:block;"
 		document.getElementById("info").style = "display:none;"
+		document.getElementById("review").style = "display:none;"
 	}
 
 	function selectInfo() {
 		document.getElementById("menuTab").classList.remove("active");
 		document.getElementById("infoTab").classList.add("active");
+		document.getElementById("reviewTab").classList.remove("active");
 
 		document.getElementById("menu").style = "display:none;"
 		document.getElementById("info").style = "display:block;"
+		document.getElementById("review").style = "display:none;"
+	}
+	
+	function selectReview() {
+		document.getElementById("menuTab").classList.remove("active");
+		document.getElementById("infoTab").classList.remove("active");
+		document.getElementById("reviewTab").classList.add("active");
+
+		document.getElementById("menu").style = "display:none;"
+		document.getElementById("info").style = "display:none;"
+		document.getElementById("review").style = "display:block;"
+		
 	}
 	
 	function insertMenu(name, price, menuIndex, restaurant_index){
@@ -134,9 +149,9 @@
 				<div id="banner_11st" class="banner_11st"></div>
 
 				<ul class="nav nav-tabs restaurant-tab">
-					<li onclick="selectMenu()" id="menuTab" class="active"><a>메뉴
-					</a></li>
+					<li onclick="selectMenu()" id="menuTab" class="active"><a>메뉴</a></li>
 					<li onclick="selectInfo()" id="infoTab"><a>정보</a></li>
+					<li onclick="selectReview()" id="reviewTab" ><a>리뷰</a></li>
 				</ul>
 
 				<div id="menu" class="menu-list">
@@ -244,6 +259,14 @@
 							<li class="ng-binding ng-hide"></li>
 						</ul>
 					</div>
+				</div>
+				
+				<div id="review"  style="display: none;">
+					<form method="get" action='reviewMain.do'>     
+				      <div style="margin-bottom: 0.5rem;">
+				        <input class="btn btn-success" style="width: 100%;" type="submit" value="리뷰 페이지로"/>
+				      </div>      
+				    </form>
 				</div>
 
 				<div class="labels">
